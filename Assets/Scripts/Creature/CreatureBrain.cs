@@ -243,16 +243,16 @@ public class CreatureBrain : MonoBehaviour
         if (Mathf.Abs(xDir) < 0.01f)
             return;
 
+        Vector3 scale = transform.localScale;
+
+        float absX = Mathf.Abs(scale.x);
+
         if (xDir > 0)
-        {
-            // 🔥 đi sang phải → giữ flip gốc
-            spriteRenderer.flipX = originalFlipX;
-        }
+            scale.x = absX;   // quay phải
         else
-        {
-            // 🔥 đi sang trái → đảo flip gốc
-            spriteRenderer.flipX = !originalFlipX;
-        }
+            scale.x = -absX;  // quay trái
+
+        transform.localScale = scale;
     }
 
     void UpdateFacing()
