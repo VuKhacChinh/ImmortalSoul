@@ -15,12 +15,16 @@ public class CreatureBrain : MonoBehaviour
     [Header("Combat")]
     public float maxHP = 100f;
     public float currentHP;
+    private float displayedHP;
     public float attackDamage = 10f;
     public float attackRange = 1.5f;
     public float attackCooldown = 1f;
 
     [Header("AI")]
     public float courageOffset = 20f;
+
+    [Header("VFX")]
+    public GameObject hitEffectPrefab;
 
     private float attackTimer;
 
@@ -55,6 +59,7 @@ public class CreatureBrain : MonoBehaviour
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
 
         currentHP = maxHP;
+        displayedHP = maxHP;
     }
 
     void Start()
@@ -76,6 +81,21 @@ public class CreatureBrain : MonoBehaviour
 
         UpdateFacing();
         HandleAnimatorState();
+        UpdateHPVisual();
+    }
+
+    void UpdateHPVisual()
+    {
+        if (displayedHP > currentHP)
+        {
+            displayedHP = Mathf.MoveTowards(
+                displayedHP,
+                currentHP,
+                60f * Time.deltaTime
+            );
+
+            HPBarManager.Instance.UpdateHP(this, displayedHP / maxHP);
+        }
     }
 
     // =========================================================
@@ -107,19 +127,20 @@ public class CreatureBrain : MonoBehaviour
         if (isAttacking) return;
         if (attackTimer > 0f) return;
 
+        currentTarget = FindTargetInVision();
+
         if (currentTarget == null || currentTarget.isDead)
-            currentTarget = FindTargetInVision();
+            return;
 
-        if (currentTarget == null) return;
+        attackTimer = attackCooldown;
+        StartAttack();
+    }
 
-        float dist = (currentTarget.transform.position - transform.position).sqrMagnitude;
+    public void SpawnHitEffectAt(Vector3 position)
+    {
+        if (hitEffectPrefab == null) return;
 
-        if (dist <= attackRange * attackRange)
-        {
-            attackTimer = attackCooldown;
-            StartAttack();
-            currentTarget.TakeDamage(attackDamage);
-        }
+        Instantiate(hitEffectPrefab, position, Quaternion.identity);
     }
 
     void HandleAutoAttack()
@@ -271,9 +292,29 @@ public class CreatureBrain : MonoBehaviour
         rb.linearVelocity = Vector2.zero;
 
         if (animator != null)
+        {
+            animator.speed = 1f;
             animator.SetTrigger("Attack");
+        }
+
+        // Delay damage đúng lúc vung kiếm (~0.2s)
+        Invoke(nameof(DoDamage), 0.2f);
 
         Invoke(nameof(EndAttack), 0.4f);
+    }
+
+    void DoDamage()
+    {
+        if (currentTarget == null) return;
+        if (currentTarget.isDead) return;
+
+        float dist = (currentTarget.transform.position - transform.position).sqrMagnitude;
+
+        if (dist <= attackRange * attackRange)
+        {
+            currentTarget.TakeDamage(attackDamage);
+            SpawnHitEffectAt(currentTarget.transform.position);
+        }
     }
 
     void EndAttack()
@@ -341,9 +382,25 @@ public class CreatureBrain : MonoBehaviour
         if (isDead) return;
 
         currentHP -= dmg;
+        currentHP = Mathf.Max(currentHP, 0);
 
         if (currentHP <= 0)
             Die();
+    }
+
+    void SpawnHitEffect()
+    {
+        if (hitEffectPrefab == null)
+        {
+            Debug.LogWarning("HitEffectPrefab chưa gán!");
+            return;
+        }
+
+        Instantiate(
+            hitEffectPrefab,
+            transform.position,
+            Quaternion.identity
+        );
     }
 
     void Die()
@@ -352,7 +409,7 @@ public class CreatureBrain : MonoBehaviour
         rb.linearVelocity = Vector2.zero;
 
         HPBarManager.Instance.RemoveHPBar(this);
-        Destroy(gameObject, 1f);
+        Destroy(gameObject);
     }
 
     void OnDrawGizmosSelected()
@@ -368,22 +425,10 @@ public class CreatureBrain : MonoBehaviour
     {
         if (animator == null) return;
 
-        AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
+        if (isAttacking) return; // 🔥 QUAN TRỌNG
 
-        // Nếu đang ở state Attack thì KHÔNG đụng vào animator
-        if (stateInfo.IsName("Attack"))
-            return;
-
-        // Nếu không di chuyển -> đứng ở frame đầu Move
-        if (rb.linearVelocity.sqrMagnitude < 0.01f)
-        {
-            animator.Play("Move", 0, 0f);
-            animator.speed = 0f;
-        }
-        else
-        {
-            animator.speed = 1f;
-        }
+        float speed = rb.linearVelocity.sqrMagnitude;
+        animator.SetFloat("Speed", speed);
     }
 
 }
