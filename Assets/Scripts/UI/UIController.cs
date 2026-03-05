@@ -9,6 +9,13 @@ public class UIController : MonoBehaviour
 
     public UIMovePad MovePad { get; private set; }
 
+    private CreatureBrain player;
+
+    public void SetPlayer(CreatureBrain newPlayer)
+    {
+        player = newPlayer;
+    }
+
     void Awake()
     {
         if (Instance == null)

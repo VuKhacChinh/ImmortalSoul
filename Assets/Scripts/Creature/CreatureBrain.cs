@@ -160,7 +160,6 @@ public class CreatureBrain : MonoBehaviour
             {
                 attackTimer = attackCooldown;
                 StartAttack();
-                currentTarget.TakeDamage(attackDamage);
             }
         }
     }
@@ -171,6 +170,16 @@ public class CreatureBrain : MonoBehaviour
 
     void HandleAI()
     {
+        // 🔥 Nếu target ra khỏi vision thì bỏ target
+        if (currentTarget != null)
+        {
+            float dist = (currentTarget.transform.position - transform.position).sqrMagnitude;
+
+            if (dist > visionRange * visionRange)
+                currentTarget = null;
+        }
+
+        // tìm target mới
         if (currentTarget == null || currentTarget.isDead)
             currentTarget = FindTargetInVision();
 
@@ -191,10 +200,27 @@ public class CreatureBrain : MonoBehaviour
 
     void DecideCombatState()
     {
+        if (currentTarget == null)
+        {
+            currentState = AIState.Idle;
+            return;
+        }
+
         float myPower = currentHP * attackDamage;
         float enemyPower = currentTarget.currentHP * currentTarget.attackDamage;
 
-        if (myPower >= enemyPower - courageOffset)
+        float p = enemyPower;
+        float n = courageOffset;
+
+        bool closePower =
+            myPower > (p - n) &&
+            myPower < (p + n);
+
+        bool strongerAndFaster =
+            myPower > (p + n) &&
+            moveSpeed > currentTarget.moveSpeed;
+
+        if (closePower || strongerAndFaster)
             currentState = AIState.Fight;
         else
             currentState = AIState.Flee;
@@ -220,7 +246,6 @@ public class CreatureBrain : MonoBehaviour
             {
                 attackTimer = attackCooldown;
                 StartAttack();
-                currentTarget.TakeDamage(attackDamage);
             }
         }
         else
@@ -288,6 +313,12 @@ public class CreatureBrain : MonoBehaviour
 
     void StartAttack()
     {
+        if (currentTarget != null)
+        {
+            float dir = currentTarget.transform.position.x - transform.position.x;
+            FaceDirection(dir);
+        }
+
         isAttacking = true;
         rb.linearVelocity = Vector2.zero;
 
@@ -297,9 +328,7 @@ public class CreatureBrain : MonoBehaviour
             animator.SetTrigger("Attack");
         }
 
-        // Delay damage đúng lúc vung kiếm (~0.2s)
         Invoke(nameof(DoDamage), 0.2f);
-
         Invoke(nameof(EndAttack), 0.4f);
     }
 
@@ -409,6 +438,11 @@ public class CreatureBrain : MonoBehaviour
         rb.linearVelocity = Vector2.zero;
 
         HPBarManager.Instance.RemoveHPBar(this);
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.OnCreatureDeath(this);
+        }
+
         Destroy(gameObject);
     }
 
