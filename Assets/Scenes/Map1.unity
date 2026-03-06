@@ -199,13 +199,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   zones:
-  - outerRadius: 10
-    spawnCount: 2
+  - outerRadius: 30
+    spawnCount: 10
     creaturePrefabs:
     - {fileID: 8099261797296490793, guid: 21e28d935961a144d89bc2a692346c99, type: 3}
     - {fileID: 2621780386836133904, guid: bf61bbe7f254b2d48a5ef425777734a2, type: 3}
-  - outerRadius: 20
-    spawnCount: 2
+  - outerRadius: 60
+    spawnCount: 30
     creaturePrefabs:
     - {fileID: 6420337514911783703, guid: 623896d22ce37b347af581600530116e, type: 3}
   respawnCheckInterval: 5

@@ -6,6 +6,21 @@ public class CreatureBrain : MonoBehaviour
     [Header("Control")]
     public bool isPlayerControlled = false;
 
+    [Header("Level")]
+    public int level = 1;
+    public int currentXP = 0;
+    public int xpToNextLevel = 20;
+    public int maxLevel = 100;
+    public float scalePerLevel = 0.02f;
+
+    public float hpPerLevel = 10f;
+    public float damagePerLevel = 2f;
+
+    [Header("Drop")]
+    public GameObject meatPrefab;
+    public int dropCountMin = 1;
+    public int dropCountMax = 2;
+
     [Header("Movement")]
     public float moveSpeed = 3f;
 
@@ -32,6 +47,12 @@ public class CreatureBrain : MonoBehaviour
     [Header("VFX")]
     public GameObject hitEffectPrefab;
 
+    [Header("Food AI")]
+    public float foodSearchRange = 5f;
+    public float lowHPPriority = 0.6f;
+
+    ItemPickup targetFood;
+
     Rigidbody2D rb;
     Animator animator;
     SpriteRenderer spriteRenderer;
@@ -49,12 +70,27 @@ public class CreatureBrain : MonoBehaviour
     Vector2 fleeDirection;
     float fleeTimer;
 
+    float scanTimer;
+    float confidenceTimer;
+
+    float cachedConfidence;
+
+    const float SCAN_INTERVAL = 0.25f;
+    const float CONFIDENCE_INTERVAL = 0.5f;
+
+    float attackAnimTimer;
+    bool damageDone;
+
+    static Collider2D[] scanBuffer = new Collider2D[32];
+    static Collider2D[] foodBuffer = new Collider2D[32];
+
     enum AIState
     {
         Idle,
         Wander,
         Fight,
-        Flee
+        Flee,
+        SeekFood
     }
 
     AIState currentState = AIState.Idle;
@@ -82,12 +118,30 @@ public class CreatureBrain : MonoBehaviour
     {
         if (isDead) return;
 
-        attackTimer -= Time.deltaTime;
+        float dt = Time.deltaTime;
+
+        attackTimer -= dt;
+        scanTimer -= dt;
+        confidenceTimer -= dt;
 
         if (revengeTimer > 0)
-            revengeTimer -= Time.deltaTime;
+            revengeTimer -= dt;
         else
             lastAttacker = null;
+
+        if (isAttacking)
+        {
+            attackAnimTimer -= dt;
+
+            if (!damageDone && attackAnimTimer <= 0.2f)
+            {
+                DoDamage();
+                damageDone = true;
+            }
+
+            if (attackAnimTimer <= 0f)
+                EndAttack();
+        }
 
         if (isPlayerControlled)
             HandlePlayerInput();
@@ -101,14 +155,12 @@ public class CreatureBrain : MonoBehaviour
 
     void UpdateHPVisual()
     {
-        if (displayedHP > currentHP)
+        if (displayedHP != currentHP)
         {
             displayedHP = Mathf.MoveTowards(displayedHP, currentHP, 60f * Time.deltaTime);
             HPBarManager.Instance.UpdateHP(this, displayedHP / maxHP);
         }
     }
-
-    // PLAYER CONTROL
 
     void HandlePlayerInput()
     {
@@ -143,8 +195,6 @@ public class CreatureBrain : MonoBehaviour
         StartAttack();
     }
 
-    // AI
-
     void HandleAI()
     {
         if (fleeTimer > 0)
@@ -155,8 +205,29 @@ public class CreatureBrain : MonoBehaviour
             return;
         }
 
-        if (currentTarget == null || currentTarget.isDead)
-            currentTarget = FindBestTarget();
+        if (scanTimer <= 0f)
+        {
+            scanTimer = SCAN_INTERVAL;
+
+            if (currentTarget == null || currentTarget.isDead)
+                currentTarget = FindBestTarget();
+
+            if (targetFood == null)
+                targetFood = FindFood();
+        }
+
+        // ưu tiên ăn thịt nếu thấy
+        if (targetFood != null)
+        {
+            float distFood = (targetFood.transform.position - transform.position).sqrMagnitude;
+
+            if (distFood < visionRange * visionRange)
+            {
+                currentState = AIState.SeekFood;
+                HandleSeekFood();
+                return;
+            }
+        }
 
         if (currentTarget != null)
         {
@@ -181,18 +252,46 @@ public class CreatureBrain : MonoBehaviour
         HandleWanderIdle();
     }
 
-    // TARGET SELECTION (SMART)
+    void HandleSeekFood()
+    {
+        if (targetFood == null)
+        {
+            currentState = AIState.Idle;
+            return;
+        }
+
+        Vector2 toFood = targetFood.transform.position - transform.position;
+        float dist = toFood.sqrMagnitude;
+
+        if (dist < 0.2f)
+        {
+            rb.linearVelocity = Vector2.zero;
+            targetFood = null;
+            return;
+        }
+
+        Vector2 dir = toFood.normalized;
+
+        rb.linearVelocity = dir * moveSpeed;
+        FaceDirection(dir.x);
+    }
 
     CreatureBrain FindBestTarget()
     {
-        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, visionRange);
+        int hitCount = Physics2D.OverlapCircleNonAlloc(
+            transform.position,
+            visionRange,
+            scanBuffer
+        );
 
         CreatureBrain best = null;
         float bestScore = float.MinValue;
 
-        foreach (var hit in hits)
+        for (int i = 0; i < hitCount; i++)
         {
-            CreatureBrain other = hit.GetComponentInParent<CreatureBrain>();
+            Collider2D hit = scanBuffer[i];
+
+            CreatureBrain other = hit.attachedRigidbody?.GetComponent<CreatureBrain>();
 
             if (other == null || other == this || other.isDead)
                 continue;
@@ -211,14 +310,18 @@ public class CreatureBrain : MonoBehaviour
 
     float EvaluateThreat(CreatureBrain enemy)
     {
-        float dist = Vector2.Distance(transform.position, enemy.transform.position);
+        float dist = (transform.position - enemy.transform.position).sqrMagnitude;
 
         float score = 0f;
 
-        score += (visionRange - dist) * 2f;
+        if (level > enemy.level) {
+            score += 20f;
+        }
 
-        float myPower = EvaluatePower();
-        float enemyPower = enemy.EvaluatePower();
+        score += (visionRange * visionRange - dist) * 0.5f;
+
+        float myPower = currentHP * attackDamage;
+        float enemyPower = enemy.currentHP * enemy.attackDamage;
 
         float ratio = myPower / (enemyPower + 1f);
 
@@ -231,34 +334,28 @@ public class CreatureBrain : MonoBehaviour
         if (enemy == lastAttacker)
             score += 50f;
 
-        if (IsEnemyFighting(enemy))
+        if (enemy.currentState == AIState.Fight)
             score += 15f;
 
         return score;
     }
 
-    bool IsEnemyFighting(CreatureBrain enemy)
-    {
-        return enemy.currentState == AIState.Fight;
-    }
-
-    // POWER
-
-    float EvaluatePower()
-    {
-        return currentHP * attackDamage;
-    }
-
     float CalculateConfidence()
     {
+        int hitCount = Physics2D.OverlapCircleNonAlloc(
+            transform.position,
+            allyAssistRange,
+            scanBuffer
+        );
+
         int allies = 0;
         int enemies = 0;
 
-        Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, allyAssistRange);
-
-        foreach (var hit in hits)
+        for (int i = 0; i < hitCount; i++)
         {
-            CreatureBrain other = hit.GetComponentInParent<CreatureBrain>();
+            Collider2D hit = scanBuffer[i];
+
+            CreatureBrain other = hit.attachedRigidbody?.GetComponent<CreatureBrain>();
 
             if (other == null || other == this || other.isDead)
                 continue;
@@ -272,14 +369,49 @@ public class CreatureBrain : MonoBehaviour
         return allies - enemies;
     }
 
+    ItemPickup FindFood()
+    {
+        int hitCount = Physics2D.OverlapCircleNonAlloc(
+            transform.position,
+            foodSearchRange,
+            foodBuffer
+        );
+
+        ItemPickup best = null;
+        float bestDist = float.MaxValue;
+
+        for (int i = 0; i < hitCount; i++)
+        {
+            ItemPickup food = foodBuffer[i].GetComponent<ItemPickup>();
+
+            if (food == null)
+                continue;
+
+            float dist = (food.transform.position - transform.position).sqrMagnitude;
+
+            if (dist < bestDist)
+            {
+                bestDist = dist;
+                best = food;
+            }
+        }
+
+        return best;
+    }
+
     void DecideCombatState()
     {
-        float myPower = EvaluatePower();
-        float enemyPower = currentTarget.EvaluatePower();
+        if (confidenceTimer <= 0f)
+        {
+            confidenceTimer = CONFIDENCE_INTERVAL;
+            cachedConfidence = CalculateConfidence();
+        }
+
+        float myPower = currentHP * attackDamage;
+        float enemyPower = currentTarget.currentHP * currentTarget.attackDamage;
 
         float ratio = myPower / (enemyPower + 1f);
-
-        float confidence = CalculateConfidence();
+        float confidence = cachedConfidence;
 
         if (ratio >= 1.2f)
         {
@@ -302,12 +434,8 @@ public class CreatureBrain : MonoBehaviour
         currentState = AIState.Flee;
     }
 
-    // FIGHT
-
     void HandleFight()
     {
-        if (currentTarget == null) return;
-
         Vector2 toTarget = currentTarget.transform.position - transform.position;
         float sqrDist = toTarget.sqrMagnitude;
 
@@ -330,20 +458,14 @@ public class CreatureBrain : MonoBehaviour
         }
     }
 
-    // FLEE
-
     void HandleFlee()
     {
-        if (currentTarget == null) return;
-
         fleeDirection = (transform.position - currentTarget.transform.position).normalized;
         fleeTimer = fleeDuration;
 
         rb.linearVelocity = fleeDirection * moveSpeed;
         FaceDirection(fleeDirection.x);
     }
-
-    // WANDER
 
     void HandleWanderIdle()
     {
@@ -383,8 +505,6 @@ public class CreatureBrain : MonoBehaviour
         wanderDirection = new Vector2(randomX, randomY).normalized;
     }
 
-    // ATTACK
-
     void StartAttack()
     {
         if (currentTarget != null)
@@ -394,6 +514,9 @@ public class CreatureBrain : MonoBehaviour
         }
 
         isAttacking = true;
+        damageDone = false;
+        attackAnimTimer = 0.4f;
+
         rb.linearVelocity = Vector2.zero;
 
         if (animator != null)
@@ -401,9 +524,6 @@ public class CreatureBrain : MonoBehaviour
             animator.speed = 1f;
             animator.SetTrigger("Attack");
         }
-
-        Invoke(nameof(DoDamage), 0.2f);
-        Invoke(nameof(EndAttack), 0.4f);
     }
 
     void DoDamage()
@@ -425,8 +545,6 @@ public class CreatureBrain : MonoBehaviour
         isAttacking = false;
     }
 
-    // DAMAGE
-
     public void TakeDamage(float dmg, CreatureBrain attacker)
     {
         if (isDead) return;
@@ -441,6 +559,51 @@ public class CreatureBrain : MonoBehaviour
             Die();
     }
 
+    public void EatItem(int xp, float heal)
+    {
+        GainXP(xp);
+
+        currentHP += heal;
+        currentHP = Mathf.Min(currentHP, maxHP);
+    }
+
+    public void GainXP(int xp)
+    {
+        currentXP += xp;
+
+        while (currentXP >= xpToNextLevel && level < maxLevel)
+        {
+            currentXP -= xpToNextLevel;
+            LevelUp();
+        }
+    }
+
+    public bool IsDead()
+    {
+        return isDead;
+    }
+
+    void LevelUp()
+    {
+        if (level >= maxLevel) return;
+
+        level++;
+
+        // tăng stat
+        maxHP += hpPerLevel;
+        attackDamage += damagePerLevel + level * 0.15f;   // damage scale mạnh hơn
+        moveSpeed += 0.01f;                                // speed tăng nhẹ
+
+        currentHP = maxHP;
+
+        // scale creature
+        transform.localScale += Vector3.one * scalePerLevel;
+
+        xpToNextLevel = Mathf.RoundToInt(xpToNextLevel * 1.35f);
+
+        Debug.Log(name + " LEVEL UP -> " + level);
+    }
+
     void SpawnHitEffectAt(Vector3 pos)
     {
         if (hitEffectPrefab == null) return;
@@ -452,6 +615,8 @@ public class CreatureBrain : MonoBehaviour
         isDead = true;
         rb.linearVelocity = Vector2.zero;
 
+        DropItems();
+
         HPBarManager.Instance.RemoveHPBar(this);
 
         if (GameManager.Instance != null)
@@ -460,7 +625,23 @@ public class CreatureBrain : MonoBehaviour
         Destroy(gameObject);
     }
 
-    // FACING
+    void DropItems()
+    {
+        if (meatPrefab == null) return;
+
+        int count = Random.Range(dropCountMin, dropCountMax + 1);
+
+        for (int i = 0; i < count; i++)
+        {
+            Vector2 offset = Random.insideUnitCircle * 0.5f;
+
+            Instantiate(
+                meatPrefab,
+                transform.position + (Vector3)offset,
+                Quaternion.identity
+            );
+        }
+    }
 
     void FaceDirection(float xDir)
     {
