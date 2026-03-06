@@ -4,6 +4,7 @@ public class GroundGenerator : MonoBehaviour
 {
     public Sprite groundSprite;
     public int gridSize = 20;
+    public float boundaryThickness = 5f;
 
     public float MapWidth { get; private set; }
     public float MapHeight { get; private set; }
@@ -48,6 +49,30 @@ public class GroundGenerator : MonoBehaviour
             }
         }
 
-        OnGroundReady?.Invoke(); // 🔥 gọi khi map đã sẵn sàng
+        OnGroundReady?.Invoke();
+        CreateBoundary();
     }
+
+    void CreateBoundary()
+    {
+        float halfWidth = MapWidth * 0.5f;
+        float halfHeight = MapHeight * 0.5f;
+
+        CreateWall(new Vector2(0, halfHeight + boundaryThickness * 0.5f), new Vector2(MapWidth, boundaryThickness)); // top
+        CreateWall(new Vector2(0, -halfHeight - boundaryThickness * 0.5f), new Vector2(MapWidth, boundaryThickness)); // bottom
+        CreateWall(new Vector2(-halfWidth - boundaryThickness * 0.5f, 0), new Vector2(boundaryThickness, MapHeight)); // left
+        CreateWall(new Vector2(halfWidth + boundaryThickness * 0.5f, 0), new Vector2(boundaryThickness, MapHeight)); // right
+    }
+
+    void CreateWall(Vector2 pos, Vector2 size)
+    {
+        GameObject wall = new GameObject("Boundary");
+
+        wall.transform.parent = transform;
+        wall.transform.position = pos;
+
+        BoxCollider2D col = wall.AddComponent<BoxCollider2D>();
+        col.size = size;
+    }
+
 }

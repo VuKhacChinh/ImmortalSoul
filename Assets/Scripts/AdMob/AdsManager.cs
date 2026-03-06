@@ -15,15 +15,20 @@ public class AdsManager : MonoBehaviour
     const string TEST_INTERSTITIAL_ID = "ca-app-pub-3940256099942544/1033173712";
     const string TEST_REWARDED_ID = "ca-app-pub-3940256099942544/5224354917";
 
-    bool isInterstitialLoading;
-    bool isRewardedLoading;
-
+    // =========================
+    // COOLDOWNS
     const float INTERSTITIAL_COOLDOWN = 200f;
     const float REWARDED_COOLDOWN = 30f;
+    const float BANNER_COOLDOWN = 45f;
 
     float lastInterstitialTime = -999f;
     float lastRewardedTime = -999f;
+    float lastBannerShowTime = -999f;
 
+    bool isInterstitialLoading;
+    bool isRewardedLoading;
+    bool isBannerLoading;
+    bool pendingShowAfterLoad;
     bool interstitialClosed;
 
     // =========================
@@ -63,7 +68,6 @@ public class AdsManager : MonoBehaviour
     {
         MobileAds.Initialize(_ =>
         {
-            CreateBanner();
             TryLoadAllAds();
         });
 
@@ -101,8 +105,18 @@ public class AdsManager : MonoBehaviour
 
     // =====================================================
     // ======================= BANNER ======================
-    void CreateBanner()
+
+    void LoadNewBanner()
     {
+        if (!IsOnline) return;
+        if (isBannerLoading) return;
+
+        isBannerLoading = true;
+
+        // Destroy banner cũ
+        bannerView?.Destroy();
+        bannerView = null;
+
         bannerView = new BannerView(
             TEST_BANNER_ID,
             AdSize.GetCurrentOrientationAnchoredAdaptiveBannerAdSizeWithWidth(
@@ -110,20 +124,47 @@ public class AdsManager : MonoBehaviour
             AdPosition.Bottom
         );
 
+        bannerView.OnBannerAdLoaded += () =>
+        {
+            isBannerLoading = false;
+
+            if (pendingShowAfterLoad)
+            {
+                bannerView.Show();
+                lastBannerShowTime = Time.unscaledTime;
+                pendingShowAfterLoad = false;
+            }
+        };
+
+        bannerView.OnBannerAdLoadFailed += _ =>
+        {
+            isBannerLoading = false;
+            pendingShowAfterLoad = false;
+        };
+
         bannerView.LoadAd(new AdRequest());
-        bannerView.Hide();
     }
 
     public void ShowBanner()
     {
-        if (IsOnline)
-            bannerView?.Show();
+        if (!IsOnline) return;
+
+        // Nếu chưa hết cooldown → không load mới
+        if (Time.unscaledTime - lastBannerShowTime < BANNER_COOLDOWN)
+            return;
+
+        pendingShowAfterLoad = true;
+        LoadNewBanner();
     }
 
-    public void HideBanner() => bannerView?.Hide();
+    public void HideBanner()
+    {
+        bannerView?.Hide();
+    }
 
     // =====================================================
     // =================== INTERSTITIAL ====================
+
     void LoadInterstitial()
     {
         if (isInterstitialLoading || !IsOnline) return;
@@ -138,10 +179,7 @@ public class AdsManager : MonoBehaviour
                 isInterstitialLoading = false;
 
                 if (error != null || ad == null)
-                {
-                    Debug.LogWarning("❌ Interstitial load failed");
                     return;
-                }
 
                 interstitialAd = ad;
 
@@ -166,13 +204,9 @@ public class AdsManager : MonoBehaviour
 
     public void ShowInterstitial(Action onClosed)
     {
-        if (!IsOnline)
-        {
-            onClosed?.Invoke();
-            return;
-        }
-
-        if (!IsInterstitialReady || !CanShowInterstitial)
+        if (!IsOnline ||
+            !IsInterstitialReady ||
+            !CanShowInterstitial)
         {
             onClosed?.Invoke();
             TryLoadAllAds();
@@ -197,6 +231,7 @@ public class AdsManager : MonoBehaviour
 
     // =====================================================
     // ===================== REWARDED ======================
+
     void LoadRewarded()
     {
         if (isRewardedLoading || !IsOnline) return;
@@ -211,10 +246,7 @@ public class AdsManager : MonoBehaviour
                 isRewardedLoading = false;
 
                 if (error != null || ad == null)
-                {
-                    Debug.LogWarning("❌ Rewarded load failed");
                     return;
-                }
 
                 rewardedAd = ad;
 
@@ -237,7 +269,9 @@ public class AdsManager : MonoBehaviour
 
     public void ShowRewarded(Action onReward)
     {
-        if (!IsOnline || !CanShowRewarded || !IsRewardedReady)
+        if (!IsOnline ||
+            !IsRewardedReady ||
+            !CanShowRewarded)
         {
             TryLoadAllAds();
             return;
@@ -250,6 +284,8 @@ public class AdsManager : MonoBehaviour
             onReward?.Invoke();
         });
     }
+
+    // =====================================================
 
     void OnDestroy()
     {

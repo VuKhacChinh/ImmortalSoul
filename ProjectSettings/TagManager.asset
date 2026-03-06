@@ -16,9 +16,9 @@ TagManager:
   - 
   - Water
   - UI
-  - Ground
-  - Boss
-  - MainMenu
+  - 
+  - 
+  - 
   - 
   - 
   - 
@@ -45,6 +45,15 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Ground
+    uniqueID: 3729107427
+    locked: 0
+  - name: Object
+    uniqueID: 3798198729
+    locked: 0
+  - name: Explosion
+    uniqueID: 733146663
     locked: 0
   m_RenderingLayers:
   - Default
