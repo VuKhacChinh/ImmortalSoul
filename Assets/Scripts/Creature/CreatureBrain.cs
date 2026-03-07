@@ -9,12 +9,6 @@ public class CreatureBrain : MonoBehaviour
     [Header("Level")]
     public int level = 1;
     public int currentXP = 0;
-    public int xpToNextLevel = 20;
-    public int maxLevel = 100;
-    public float scalePerLevel = 0.02f;
-
-    public float hpPerLevel = 10f;
-    public float damagePerLevel = 2f;
 
     [Header("Drop")]
     public GameObject meatPrefab;
@@ -97,12 +91,14 @@ public class CreatureBrain : MonoBehaviour
 
     Vector2 wanderDirection;
     float stateTimer;
+    bool initialFlipX;
 
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponentInChildren<Animator>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        initialFlipX = spriteRenderer.flipX;
 
         currentHP = maxHP;
         displayedHP = maxHP;
@@ -133,7 +129,7 @@ public class CreatureBrain : MonoBehaviour
         {
             attackAnimTimer -= dt;
 
-            if (!damageDone && attackAnimTimer <= 0.2f)
+            if (!damageDone && attackAnimTimer <= 0.3f)
             {
                 DoDamage();
                 damageDone = true;
@@ -148,7 +144,6 @@ public class CreatureBrain : MonoBehaviour
         else
             HandleAI();
 
-        UpdateFacing();
         HandleAnimatorState();
         UpdateHPVisual();
     }
@@ -197,6 +192,12 @@ public class CreatureBrain : MonoBehaviour
 
     void HandleAI()
     {
+        if (isAttacking)
+        {
+            rb.linearVelocity = Vector2.zero;
+            return;
+        }
+
         if (fleeTimer > 0)
         {
             fleeTimer -= Time.deltaTime;
@@ -212,7 +213,7 @@ public class CreatureBrain : MonoBehaviour
             if (currentTarget == null || currentTarget.isDead)
                 currentTarget = FindBestTarget();
 
-            if (targetFood == null)
+            if (targetFood == null || !targetFood.gameObject.activeInHierarchy)
                 targetFood = FindFood();
         }
 
@@ -401,6 +402,14 @@ public class CreatureBrain : MonoBehaviour
 
     void DecideCombatState()
     {
+        float hpRatio = currentHP / maxHP;
+
+        if (hpRatio < lowHPThreshold)
+        {
+            currentState = AIState.Flee;
+            return;
+        }
+
         if (confidenceTimer <= 0f)
         {
             confidenceTimer = CONFIDENCE_INTERVAL;
@@ -413,24 +422,37 @@ public class CreatureBrain : MonoBehaviour
         float ratio = myPower / (enemyPower + 1f);
         float confidence = cachedConfidence;
 
+        float enemySpeed = currentTarget.moveSpeed;
+
+        // mạnh hơn rõ rệt
         if (ratio >= 1.2f)
         {
             currentState = AIState.Fight;
             return;
         }
 
+        // đồng minh đông
         if (confidence > 1)
         {
             currentState = AIState.Fight;
             return;
         }
 
+        // gần ngang sức
         if (ratio > 0.8f)
         {
             currentState = AIState.Fight;
             return;
         }
 
+        // yếu nhưng không chạy được
+        if (enemySpeed >= moveSpeed)
+        {
+            currentState = AIState.Fight;
+            return;
+        }
+
+        // yếu và chạy được
         currentState = AIState.Flee;
     }
 
@@ -438,6 +460,8 @@ public class CreatureBrain : MonoBehaviour
     {
         Vector2 toTarget = currentTarget.transform.position - transform.position;
         float sqrDist = toTarget.sqrMagnitude;
+
+        float stopDist = attackRange * 0.9f;
 
         if (sqrDist <= attackRange * attackRange)
         {
@@ -450,7 +474,7 @@ public class CreatureBrain : MonoBehaviour
                 StartAttack();
             }
         }
-        else
+        else if (sqrDist > stopDist * stopDist)
         {
             Vector2 dir = toTarget.normalized;
             rb.linearVelocity = dir * moveSpeed;
@@ -460,8 +484,11 @@ public class CreatureBrain : MonoBehaviour
 
     void HandleFlee()
     {
-        fleeDirection = (transform.position - currentTarget.transform.position).normalized;
-        fleeTimer = fleeDuration;
+        if (fleeTimer <= 0f)
+        {
+            fleeDirection = (transform.position - currentTarget.transform.position).normalized;
+            fleeTimer = fleeDuration;
+        }
 
         rb.linearVelocity = fleeDirection * moveSpeed;
         FaceDirection(fleeDirection.x);
@@ -515,7 +542,7 @@ public class CreatureBrain : MonoBehaviour
 
         isAttacking = true;
         damageDone = false;
-        attackAnimTimer = 0.4f;
+        attackAnimTimer = 0.5f;
 
         rb.linearVelocity = Vector2.zero;
 
@@ -567,41 +594,16 @@ public class CreatureBrain : MonoBehaviour
         currentHP = Mathf.Min(currentHP, maxHP);
     }
 
-    public void GainXP(int xp)
-    {
-        currentXP += xp;
-
-        while (currentXP >= xpToNextLevel && level < maxLevel)
-        {
-            currentXP -= xpToNextLevel;
-            LevelUp();
-        }
-    }
-
     public bool IsDead()
     {
         return isDead;
     }
 
-    void LevelUp()
+    public void GainXP(int xp)
     {
-        if (level >= maxLevel) return;
+        if (LevelSystem.Instance == null) return;
 
-        level++;
-
-        // tăng stat
-        maxHP += hpPerLevel;
-        attackDamage += damagePerLevel + level * 0.15f;   // damage scale mạnh hơn
-        moveSpeed += 0.01f;                                // speed tăng nhẹ
-
-        currentHP = maxHP;
-
-        // scale creature
-        transform.localScale += Vector3.one * scalePerLevel;
-
-        xpToNextLevel = Mathf.RoundToInt(xpToNextLevel * 1.35f);
-
-        Debug.Log(name + " LEVEL UP -> " + level);
+        LevelSystem.Instance.GainXP(this, xp);
     }
 
     void SpawnHitEffectAt(Vector3 pos)
@@ -647,18 +649,12 @@ public class CreatureBrain : MonoBehaviour
     {
         if (Mathf.Abs(xDir) < 0.01f) return;
 
-        Vector3 scale = transform.localScale;
-        float absX = Mathf.Abs(scale.x);
-
-        scale.x = xDir > 0 ? absX : -absX;
-        transform.localScale = scale;
+        if (xDir > 0)
+            spriteRenderer.flipX = initialFlipX;
+        else
+            spriteRenderer.flipX = !initialFlipX;
     }
 
-    void UpdateFacing()
-    {
-        if (Mathf.Abs(rb.linearVelocity.x) > 0.05f)
-            FaceDirection(rb.linearVelocity.x);
-    }
 
     void HandleAnimatorState()
     {
