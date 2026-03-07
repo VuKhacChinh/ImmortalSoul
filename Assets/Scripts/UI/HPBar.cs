@@ -1,9 +1,13 @@
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class HPBar : MonoBehaviour
 {
     public Image fillImage;
+
+    public TextMeshProUGUI levelText;
+    public TextMeshProUGUI hpText;
 
     private CreatureBrain creature;
 
@@ -13,15 +17,20 @@ public class HPBar : MonoBehaviour
 
         // Set full máu lúc tạo
         SetValue(1f);
+
+        UpdateTexts();
     }
 
     void LateUpdate()
     {
         if (creature == null) return;
 
-        // Chỉ update vị trí, KHÔNG update HP ở đây nữa
+        // Update vị trí theo creature
         Vector3 worldPos = creature.transform.position + new Vector3(0, 1.5f, 0);
         transform.position = worldPos;
+
+        // Update text
+        UpdateTexts();
     }
 
     // =========================================================
@@ -31,4 +40,26 @@ public class HPBar : MonoBehaviour
     {
         fillImage.fillAmount = value;
     }
+
+    void UpdateTexts()
+    {
+        if (creature == null) return;
+
+        if (levelText != null)
+            levelText.text = $"{creature.level}";
+
+        if (hpText != null)
+        {
+            int hp = Mathf.RoundToInt(creature.currentHP);
+            int max = Mathf.RoundToInt(creature.maxHP);
+
+            hpText.text = $"{hp}/{max}";
+        }
+    }
+
+    public void SetColor(Color c)
+    {
+        fillImage.color = c;
+    }
+
 }

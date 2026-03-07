@@ -279,6 +279,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CreatureBrain
   isPlayerControlled: 0
+  level: 1
+  currentXP: 0
+  xpToNextLevel: 20
+  maxLevel: 100
+  scalePerLevel: 1
+  hpPerLevel: 10
+  damagePerLevel: 2
+  meatPrefab: {fileID: 7905947638849257074, guid: 2ddafcb310b0c914fabab82bc9164a0b, type: 3}
+  dropCountMin: 1
+  dropCountMax: 2
   moveSpeed: 3
   visionRange: 10
   maxHP: 100
@@ -286,5 +296,10 @@ MonoBehaviour:
   attackDamage: 10
   attackRange: 5
   attackCooldown: 1
-  courageOffset: 20
+  lowHPThreshold: 0.25
+  fleeDuration: 2
+  revengeMemoryDuration: 4
+  allyAssistRange: 3
   hitEffectPrefab: {fileID: 3333797413733861392, guid: 2c3cd5c202c7878478f42ff44ef8aa8b, type: 3}
+  foodSearchRange: 5
+  lowHPPriority: 0.6

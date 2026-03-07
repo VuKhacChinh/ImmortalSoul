@@ -24,6 +24,11 @@ public class GameManager : MonoBehaviour
     [Header("Respawn")]
     public float respawnCheckInterval = 5f;
 
+    [Header("Player Highlight")]
+    public GameObject controlRingPrefab;
+
+    GameObject controlRingInstance;
+
     private List<CreatureBrain> allCreatures = new();
 
     private Dictionary<CreatureBrain, int> creatureZoneMap = new();
@@ -140,6 +145,7 @@ public class GameManager : MonoBehaviour
         int index = Random.Range(0, allCreatures.Count);
 
         playerCreature = allCreatures[index];
+        AttachControlRing(playerCreature);
 
         foreach (var c in allCreatures)
             if (c != null)
@@ -148,6 +154,17 @@ public class GameManager : MonoBehaviour
         playerCreature.isPlayerControlled = true;
 
         UpdateCameraAndUI();
+    }
+
+    void AttachControlRing(CreatureBrain creature)
+    {
+        if (controlRingInstance == null)
+        {
+            controlRingInstance = Instantiate(controlRingPrefab);
+        }
+
+        controlRingInstance.transform.SetParent(creature.transform);
+        controlRingInstance.transform.localPosition = new Vector3(0, 0, 0);
     }
 
     void ChooseNewPlayer()
@@ -169,6 +186,7 @@ public class GameManager : MonoBehaviour
         int index = Random.Range(0, aliveCreatures.Count);
 
         playerCreature = aliveCreatures[index];
+        AttachControlRing(playerCreature);
 
         foreach (var c in allCreatures)
             if (c != null)
