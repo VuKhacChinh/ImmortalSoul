@@ -79,7 +79,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -496768567
-  m_SortingLayer: 2
+  m_SortingLayer: 3
   m_SortingOrder: 0
   m_Sprite: {fileID: 1731691903977263478, guid: ed4c761915806a74ebb83c3c4cfa8b72, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -203,11 +203,6 @@ MonoBehaviour:
   isPlayerControlled: 1
   level: 1
   currentXP: 0
-  xpToNextLevel: 20
-  maxLevel: 100
-  scalePerLevel: 1
-  hpPerLevel: 10
-  damagePerLevel: 2
   meatPrefab: {fileID: 7905947638849257074, guid: 2ddafcb310b0c914fabab82bc9164a0b, type: 3}
   dropCountMin: 1
   dropCountMax: 2
@@ -225,6 +220,8 @@ MonoBehaviour:
   hitEffectPrefab: {fileID: 3333797413733861392, guid: 2c3cd5c202c7878478f42ff44ef8aa8b, type: 3}
   foodSearchRange: 5
   lowHPPriority: 0.6
+  obstacleCheckDistance: 1.2
+  isHidden: 0
 --- !u!1 &8486137727984323457
 GameObject:
   m_ObjectHideFlags: 0

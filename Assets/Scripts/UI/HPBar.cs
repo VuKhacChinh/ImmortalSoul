@@ -56,4 +56,10 @@ public class HPBar : MonoBehaviour
             hpText.text = $"{hp}/{max}";
         }
     }
+
+    public void SetColor(Color c)
+    {
+        fillImage.color = c;
+    }
+
 }

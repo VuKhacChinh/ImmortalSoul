@@ -129,10 +129,10 @@ TextureImporter:
       name: attack_button_0
       rect:
         serializedVersion: 2
-        x: 19
-        y: 34
-        width: 374
-        height: 361
+        x: 95
+        y: 118
+        width: 322
+        height: 308
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

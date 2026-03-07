@@ -16,8 +16,8 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
+  - Obstacle
+  - HideZone
   - 
   - 
   - 
@@ -49,11 +49,17 @@ TagManager:
   - name: Ground
     uniqueID: 3729107427
     locked: 0
-  - name: Object
+  - name: ControlRing
+    uniqueID: 3756522755
+    locked: 0
+  - name: Obstacle
     uniqueID: 3798198729
     locked: 0
   - name: Explosion
     uniqueID: 733146663
+    locked: 0
+  - name: CreatureInfo
+    uniqueID: 658590259
     locked: 0
   m_RenderingLayers:
   - Default

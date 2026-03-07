@@ -1,0 +1,351 @@
+fileFormatVersion: 2
+guid: 99a8133ca499fe9439e60d16ff85a432
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 4993490330342921801
+    second: violet_control_ring_0
+  - first:
+      213: 2991890900911599610
+    second: violet_control_ring_1
+  - first:
+      213: 7450548860339209311
+    second: violet_control_ring_2
+  - first:
+      213: -1681123643223317343
+    second: violet_control_ring_3
+  - first:
+      213: 5053371668993407005
+    second: violet_control_ring_4
+  - first:
+      213: -8116581245121586093
+    second: violet_control_ring_5
+  - first:
+      213: 6410310142342923207
+    second: violet_control_ring_6
+  - first:
+      213: -7472037302541688056
+    second: violet_control_ring_7
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: violet_control_ring_0
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 271
+        width: 179
+        height: 92
+      alignment: 9
+      pivot: {x: 0.5081496, y: 0.33879355}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9461071bff07c4540800000000000000
+      internalID: 4993490330342921801
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: violet_control_ring_1
+      rect:
+        serializedVersion: 2
+        x: 202
+        y: 271
+        width: 189
+        height: 94
+      alignment: 9
+      pivot: {x: 0.49356806, y: 0.32929084}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aff2f833ce4558920800000000000000
+      internalID: 2991890900911599610
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: violet_control_ring_2
+      rect:
+        serializedVersion: 2
+        x: 399
+        y: 271
+        width: 185
+        height: 95
+      alignment: 9
+      pivot: {x: 0.51445675, y: 0.33108777}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f54c53ab6baa56760800000000000000
+      internalID: 7450548860339209311
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: violet_control_ring_3
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 127
+        width: 178
+        height: 96
+      alignment: 9
+      pivot: {x: 0.48224318, y: 0.33031464}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1a4e92614f27ba8e0800000000000000
+      internalID: -1681123643223317343
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: violet_control_ring_4
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 127
+        width: 187
+        height: 96
+      alignment: 9
+      pivot: {x: 0.49609962, y: 0.32778215}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d18ff5052ce212640800000000000000
+      internalID: 5053371668993407005
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: violet_control_ring_5
+      rect:
+        serializedVersion: 2
+        x: 404
+        y: 127
+        width: 180
+        height: 96
+      alignment: 9
+      pivot: {x: 0.5054028, y: 0.32271686}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 35c1eed6c5c1c5f80800000000000000
+      internalID: -8116581245121586093
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: violet_control_ring_6
+      rect:
+        serializedVersion: 2
+        x: 85
+        y: 23
+        width: 205
+        height: 93
+      alignment: 9
+      pivot: {x: 0.5106742, y: 0.3692845}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7c30f667c1ff5f850800000000000000
+      internalID: 6410310142342923207
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: violet_control_ring_7
+      rect:
+        serializedVersion: 2
+        x: 309
+        y: 24
+        width: 197
+        height: 92
+      alignment: 9
+      pivot: {x: 0.5, y: 0.34936404}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 803e88179adfd4890800000000000000
+      internalID: -7472037302541688056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: fcf50ed6a12929545beda95bcc8fdb33
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      violet_control_ring_0: 4993490330342921801
+      violet_control_ring_1: 2991890900911599610
+      violet_control_ring_2: 7450548860339209311
+      violet_control_ring_3: -1681123643223317343
+      violet_control_ring_4: 5053371668993407005
+      violet_control_ring_5: -8116581245121586093
+      violet_control_ring_6: 6410310142342923207
+      violet_control_ring_7: -7472037302541688056
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -8,6 +8,21 @@ TextureImporter:
   - first:
       213: -767702934362692859
     second: movepad_1
+  - first:
+      213: -8625531414346399307
+    second: movepad_2
+  - first:
+      213: 4483391564469437885
+    second: movepad_3
+  - first:
+      213: 7140547952871616874
+    second: movepad_4
+  - first:
+      213: 799447535907950274
+    second: movepad_5
+  - first:
+      213: -1201169676798461529
+    second: movepad_6
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -132,10 +147,10 @@ TextureImporter:
       name: movepad_0
       rect:
         serializedVersion: 2
-        x: 140
-        y: 198
-        width: 381
-        height: 361
+        x: 72
+        y: 108
+        width: 345
+        height: 320
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -151,13 +166,13 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: movepad_1
+      name: movepad_5
       rect:
         serializedVersion: 2
-        x: 724
-        y: 267
-        width: 184
-        height: 182
+        x: 540
+        y: 139
+        width: 175
+        height: 180
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,8 +181,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5036948af329855f0800000000000000
-      internalID: -767702934362692859
+      spriteID: 2ceca5a5c45381b00800000000000000
+      internalID: 799447535907950274
       vertices: []
       indices: 
       edges: []
@@ -176,7 +191,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: fd86e0675b3df394d87a72f12a348813
+    spriteID: 765c14550d0003f47ac8cfb0c5fda2bb
     internalID: 0
     vertices: []
     indices: 
@@ -188,6 +203,11 @@ TextureImporter:
     nameFileIdTable:
       movepad_0: -8896862047604604984
       movepad_1: -767702934362692859
+      movepad_2: -8625531414346399307
+      movepad_3: 4483391564469437885
+      movepad_4: 7140547952871616874
+      movepad_5: 799447535907950274
+      movepad_6: -1201169676798461529
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

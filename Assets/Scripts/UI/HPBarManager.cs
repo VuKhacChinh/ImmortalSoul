@@ -26,13 +26,24 @@ public class HPBarManager : MonoBehaviour
     {
         if (creature == null) return;
 
-        // Nếu đã tồn tại thì không tạo lại
         if (barMap.ContainsKey(creature)) return;
 
         HPBar bar = Instantiate(hpBarPrefab, transform);
         bar.Init(creature);
 
         barMap.Add(creature, bar);
+
+        // set màu sau khi add
+        Color c = LevelSystem.Instance.GetLevelColor(creature.level);
+        bar.SetColor(c);
+    }
+
+    public void SetHPBarColor(CreatureBrain creature, Color color)
+    {
+        if (!barMap.TryGetValue(creature, out HPBar bar))
+            return;
+
+        bar.SetColor(color);
     }
 
     // =========================================================
