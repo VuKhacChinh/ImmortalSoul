@@ -12,7 +12,12 @@ public class ObjectSpawner : MonoBehaviour
     public GameObject hideZonePrefab;
     public int hideZoneCount = 10;
 
+    [Tooltip("HideZone size in cells")]
+    public int hideZoneSize = 2;
+
     public float cellSize = 4f;
+
+    bool[,] occupied;
 
     void OnEnable()
     {
@@ -32,6 +37,8 @@ public class ObjectSpawner : MonoBehaviour
         int cellsX = Mathf.FloorToInt(width / cellSize);
         int cellsY = Mathf.FloorToInt(height / cellSize);
 
+        occupied = new bool[cellsX, cellsY];
+
         float startX = -width * 0.5f;
         float startY = -height * 0.5f;
 
@@ -49,36 +56,40 @@ public class ObjectSpawner : MonoBehaviour
 
         int hideSpawned = 0;
 
-        for (int i = 0; i < allCells.Count; i++)
+        // Spawn HideZones
+        foreach (var cell in allCells)
         {
-            Vector2Int cell = allCells[i];
+            if (hideSpawned >= hideZoneCount)
+                break;
 
-            float offsetX = Random.Range(0.5f, cellSize - 0.5f);
-            float offsetY = Random.Range(0.5f, cellSize - 0.5f);
-
-            float posX = startX + cell.x * cellSize + offsetX;
-            float posY = startY + cell.y * cellSize + offsetY;
-
-            Vector3 pos = new Vector3(posX, posY, 0f);
-
-            // Spawn HideZone trước
-            if (hideSpawned < hideZoneCount)
-            {
-                GameObject hz = Instantiate(hideZonePrefab, pos, Quaternion.identity, transform);
-
-                SpriteRenderer sr = hz.GetComponent<SpriteRenderer>();
-                if (sr != null)
-                    sr.sortingOrder = Mathf.RoundToInt(-pos.y * 10);
-
-                hideSpawned++;
+            if (!CanPlace(cell.x, cell.y, hideZoneSize, cellsX, cellsY))
                 continue;
-            }
 
-            // Spawn object bình thường
+            Vector3 pos = CellToWorld(cell.x, cell.y, startX, startY);
+
+            GameObject hz = Instantiate(hideZonePrefab, pos, Quaternion.identity, transform);
+
+            SpriteRenderer sr = hz.GetComponent<SpriteRenderer>();
+            if (sr != null)
+                sr.sortingOrder = Mathf.RoundToInt(-pos.y * 10);
+
+            MarkOccupied(cell.x, cell.y, hideZoneSize);
+
+            hideSpawned++;
+        }
+
+        // Spawn obstacles
+        foreach (var cell in allCells)
+        {
+            if (occupied[cell.x, cell.y])
+                continue;
+
             if (Random.value > 0.5f)
                 continue;
 
             GameObject prefab = objectPrefabs[Random.Range(0, objectPrefabs.Length)];
+
+            Vector3 pos = CellToWorld(cell.x, cell.y, startX, startY);
 
             GameObject obj = Instantiate(prefab, pos, Quaternion.identity, transform);
 
@@ -88,7 +99,45 @@ public class ObjectSpawner : MonoBehaviour
             SpriteRenderer srObj = obj.GetComponent<SpriteRenderer>();
             if (srObj != null)
                 srObj.sortingOrder = Mathf.RoundToInt(-pos.y * 10);
+
+            occupied[cell.x, cell.y] = true;
         }
+    }
+
+    bool CanPlace(int x, int y, int size, int maxX, int maxY)
+    {
+        if (x + size >= maxX || y + size >= maxY)
+            return false;
+
+        for (int yy = 0; yy < size; yy++)
+        {
+            for (int xx = 0; xx < size; xx++)
+            {
+                if (occupied[x + xx, y + yy])
+                    return false;
+            }
+        }
+
+        return true;
+    }
+
+    void MarkOccupied(int x, int y, int size)
+    {
+        for (int yy = 0; yy < size; yy++)
+        {
+            for (int xx = 0; xx < size; xx++)
+            {
+                occupied[x + xx, y + yy] = true;
+            }
+        }
+    }
+
+    Vector3 CellToWorld(int x, int y, float startX, float startY)
+    {
+        float posX = startX + x * cellSize + cellSize * 0.5f;
+        float posY = startY + y * cellSize + cellSize * 0.5f;
+
+        return new Vector3(posX, posY, 0f);
     }
 
     void Shuffle(List<Vector2Int> list)
