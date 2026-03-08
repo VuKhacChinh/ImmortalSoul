@@ -216,7 +216,7 @@ MonoBehaviour:
   levelRange: 3
   possessEffectPrefab: {fileID: 781663818581458018, guid: 18eab59c1e911d946aa69b817669ebd5, type: 3}
   soulPrefab: {fileID: 781663818581458018, guid: d1044e390b772b84ab162ed1c9a22438, type: 3}
-  soulSpeed: 20
+  soulSpeed: 30
 --- !u!1 &188306298
 GameObject:
   m_ObjectHideFlags: 0
@@ -530,7 +530,7 @@ MonoBehaviour:
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeEnabled: 0
-  m_ApplyToSortingLayers: 00000000c5ceba95a90e9518cba5402677e6a6a5c9e963e2e3a945de27eeb22b03fde7df334a41275ff8bf7b
+  m_ApplyToSortingLayers: 00000000c5ceba95a90e9518cba5402677e6a6a5c9e963e2e3a945de27eeb22b03fde7df334a41275ff8bf7b05980f7a
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -712,8 +712,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GroundGenerator
   groundSprite: {fileID: 5188173852858522736, guid: 4899d9310eae51c48a15591645fff02e, type: 3}
-  gridSize: 20
+  gridSize: 30
   boundaryThickness: 5
+  boundaryHorizontalPrefab: {fileID: 7465242119516537897, guid: 0f6c1bc868a9e6c4dac8659214ce9f65, type: 3}
+  boundaryVerticalPrefab: {fileID: 5960180860332800994, guid: e60094b383598f6409afbad3a6dc1de2, type: 3}
 --- !u!1 &1296587626
 GameObject:
   m_ObjectHideFlags: 0
@@ -1320,6 +1322,7 @@ MonoBehaviour:
   - {fileID: 81252098595613775, guid: c4695a85f3524bc449c9db79469b599d, type: 3}
   hideZonePrefab: {fileID: 81252098595613775, guid: d840c3f78aae27940b12590725397d1b, type: 3}
   hideZoneCount: 20
+  hideZoneSize: 2
   cellSize: 8
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

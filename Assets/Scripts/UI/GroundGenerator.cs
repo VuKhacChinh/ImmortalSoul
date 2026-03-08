@@ -4,7 +4,11 @@ public class GroundGenerator : MonoBehaviour
 {
     public Sprite groundSprite;
     public int gridSize = 20;
+
+    [Header("Boundary")]
     public float boundaryThickness = 5f;
+    public GameObject boundaryHorizontalPrefab;
+    public GameObject boundaryVerticalPrefab;
 
     public float MapWidth { get; private set; }
     public float MapHeight { get; private set; }
@@ -29,15 +33,30 @@ public class GroundGenerator : MonoBehaviour
         float halfWidth = MapWidth * 0.5f;
         float halfHeight = MapHeight * 0.5f;
 
-        for (int y = 0; y < gridSize; y++)
+        // ===== CAMERA SIZE =====
+
+        float camHeight = Camera.main.orthographicSize * 2f;
+        float camWidth = camHeight * Camera.main.aspect;
+
+        // Spawn thêm vừa đủ để che camera
+        int extraX = Mathf.CeilToInt((camWidth * 0.5f) / tileWidth);
+        int extraY = Mathf.CeilToInt((camHeight * 0.5f) / tileHeight);
+
+        int totalX = gridSize + extraX * 2;
+        int totalY = gridSize + extraY * 2;
+
+        float startX = -halfWidth - extraX * tileWidth;
+        float startY = -halfHeight - extraY * tileHeight;
+
+        for (int y = 0; y < totalY; y++)
         {
-            for (int x = 0; x < gridSize; x++)
+            for (int x = 0; x < totalX; x++)
             {
                 GameObject tile = new GameObject($"Tile_{x}_{y}");
                 tile.transform.parent = transform;
 
-                float posX = (x * tileWidth) - halfWidth + tileWidth * 0.5f;
-                float posY = (y * tileHeight) - halfHeight + tileHeight * 0.5f;
+                float posX = startX + x * tileWidth + tileWidth * 0.5f;
+                float posY = startY + y * tileHeight + tileHeight * 0.5f;
 
                 tile.transform.position = new Vector3(posX, posY, 0f);
 
@@ -58,21 +77,66 @@ public class GroundGenerator : MonoBehaviour
         float halfWidth = MapWidth * 0.5f;
         float halfHeight = MapHeight * 0.5f;
 
-        CreateWall(new Vector2(0, halfHeight + boundaryThickness * 0.5f), new Vector2(MapWidth, boundaryThickness)); // top
-        CreateWall(new Vector2(0, -halfHeight - boundaryThickness * 0.5f), new Vector2(MapWidth, boundaryThickness)); // bottom
-        CreateWall(new Vector2(-halfWidth - boundaryThickness * 0.5f, 0), new Vector2(boundaryThickness, MapHeight)); // left
-        CreateWall(new Vector2(halfWidth + boundaryThickness * 0.5f, 0), new Vector2(boundaryThickness, MapHeight)); // right
+        float hSize = boundaryHorizontalPrefab.GetComponent<SpriteRenderer>().bounds.size.x;
+        float vSize = boundaryVerticalPrefab.GetComponent<SpriteRenderer>().bounds.size.y;
+
+        // ===== TOP / BOTTOM =====
+
+        int fullH = Mathf.FloorToInt(MapWidth / hSize);
+        float remainH = MapWidth - fullH * hSize;
+
+        for (int i = 0; i < fullH; i++)
+        {
+            float x = -halfWidth + hSize * 0.5f + i * hSize;
+
+            SpawnBoundary(boundaryHorizontalPrefab, new Vector2(x, halfHeight));
+            SpawnBoundary(boundaryHorizontalPrefab, new Vector2(x, -halfHeight));
+        }
+
+        if (remainH > 0.01f)
+        {
+            float x = -halfWidth + fullH * hSize + remainH * 0.5f;
+
+            SpawnBoundaryScaled(boundaryHorizontalPrefab, new Vector2(x, halfHeight), remainH / hSize);
+            SpawnBoundaryScaled(boundaryHorizontalPrefab, new Vector2(x, -halfHeight), remainH / hSize);
+        }
+
+        // ===== LEFT / RIGHT =====
+
+        int fullV = Mathf.FloorToInt(MapHeight / vSize);
+        float remainV = MapHeight - fullV * vSize;
+
+        for (int i = 0; i < fullV; i++)
+        {
+            float y = -halfHeight + vSize * 0.5f + i * vSize;
+
+            SpawnBoundary(boundaryVerticalPrefab, new Vector2(-halfWidth, y));
+            SpawnBoundary(boundaryVerticalPrefab, new Vector2(halfWidth, y));
+        }
+
+        if (remainV > 0.01f)
+        {
+            float y = -halfHeight + fullV * vSize + remainV * 0.5f;
+
+            SpawnBoundaryScaled(boundaryVerticalPrefab, new Vector2(-halfWidth, y), remainV / vSize, false);
+            SpawnBoundaryScaled(boundaryVerticalPrefab, new Vector2(halfWidth, y), remainV / vSize, false);
+        }
     }
 
-    void CreateWall(Vector2 pos, Vector2 size)
+    void SpawnBoundary(GameObject prefab, Vector2 pos)
     {
-        GameObject wall = new GameObject("Boundary");
-
-        wall.transform.parent = transform;
-        wall.transform.position = pos;
-
-        BoxCollider2D col = wall.AddComponent<BoxCollider2D>();
-        col.size = size;
+        Instantiate(prefab, pos, Quaternion.identity, transform);
     }
 
+    void SpawnBoundaryScaled(GameObject prefab, Vector2 pos, float scale, bool horizontal = true)
+    {
+        GameObject obj = Instantiate(prefab, pos, Quaternion.identity, transform);
+
+        Vector3 baseScale = prefab.transform.localScale;
+
+        if (horizontal)
+            obj.transform.localScale = new Vector3(baseScale.x * scale, baseScale.y, baseScale.z);
+        else
+            obj.transform.localScale = new Vector3(baseScale.x, baseScale.y * scale, baseScale.z);
+    }
 }
