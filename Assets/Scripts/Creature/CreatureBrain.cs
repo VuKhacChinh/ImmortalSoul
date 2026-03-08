@@ -48,7 +48,10 @@ public class CreatureBrain : MonoBehaviour
 
     [Header("Obstacle Avoidance")]
     LayerMask obstacleMask;
-    public float obstacleCheckDistance = 1.2f;
+    public float obstacleCheckDistance = 1.5f;
+    Vector2 avoidDirection;
+    float avoidTimer;
+    const float AVOID_TIME = 1f;
 
     [Header("Hide System")]
     public bool isHidden = false;
@@ -233,6 +236,12 @@ public class CreatureBrain : MonoBehaviour
 
     Vector2 AvoidObstacle(Vector2 dir)
     {
+        if (avoidTimer > 0f)
+        {
+            avoidTimer -= Time.deltaTime;
+            return avoidDirection;
+        }
+
         RaycastHit2D forward = Physics2D.Raycast(
             transform.position,
             dir,
@@ -261,12 +270,15 @@ public class CreatureBrain : MonoBehaviour
         );
 
         if (!hitLeft)
-            return (dir + left).normalized;
+            avoidDirection = (dir + left).normalized;
+        else if (!hitRight)
+            avoidDirection = (dir + right).normalized;
+        else
+            avoidDirection = -dir;
 
-        if (!hitRight)
-            return (dir + right).normalized;
+        avoidTimer = AVOID_TIME;
 
-        return -dir;
+        return avoidDirection;
     }
 
     void UpdateHPVisual()
@@ -331,8 +343,23 @@ public class CreatureBrain : MonoBehaviour
         {
             scanTimer = SCAN_INTERVAL;
 
-            if (currentTarget == null || currentTarget.isDead || currentTarget.isHidden)
-                currentTarget = FindBestTarget();
+            CreatureBrain newTarget = FindBestTarget();
+
+            if (newTarget != null)
+            {
+                if (currentTarget == null)
+                {
+                    currentTarget = newTarget;
+                }
+                else
+                {
+                    float oldScore = EvaluateThreat(currentTarget);
+                    float newScore = EvaluateThreat(newTarget);
+
+                    if (newScore > oldScore + 10f)
+                        currentTarget = newTarget;
+                }
+            }
 
             if (targetFood == null || !targetFood.gameObject.activeInHierarchy)
                 targetFood = FindFood();
@@ -580,6 +607,16 @@ public class CreatureBrain : MonoBehaviour
 
     void HandleFight()
     {
+        CreatureBrain closeTarget = FindBestTarget();
+
+        if (closeTarget != null)
+        {
+            float dist = (closeTarget.transform.position - transform.position).sqrMagnitude;
+
+            if (dist < attackRange * attackRange)
+                currentTarget = closeTarget;
+        }
+
         Vector2 toTarget = currentTarget.transform.position - transform.position;
         float sqrDist = toTarget.sqrMagnitude;
 
