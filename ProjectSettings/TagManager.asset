@@ -58,6 +58,9 @@ TagManager:
   - name: Obstacle
     uniqueID: 3798198729
     locked: 0
+  - name: Boundary
+    uniqueID: 2047842309
+    locked: 0
   - name: Explosion
     uniqueID: 733146663
     locked: 0
