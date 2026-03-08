@@ -66,10 +66,21 @@ public class HPBarManager : MonoBehaviour
     {
         if (creature == null) return;
 
+        if (creature.currentHP > 0)
+            return;
+
         if (barMap.TryGetValue(creature, out HPBar bar))
         {
             Destroy(bar.gameObject);
             barMap.Remove(creature);
+        }
+    }
+
+    public void SetHPBarVisible(CreatureBrain creature, bool visible)
+    {
+        if (barMap.TryGetValue(creature, out HPBar bar))
+        {
+            bar.gameObject.SetActive(visible);
         }
     }
 

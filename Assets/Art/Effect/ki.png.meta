@@ -1,0 +1,351 @@
+fileFormatVersion: 2
+guid: 17bbd7f668cb9e6419bd6b8e4273f161
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -2537362912936852555
+    second: ki_0
+  - first:
+      213: -209888123025050465
+    second: ki_1
+  - first:
+      213: -4092078536290994224
+    second: ki_2
+  - first:
+      213: -5407696400210143372
+    second: ki_3
+  - first:
+      213: -4199680719495940494
+    second: ki_4
+  - first:
+      213: -3061810818224239034
+    second: ki_5
+  - first:
+      213: 2842340651826599564
+    second: ki_6
+  - first:
+      213: 516414489755610066
+    second: ki_7
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: ki_0
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 222
+        width: 72
+        height: 124
+      alignment: 9
+      pivot: {x: 0.47237745, y: 0.34362128}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5b3062ccfd979ccd0800000000000000
+      internalID: -2537362912936852555
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ki_1
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 223
+        width: 76
+        height: 124
+      alignment: 9
+      pivot: {x: 0.47056058, y: 0.3275828}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f94b4883dd3561df0800000000000000
+      internalID: -209888123025050465
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ki_2
+      rect:
+        serializedVersion: 2
+        x: 335
+        y: 223
+        width: 86
+        height: 127
+      alignment: 9
+      pivot: {x: 0.4768744, y: 0.32186794}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0d7ff5380440637c0800000000000000
+      internalID: -4092078536290994224
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ki_3
+      rect:
+        serializedVersion: 2
+        x: 484
+        y: 223
+        width: 84
+        height: 123
+      alignment: 9
+      pivot: {x: 0.49112156, y: 0.34032905}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 477d05476c004f4b0800000000000000
+      internalID: -5407696400210143372
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ki_4
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 54
+        width: 78
+        height: 126
+      alignment: 9
+      pivot: {x: 0.46175364, y: 0.30269712}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2763360f2acb7b5c0800000000000000
+      internalID: -4199680719495940494
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ki_5
+      rect:
+        serializedVersion: 2
+        x: 194
+        y: 54
+        width: 81
+        height: 123
+      alignment: 9
+      pivot: {x: 0.49079216, y: 0.3261805}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 64ecb4278434285d0800000000000000
+      internalID: -3061810818224239034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ki_6
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 54
+        width: 86
+        height: 121
+      alignment: 9
+      pivot: {x: 0.47109312, y: 0.33974424}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c86d6c273c5027720800000000000000
+      internalID: 2842340651826599564
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ki_7
+      rect:
+        serializedVersion: 2
+        x: 487
+        y: 54
+        width: 85
+        height: 118
+      alignment: 9
+      pivot: {x: 0.44443, y: 0.3546312}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2db6fba0e3caa2700800000000000000
+      internalID: 516414489755610066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 24ce1fb3056043d44a8f41f71e7cb46b
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      ki_0: -2537362912936852555
+      ki_1: -209888123025050465
+      ki_2: -4092078536290994224
+      ki_3: -5407696400210143372
+      ki_4: -4199680719495940494
+      ki_5: -3061810818224239034
+      ki_6: 2842340651826599564
+      ki_7: 516414489755610066
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

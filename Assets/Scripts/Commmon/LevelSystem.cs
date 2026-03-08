@@ -60,11 +60,49 @@ public class LevelSystem : MonoBehaviour
     {
         creature.level++;
 
+        ApplyLevelStats(creature);
+
+        creature.currentHP = creature.maxHP;
+
+        UpdateHPBar(creature);
+
+        Debug.Log(creature.name + " LEVEL UP -> " + creature.level);
+    }
+
+    public void SetLevel(CreatureBrain creature, int targetLevel)
+    {
+        if (creature == null) return;
+
+        targetLevel = Mathf.Clamp(targetLevel, 1, maxLevel);
+
+        int diff = targetLevel - creature.level;
+
+        for (int i = 0; i < diff; i++)
+        {
+            creature.level++;
+            ApplyLevelStats(creature);
+        }
+
+        creature.currentHP = creature.maxHP;
+
+        UpdateHPBar(creature);
+    }
+
+    void UpdateHPBar(CreatureBrain creature)
+    {
+        if (HPBarManager.Instance == null) return;
+
+        HPBarManager.Instance.UpdateHP(creature, 1f);
+
+        Color c = GetLevelColor(creature.level);
+        HPBarManager.Instance.SetHPBarColor(creature, c);
+    }
+
+    void ApplyLevelStats(CreatureBrain creature)
+    {
         creature.maxHP += hpPerLevel;
         creature.attackDamage += damagePerLevel + creature.level * 0.15f;
         creature.moveSpeed += speedPerLevel;
-
-        creature.currentHP = creature.maxHP;
 
         Vector3 s = creature.transform.localScale;
 
@@ -74,13 +112,6 @@ public class LevelSystem : MonoBehaviour
         s.y += scalePerLevel;
 
         creature.transform.localScale = s;
-
-        // ===== UPDATE HP BAR COLOR =====
-
-        Color c = GetLevelColor(creature.level);
-        HPBarManager.Instance.SetHPBarColor(creature, c);
-
-        Debug.Log(creature.name + " LEVEL UP -> " + creature.level);
     }
 
     public int GetLevelColorTier(int level)

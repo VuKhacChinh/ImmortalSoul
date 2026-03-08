@@ -169,28 +169,30 @@ public class CreatureBrain : MonoBehaviour
 
     public void SetHidden(bool value)
     {
+        isHidden = value;
+
         if (value)
         {
             currentTarget = null;
             fleeTimer = 0;
         }
 
-        isHidden = value;
-
+        // PLAYER
         if (isPlayerControlled)
         {
-            if (value)
-                spriteRenderer.color = Color.red;
-            else
-                spriteRenderer.color = Color.white;
+            spriteRenderer.enabled = true;
+            spriteRenderer.color = value ? Color.red : Color.white;
+
+            // player luôn thấy HP bar
+            HPBarManager.Instance.SetHPBarVisible(this, true);
         }
         else
         {
             spriteRenderer.enabled = !value;
-        }
 
-        if (value)
-            currentTarget = null;
+            // AI ẩn thì ẩn luôn HP bar
+            HPBarManager.Instance.SetHPBarVisible(this, !value);
+        }
     }
 
     void CheckStuck()

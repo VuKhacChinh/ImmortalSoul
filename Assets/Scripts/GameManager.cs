@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Collections;
 using UnityEngine;
 
 public class GameManager : MonoBehaviour
@@ -27,6 +28,14 @@ public class GameManager : MonoBehaviour
     [Header("Player Highlight")]
     public GameObject controlRingPrefab;
 
+    [Header("Level Spawn Range")]
+    public int levelRange = 3;
+
+    [Header("Possession")]
+    public GameObject possessEffectPrefab;
+    public GameObject soulPrefab;
+    public float soulSpeed = 20f;
+
     GameObject controlRingInstance;
 
     private List<CreatureBrain> allCreatures = new();
@@ -44,7 +53,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         SpawnCreatures();
-        SelectRandomPlayer();
+        ChooseInitialPlayer();
 
         InvokeRepeating(nameof(CheckRespawn), respawnCheckInterval, respawnCheckInterval);
     }
@@ -88,6 +97,26 @@ public class GameManager : MonoBehaviour
             Instantiate(prefab, pos, Quaternion.identity);
 
         creature.isPlayerControlled = false;
+
+        // =========================================
+        // LEVEL RANDOM THEO PLAYER
+        // =========================================
+
+        int playerLevel = 1;
+
+        if (playerCreature != null)
+            playerLevel = playerCreature.level;
+
+        int minLevel = Mathf.Max(1, playerLevel - levelRange);
+        int maxSpawnLevel = Mathf.Min(LevelSystem.Instance.maxLevel, playerLevel + levelRange);
+
+        int randomLevel = Mathf.RoundToInt(
+            Mathf.Lerp(minLevel, maxSpawnLevel, Random.value * Random.value)
+        );
+
+        LevelSystem.Instance.SetLevel(creature, randomLevel);
+
+        // =========================================
 
         allCreatures.Add(creature);
         creatureZoneMap[creature] = zoneIndex;
@@ -138,22 +167,17 @@ public class GameManager : MonoBehaviour
     // PLAYER
     // =========================================================
 
-    void SelectRandomPlayer()
+    void ChooseInitialPlayer()
     {
-        if (allCreatures.Count == 0) return;
+        CreatureBrain chosen = ChooseWeightedCreature(int.MaxValue);
 
-        int index = Random.Range(0, allCreatures.Count);
+        if (chosen == null)
+        {
+            Debug.Log("No creature available");
+            return;
+        }
 
-        playerCreature = allCreatures[index];
-        AttachControlRing(playerCreature);
-
-        foreach (var c in allCreatures)
-            if (c != null)
-                c.isPlayerControlled = false;
-
-        playerCreature.isPlayerControlled = true;
-
-        UpdateCameraAndUI();
+        SetPlayer(chosen);
     }
 
     void AttachControlRing(CreatureBrain creature)
@@ -169,32 +193,82 @@ public class GameManager : MonoBehaviour
 
     void ChooseNewPlayer()
     {
-        List<CreatureBrain> aliveCreatures = new();
+        int deadLevel = playerCreature.level;
 
-        foreach (var c in allCreatures)
-        {
-            if (c != null && c.currentHP > 0)
-                aliveCreatures.Add(c);
-        }
+        CreatureBrain chosen = ChooseWeightedCreature(deadLevel);
 
-        if (aliveCreatures.Count == 0)
+        if (chosen == null)
         {
             Debug.Log("GAME OVER");
             return;
         }
 
-        int index = Random.Range(0, aliveCreatures.Count);
+        SetPlayer(chosen);
+    }
 
-        playerCreature = aliveCreatures[index];
+    void SetPlayer(CreatureBrain creature)
+    {
+        if (playerCreature != null)
+            playerCreature.isPlayerControlled = false;
+
+        playerCreature = creature;
+        playerCreature.isPlayerControlled = true;
+        playerCreature.SetHidden(false);
+
+        playerCreature.currentHP = playerCreature.maxHP;
+
         AttachControlRing(playerCreature);
 
-        foreach (var c in allCreatures)
-            if (c != null)
-                c.isPlayerControlled = false;
-
-        playerCreature.isPlayerControlled = true;
+        PlayPossessEffect(playerCreature);
 
         UpdateCameraAndUI();
+    }
+
+    CreatureBrain ChooseWeightedCreature(int maxLevel)
+    {
+        List<CreatureBrain> candidates = new();
+
+        foreach (var c in allCreatures)
+        {
+            if (c != null && c.currentHP > 0 && c.level <= maxLevel)
+                candidates.Add(c);
+        }
+
+        if (candidates.Count == 0)
+            return null;
+
+        int totalWeight = 0;
+
+        foreach (var c in candidates)
+            totalWeight += c.level;
+
+        int roll = Random.Range(0, totalWeight);
+
+        int cumulative = 0;
+
+        foreach (var c in candidates)
+        {
+            cumulative += c.level;
+
+            if (roll < cumulative)
+                return c;
+        }
+
+        return candidates[0];
+    }
+
+    void PlayPossessEffect(CreatureBrain creature)
+    {
+        if (possessEffectPrefab == null) return;
+
+        GameObject fx = Instantiate(
+            possessEffectPrefab,
+            creature.transform.position,
+            Quaternion.identity,
+            creature.transform
+        );
+
+        Destroy(fx, 1f);
     }
 
     void UpdateCameraAndUI()
@@ -214,10 +288,8 @@ public class GameManager : MonoBehaviour
 
     public void OnCreatureDeath(CreatureBrain creature)
     {
-        if (creatureZoneMap.ContainsKey(creature))
+        if (creatureZoneMap.TryGetValue(creature, out int zone))
         {
-            int zone = creatureZoneMap[creature];
-
             zoneCreatures[zone].Remove(creature);
             creatureZoneMap.Remove(creature);
         }
@@ -226,8 +298,51 @@ public class GameManager : MonoBehaviour
 
         if (creature == playerCreature)
         {
-            Invoke(nameof(ChooseNewPlayer), 0.3f);
+            StartCoroutine(SoulPossessionSequence(creature.transform.position, creature.level));
         }
+    }
+
+    IEnumerator SoulPossessionSequence(Vector3 deathPos, int deadLevel)
+    {
+        GameObject soul = Instantiate(soulPrefab, deathPos, Quaternion.identity);
+
+        CreatureBrain target = ChooseWeightedCreature(deadLevel);
+
+        if (target == null)
+        {
+            Debug.Log("GAME OVER");
+            yield break;
+        }
+
+        CameraFollow cam = Camera.main.GetComponent<CameraFollow>();
+
+        if (cam != null)
+            cam.SetTarget(soul.transform);
+
+        while (soul != null && target != null)
+        {
+            if (target == null || target.currentHP <= 0)
+            {
+                target = ChooseWeightedCreature(deadLevel);
+            }
+
+            Vector3 dir = target.transform.position - soul.transform.position;
+            soul.transform.position += dir.normalized * soulSpeed * Time.deltaTime;
+
+            soul.transform.position += Vector3.up * Mathf.Sin(Time.time * 12f) * 0.1f;
+
+            if (Vector3.Distance(soul.transform.position, target.transform.position) < 0.2f)
+                break;
+
+            yield return null;
+        }
+
+        Destroy(soul);
+
+        SetPlayer(target);
+
+        if (cam != null)
+            cam.SetTarget(playerCreature.transform);
     }
 
     public CreatureBrain GetPlayer()

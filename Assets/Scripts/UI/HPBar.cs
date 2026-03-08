@@ -15,8 +15,7 @@ public class HPBar : MonoBehaviour
     {
         creature = target;
 
-        // Set full máu lúc tạo
-        SetValue(1f);
+        SetValue(creature.currentHP / creature.maxHP);
 
         UpdateTexts();
     }

@@ -52,6 +52,9 @@ TagManager:
   - name: ControlRing
     uniqueID: 3756522755
     locked: 0
+  - name: PossesionEffect
+    uniqueID: 2076178527
+    locked: 0
   - name: Obstacle
     uniqueID: 3798198729
     locked: 0
