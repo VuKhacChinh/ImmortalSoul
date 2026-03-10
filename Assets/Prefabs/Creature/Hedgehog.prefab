@@ -200,7 +200,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 644bea4d9e85f944a8bfb6a08ff027f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CreatureBrain
-  isPlayerControlled: 1
+  isPlayerControlled: 0
   level: 1
   currentXP: 0
   meatPrefab: {fileID: 7905947638849257074, guid: 2ddafcb310b0c914fabab82bc9164a0b, type: 3}

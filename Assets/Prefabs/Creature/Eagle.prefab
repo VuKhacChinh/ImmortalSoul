@@ -81,12 +81,12 @@ SpriteRenderer:
   m_SortingLayerID: -496768567
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1731691903977263478, guid: ed4c761915806a74ebb83c3c4cfa8b72, type: 3}
+  m_Sprite: {fileID: -8963772635242594009, guid: 0a86019649cbb8b4b823deb362aabf33, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.67, y: 0.78}
+  m_Size: {x: 1.77, y: 1.52}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -102,7 +102,7 @@ Animator:
   m_GameObject: {fileID: 7250386410483983525}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: d74f7a32624abfd4ba3d22e271852def, type: 2}
+  m_Controller: {fileID: 9100000, guid: cfbecbc9c44830c4c8eb5f54b9b3cb1f, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -138,7 +138,7 @@ GameObject:
   - component: {fileID: 2547537172277954808}
   - component: {fileID: 6420337514911783703}
   m_Layer: 0
-  m_Name: Tiger
+  m_Name: Eagle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -288,7 +288,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.4, y: 0.3}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -298,5 +298,5 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 0.6, y: 0.6}
+  m_Size: {x: 1.4, y: 1.2}
   m_EdgeRadius: 0
