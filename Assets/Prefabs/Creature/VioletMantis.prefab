@@ -81,12 +81,12 @@ SpriteRenderer:
   m_SortingLayerID: -496768567
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: -8688392260014441854, guid: 2d4016c345b0e0643945b90a40c169e7, type: 3}
+  m_Sprite: {fileID: -1754143886931587075, guid: 24e95d8d6e450d34fb80faa34bb98778, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.35, y: 1.08}
+  m_Size: {x: 1.37, y: 1.45}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -102,7 +102,7 @@ Animator:
   m_GameObject: {fileID: 7250386410483983525}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 65289788faa8edc4c8ab16d983eccc31, type: 2}
+  m_Controller: {fileID: 9100000, guid: c4a92700f0988c247b4fdf19a0e54040, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -138,7 +138,7 @@ GameObject:
   - component: {fileID: 2547537172277954808}
   - component: {fileID: 6420337514911783703}
   m_Layer: 0
-  m_Name: Snake
+  m_Name: VioletMantis
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -288,7 +288,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.4, y: 0}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -298,5 +298,5 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 2, y: 1.6}
+  m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0

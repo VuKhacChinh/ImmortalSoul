@@ -109,6 +109,9 @@ public class CreatureBrain : MonoBehaviour
     float stuckTimer;
     const float STUCK_TIME = 0.4f;
 
+    Material outlineMaterial;
+    Material originalMaterial;
+
     void Awake()
     {
         hideZoneLayer = LayerMask.NameToLayer("HideZone");
@@ -116,6 +119,8 @@ public class CreatureBrain : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         animator = GetComponentInChildren<Animator>();
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+        originalMaterial = spriteRenderer.material;
+        outlineMaterial = Resources.Load<Material>("Materials/OutlineRed");
         initialFlipX = spriteRenderer.flipX;
 
         currentHP = maxHP;
@@ -183,8 +188,12 @@ public class CreatureBrain : MonoBehaviour
         // PLAYER
         if (isPlayerControlled)
         {
+            if (value)
+                spriteRenderer.material = outlineMaterial;
+            else
+                spriteRenderer.material = originalMaterial;
+            
             spriteRenderer.enabled = true;
-            spriteRenderer.color = value ? Color.red : Color.white;
 
             // player luôn thấy HP bar
             HPBarManager.Instance.SetHPBarVisible(this, true);

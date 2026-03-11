@@ -214,13 +214,15 @@ MonoBehaviour:
     - {fileID: 6420337514911783703, guid: 686ff11c5fc388c4c98cd5477873ae7e, type: 3}
     - {fileID: 6420337514911783703, guid: e3c0607f3e2c55b4c93e0e9db117a760, type: 3}
     - {fileID: 6420337514911783703, guid: f0ad30b540d31964e8b327647e679657, type: 3}
-  - outerRadius: 90
-    spawnCount: 20
+    - {fileID: 6420337514911783703, guid: 44e7e4aff2fb4e24196fdb035699290e, type: 3}
+  - outerRadius: 100
+    spawnCount: 30
     creaturePrefabs:
     - {fileID: 6420337514911783703, guid: 5e800c9c407f9da44a0fb46b6457a978, type: 3}
     - {fileID: 6420337514911783703, guid: e8c9ee309fa326e48ba24f846848000a, type: 3}
+    - {fileID: 6420337514911783703, guid: a128ea0466c0517448b49602e338ac61, type: 3}
   respawnCheckInterval: 5
-  controlRingPrefab: {fileID: 5256497691148760224, guid: f859aa9aca73b8a448bab37c413c091b, type: 3}
+  controlEffectPrefab: {fileID: 781663818581458018, guid: d1044e390b772b84ab162ed1c9a22438, type: 3}
   levelRange: 3
   possessEffectPrefab: {fileID: 781663818581458018, guid: 18eab59c1e911d946aa69b817669ebd5, type: 3}
   soulPrefab: {fileID: 781663818581458018, guid: d1044e390b772b84ab162ed1c9a22438, type: 3}
@@ -538,7 +540,7 @@ MonoBehaviour:
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeEnabled: 0
-  m_ApplyToSortingLayers: 00000000c5ceba95a90e9518cba5402677e6a6a5c9e963e2e3a945de27eeb22b03fde7df334a41275ff8bf7b05980f7a
+  m_ApplyToSortingLayers: 00000000c5ceba95a90e9518cba5402677e6a6a5c9e963e2e3a945de27eeb22b03fde7df334a41275ff8bf7b05980f7adfc0712d
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -774,7 +776,6 @@ MonoBehaviour:
   boundaryHorizontalPrefab: {fileID: 7465242119516537897, guid: 0f6c1bc868a9e6c4dac8659214ce9f65, type: 3}
   boundaryVerticalPrefab: {fileID: 5960180860332800994, guid: e60094b383598f6409afbad3a6dc1de2, type: 3}
   breakableWallPrefab: {fileID: 781663818581458018, guid: 0458e5d238add924ba405a3dac2ebbec, type: 3}
-  eyePrefab: {fileID: 1609745617584652104, guid: a775aee15564e204da4f40cc3dfe0753, type: 3}
 --- !u!1 &1296587626
 GameObject:
   m_ObjectHideFlags: 0

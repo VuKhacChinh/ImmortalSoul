@@ -25,7 +25,7 @@ public class HPBar : MonoBehaviour
         if (creature == null) return;
 
         // Update vị trí theo creature
-        Vector3 worldPos = creature.transform.position + new Vector3(0, 1.5f, 0);
+        Vector3 worldPos = creature.transform.position + new Vector3(0, 2f, 0);
         transform.position = worldPos;
 
         // Update text

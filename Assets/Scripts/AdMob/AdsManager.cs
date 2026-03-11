@@ -128,6 +128,9 @@ public class AdsManager : MonoBehaviour
         {
             isBannerLoading = false;
 
+            if (bannerView == null)
+                return;
+
             if (pendingShowAfterLoad)
             {
                 bannerView.Show();
@@ -149,7 +152,6 @@ public class AdsManager : MonoBehaviour
     {
         if (!IsOnline) return;
 
-        // Nếu chưa hết cooldown → không load mới
         if (Time.unscaledTime - lastBannerShowTime < BANNER_COOLDOWN)
             return;
 
@@ -159,6 +161,9 @@ public class AdsManager : MonoBehaviour
 
     public void HideBanner()
     {
+        // 🔧 FIX: cancel pending show
+        pendingShowAfterLoad = false;
+
         bannerView?.Hide();
     }
 
