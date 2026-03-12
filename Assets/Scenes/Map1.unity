@@ -221,6 +221,7 @@ MonoBehaviour:
     - {fileID: 6420337514911783703, guid: 5e800c9c407f9da44a0fb46b6457a978, type: 3}
     - {fileID: 6420337514911783703, guid: e8c9ee309fa326e48ba24f846848000a, type: 3}
     - {fileID: 6420337514911783703, guid: a128ea0466c0517448b49602e338ac61, type: 3}
+    - {fileID: 6420337514911783703, guid: 598369977d0ccb34b8c54575e4fa147d, type: 3}
   respawnCheckInterval: 5
   controlEffectPrefab: {fileID: 781663818581458018, guid: d1044e390b772b84ab162ed1c9a22438, type: 3}
   levelRange: 3

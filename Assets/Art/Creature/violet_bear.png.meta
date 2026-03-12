@@ -1,0 +1,407 @@
+fileFormatVersion: 2
+guid: ced0ce6823290ce4c977ff47c167aee1
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 6496532033538808934
+    second: violet_bear_0
+  - first:
+      213: -1173687257439408453
+    second: violet_bear_1
+  - first:
+      213: -6014249032030265385
+    second: violet_bear_2
+  - first:
+      213: 4209831017593170177
+    second: violet_bear_3
+  - first:
+      213: 1967831421983969759
+    second: violet_bear_4
+  - first:
+      213: -5822000533430727558
+    second: violet_bear_5
+  - first:
+      213: -2904335509957654835
+    second: violet_bear_6
+  - first:
+      213: 224829170864485192
+    second: violet_bear_7
+  - first:
+      213: -8297380467711747827
+    second: violet_bear_8
+  - first:
+      213: 2265240426673402898
+    second: violet_bear_9
+  - first:
+      213: 5975434336204445088
+    second: violet_bear_10
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: violet_bear_0
+      rect:
+        serializedVersion: 2
+        x: 29
+        y: 263
+        width: 93
+        height: 120
+      alignment: 9
+      pivot: {x: 0.373428, y: 0.4424235}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 66cd603e671582a50800000000000000
+      internalID: 6496532033538808934
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: violet_bear_1
+      rect:
+        serializedVersion: 2
+        x: 139
+        y: 262
+        width: 107
+        height: 121
+      alignment: 9
+      pivot: {x: 0.3947718, y: 0.44078454}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bbeebe668a936bfe0800000000000000
+      internalID: -1173687257439408453
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: violet_bear_2
+      rect:
+        serializedVersion: 2
+        x: 266
+        y: 262
+        width: 90
+        height: 121
+      alignment: 9
+      pivot: {x: 0.36920878, y: 0.45135877}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7df5917ce58198ca0800000000000000
+      internalID: -6014249032030265385
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: violet_bear_3
+      rect:
+        serializedVersion: 2
+        x: 379
+        y: 262
+        width: 99
+        height: 123
+      alignment: 9
+      pivot: {x: 0.406947, y: 0.44798887}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 109ef0081035c6a30800000000000000
+      internalID: 4209831017593170177
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: violet_bear_4
+      rect:
+        serializedVersion: 2
+        x: 496
+        y: 262
+        width: 120
+        height: 125
+      alignment: 9
+      pivot: {x: 0.3912445, y: 0.44677368}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fd1d43590442f4b10800000000000000
+      internalID: 1967831421983969759
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: violet_bear_6
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 60
+        width: 98
+        height: 145
+      alignment: 9
+      pivot: {x: 0.42166466, y: 0.3605812}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dc6cb64dd3ab1b7d0800000000000000
+      internalID: -2904335509957654835
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: violet_bear_7
+      rect:
+        serializedVersion: 2
+        x: 133
+        y: 61
+        width: 114
+        height: 145
+      alignment: 9
+      pivot: {x: 0.4663295, y: 0.34646234}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 843f58090f0ce1300800000000000000
+      internalID: 224829170864485192
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: violet_bear_8
+      rect:
+        serializedVersion: 2
+        x: 260
+        y: 61
+        width: 111
+        height: 148
+      alignment: 9
+      pivot: {x: 0.45619822, y: 0.33747128}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d09d6cf0d68c9dc80800000000000000
+      internalID: -8297380467711747827
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: violet_bear_9
+      rect:
+        serializedVersion: 2
+        x: 390
+        y: 60
+        width: 133
+        height: 148
+      alignment: 9
+      pivot: {x: 0.48653188, y: 0.32882655}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 214f8b29a20cf6f10800000000000000
+      internalID: 2265240426673402898
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: violet_bear_10
+      rect:
+        serializedVersion: 2
+        x: 525
+        y: 60
+        width: 107
+        height: 112
+      alignment: 9
+      pivot: {x: 0.50239176, y: 0.43831068}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0a5532c9ed10de250800000000000000
+      internalID: 5975434336204445088
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 1050ad998aa6ceb468cfe941ae9ce816
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      violet_bear_0: 6496532033538808934
+      violet_bear_1: -1173687257439408453
+      violet_bear_10: 5975434336204445088
+      violet_bear_2: -6014249032030265385
+      violet_bear_3: 4209831017593170177
+      violet_bear_4: 1967831421983969759
+      violet_bear_5: -5822000533430727558
+      violet_bear_6: -2904335509957654835
+      violet_bear_7: 224829170864485192
+      violet_bear_8: -8297380467711747827
+      violet_bear_9: 2265240426673402898
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
