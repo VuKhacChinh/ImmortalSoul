@@ -137,6 +137,7 @@ GameObject:
   - component: {fileID: 1583052422638039714}
   - component: {fileID: 2547537172277954808}
   - component: {fileID: 6420337514911783703}
+  - component: {fileID: 9038398184391069704}
   m_Layer: 0
   m_Name: VioletBear
   m_TagString: Untagged
@@ -206,13 +207,12 @@ MonoBehaviour:
   meatPrefab: {fileID: 7905947638849257074, guid: 2ddafcb310b0c914fabab82bc9164a0b, type: 3}
   dropCountMin: 1
   dropCountMax: 2
-  moveSpeed: 4
-  visionRange: 10
-  maxHP: 100
+  stats:
+    maxHP: 100
+    attackDamage: 10
+    moveSpeed: 4.5
+    visionRange: 10
   currentHP: 0
-  attackDamage: 15
-  attackRange: 5
-  attackCooldown: 1
   lowHPThreshold: 0.25
   fleeDuration: 2
   revengeMemoryDuration: 4
@@ -222,6 +222,19 @@ MonoBehaviour:
   lowHPPriority: 0.6
   obstacleCheckDistance: 1.2
   isHidden: 0
+--- !u!114 &9038398184391069704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8023603854736640244}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1eb2d258edf69ae44ae052577d872aee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CombatController
+  attack: {fileID: 11400000, guid: c8737bd5256fea34ca9cfd3351f9ad7b, type: 2}
 --- !u!1 &8486137727984323457
 GameObject:
   m_ObjectHideFlags: 0

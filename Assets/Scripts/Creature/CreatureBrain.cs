@@ -1,6 +1,7 @@
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(CombatController))]
 public class CreatureBrain : MonoBehaviour
 {
     [Header("Control")]
@@ -15,20 +16,12 @@ public class CreatureBrain : MonoBehaviour
     public int dropCountMin = 1;
     public int dropCountMax = 2;
 
-    [Header("Movement")]
-    public float moveSpeed = 3f;
+    [Header("Stats")]
+    public CreatureStats stats;
 
-    [Header("Vision")]
-    public float visionRange = 5f;
-
-    [Header("Combat")]
-    public float maxHP = 100f;
+    [Header("HP")]
     public float currentHP;
     float displayedHP;
-
-    public float attackDamage = 10f;
-    public float attackRange = 1.5f;
-    public float attackCooldown = 1f;
 
     [Header("AI")]
     public float lowHPThreshold = 0.25f;
@@ -60,11 +53,10 @@ public class CreatureBrain : MonoBehaviour
     Rigidbody2D rb;
     Animator animator;
     SpriteRenderer spriteRenderer;
+    CombatController combat;
 
     bool isDead = false;
     bool isAttacking = false;
-
-    float attackTimer;
 
     CreatureBrain currentTarget;
 
@@ -110,7 +102,11 @@ public class CreatureBrain : MonoBehaviour
     const float STUCK_TIME = 0.4f;
 
     Material outlineMaterial;
+    Material outlineTargetMaterial;
     Material originalMaterial;
+
+    public CreatureBrain CurrentTarget => currentTarget;
+    static CreatureBrain playerHighlightTarget;
 
     void Awake()
     {
@@ -121,12 +117,14 @@ public class CreatureBrain : MonoBehaviour
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         originalMaterial = spriteRenderer.material;
         outlineMaterial = Resources.Load<Material>("Materials/OutlineRed");
+        outlineTargetMaterial = Resources.Load<Material>("Materials/OutlineTarget");
         initialFlipX = spriteRenderer.flipX;
 
-        currentHP = maxHP;
-        displayedHP = maxHP;
+        currentHP = stats.maxHP;
+        displayedHP = stats.maxHP;
 
         lastPosition = transform.position;
+        combat = GetComponent<CombatController>();
     }
 
     void Start()
@@ -141,7 +139,7 @@ public class CreatureBrain : MonoBehaviour
 
         float dt = Time.deltaTime;
 
-        attackTimer -= dt;
+        combat.Tick(dt);
         scanTimer -= dt;
         confidenceTimer -= dt;
 
@@ -164,8 +162,16 @@ public class CreatureBrain : MonoBehaviour
                 EndAttack();
         }
 
-        if (isPlayerControlled)
+        if (isPlayerControlled) {
+            if (currentTarget == null || currentTarget.IsDead())
+            {
+                CreatureBrain newTarget = FindBestTarget();
+                currentTarget = newTarget;
+                UpdatePlayerHighlight(newTarget);
+            }
+
             HandlePlayerInput();
+        }
         else
             HandleAI();
 
@@ -188,10 +194,7 @@ public class CreatureBrain : MonoBehaviour
         // PLAYER
         if (isPlayerControlled)
         {
-            if (value)
-                spriteRenderer.material = outlineMaterial;
-            else
-                spriteRenderer.material = originalMaterial;
+            SetHiddenHighlight(value);
             
             spriteRenderer.enabled = true;
 
@@ -205,6 +208,39 @@ public class CreatureBrain : MonoBehaviour
             // AI ẩn thì ẩn luôn HP bar
             HPBarManager.Instance.SetHPBarVisible(this, !value);
         }
+    }
+
+    void SetHiddenHighlight(bool value)
+    {
+        if (spriteRenderer == null) return;
+
+        if (value)
+            spriteRenderer.material = outlineMaterial;
+        else
+            spriteRenderer.material = originalMaterial;
+    }
+
+    void SetTargetHighlight(bool value)
+    {
+        if (spriteRenderer == null) return;
+
+        if (value)
+            spriteRenderer.material = outlineTargetMaterial;
+        else
+            spriteRenderer.material = originalMaterial;
+    }
+
+    void UpdatePlayerHighlight(CreatureBrain newTarget)
+    {
+        if (!isPlayerControlled) return;
+
+        if (playerHighlightTarget != null)
+            playerHighlightTarget.SetTargetHighlight(false);
+
+        playerHighlightTarget = newTarget;
+
+        if (playerHighlightTarget != null)
+            playerHighlightTarget.SetTargetHighlight(true);
     }
 
     void CheckStuck()
@@ -236,7 +272,7 @@ public class CreatureBrain : MonoBehaviour
         if (newDir == Vector2.zero)
             newDir = Vector2.right;
 
-        rb.linearVelocity = newDir * moveSpeed;
+        rb.linearVelocity = newDir * stats.moveSpeed;
 
         wanderDirection = newDir;
 
@@ -295,7 +331,7 @@ public class CreatureBrain : MonoBehaviour
         if (displayedHP != currentHP)
         {
             displayedHP = Mathf.MoveTowards(displayedHP, currentHP, 60f * Time.deltaTime);
-            HPBarManager.Instance.UpdateHP(this, displayedHP / maxHP);
+            HPBarManager.Instance.UpdateHP(this, displayedHP / stats.maxHP);
         }
     }
 
@@ -310,7 +346,7 @@ public class CreatureBrain : MonoBehaviour
         Vector2 input = UIController.Instance.MovePad.Input;
         input = Vector2.ClampMagnitude(input, 1f);
 
-        rb.linearVelocity = input * moveSpeed;
+        rb.linearVelocity = input * stats.moveSpeed;
 
         if (input.sqrMagnitude > 0.01f)
             FaceDirection(input.x);
@@ -321,14 +357,15 @@ public class CreatureBrain : MonoBehaviour
         if (!isPlayerControlled) return;
         if (isDead) return;
         if (isAttacking) return;
-        if (attackTimer > 0f) return;
+        if (!combat.CanAttack()) return;
 
         currentTarget = FindBestTarget();
+        UpdatePlayerHighlight(currentTarget);
 
-        if (currentTarget == null || currentTarget.isDead)
+        if (currentTarget == null || currentTarget.IsDead())
             return;
 
-        attackTimer = attackCooldown;
+        combat.StartCooldown();
         StartAttack();
     }
 
@@ -343,7 +380,7 @@ public class CreatureBrain : MonoBehaviour
         if (fleeTimer > 0)
         {
             fleeTimer -= Time.deltaTime;
-            rb.linearVelocity = fleeDirection * moveSpeed;
+            rb.linearVelocity = fleeDirection * stats.moveSpeed;
             FaceDirection(fleeDirection.x);
             return;
         }
@@ -352,6 +389,7 @@ public class CreatureBrain : MonoBehaviour
         {
             scanTimer = SCAN_INTERVAL;
 
+            AutoTarget();
             CreatureBrain newTarget = FindBestTarget();
 
             if (newTarget != null)
@@ -378,7 +416,7 @@ public class CreatureBrain : MonoBehaviour
         {
             float distFood = (targetFood.transform.position - transform.position).sqrMagnitude;
 
-            if (distFood < visionRange * visionRange)
+            if (distFood < stats.visionRange * stats.visionRange)
             {
                 currentState = AIState.SeekFood;
                 HandleSeekFood();
@@ -390,7 +428,7 @@ public class CreatureBrain : MonoBehaviour
         {
             float dist = (currentTarget.transform.position - transform.position).sqrMagnitude;
 
-            if (dist > visionRange * visionRange)
+            if (dist > stats.visionRange * stats.visionRange)
             {
                 currentTarget = null;
                 return;
@@ -398,7 +436,9 @@ public class CreatureBrain : MonoBehaviour
 
             float sqrDist = (currentTarget.transform.position - transform.position).sqrMagnitude;
 
-            if (sqrDist <= attackRange * attackRange)
+            float range = combat.AttackRange;
+
+            if (sqrDist <= range * range)
             {
                 HandleFight();
                 return;
@@ -437,15 +477,15 @@ public class CreatureBrain : MonoBehaviour
 
         Vector2 dir = toFood.normalized;
         dir = AvoidObstacle(dir);
-        rb.linearVelocity = dir * moveSpeed;
+        rb.linearVelocity = dir * stats.moveSpeed;
         FaceDirection(dir.x);
     }
 
-    CreatureBrain FindBestTarget()
+    public CreatureBrain FindBestTarget()
     {
         int hitCount = Physics2D.OverlapCircleNonAlloc(
             transform.position,
-            visionRange,
+            stats.visionRange,
             scanBuffer
         );
 
@@ -473,6 +513,22 @@ public class CreatureBrain : MonoBehaviour
         return best;
     }
 
+    void AutoTarget()
+    {
+        if (currentTarget == null || currentTarget.IsDead() || currentTarget.isHidden)
+        {
+            currentTarget = FindBestTarget();
+            return;
+        }
+
+        float dist = (currentTarget.transform.position - transform.position).sqrMagnitude;
+
+        if (dist > stats.visionRange * stats.visionRange)
+        {
+            currentTarget = FindBestTarget();
+        }
+    }
+
     float EvaluateThreat(CreatureBrain enemy)
     {
         float dist = (transform.position - enemy.transform.position).sqrMagnitude;
@@ -482,17 +538,17 @@ public class CreatureBrain : MonoBehaviour
         if (level > enemy.level)
             score += 20f;
 
-        score += (visionRange * visionRange - dist) * 0.5f;
+        score += (stats.visionRange * stats.visionRange - dist) * 0.5f;
 
-        float myPower = currentHP * attackDamage;
-        float enemyPower = enemy.currentHP * enemy.attackDamage;
+        float myPower = currentHP * stats.attackDamage;
+        float enemyPower = enemy.currentHP * enemy.stats.attackDamage;
 
         float ratio = myPower / (enemyPower + 1f);
 
         if (ratio > 1.3f)
             score += 20f;
 
-        if (enemy.currentHP / enemy.maxHP < lowHPThreshold)
+        if (enemy.currentHP / enemy.stats.maxHP < lowHPThreshold)
             score += 35f;
 
         if (enemy == lastAttacker)
@@ -565,7 +621,7 @@ public class CreatureBrain : MonoBehaviour
 
     void DecideCombatState()
     {
-        float hpRatio = currentHP / maxHP;
+        float hpRatio = currentHP / stats.maxHP;
 
         if (hpRatio < lowHPThreshold)
         {
@@ -579,13 +635,13 @@ public class CreatureBrain : MonoBehaviour
             cachedConfidence = CalculateConfidence();
         }
 
-        float myPower = currentHP * attackDamage;
-        float enemyPower = currentTarget.currentHP * currentTarget.attackDamage;
+        float myPower = currentHP * stats.attackDamage;
+        float enemyPower = currentTarget.currentHP * currentTarget.stats.attackDamage;
 
         float ratio = myPower / (enemyPower + 1f);
         float confidence = cachedConfidence;
 
-        float enemySpeed = currentTarget.moveSpeed;
+        float enemySpeed = currentTarget.stats.moveSpeed;
 
         if (ratio >= 1.2f)
         {
@@ -605,7 +661,7 @@ public class CreatureBrain : MonoBehaviour
             return;
         }
 
-        if (enemySpeed >= moveSpeed)
+        if (enemySpeed >= stats.moveSpeed)
         {
             currentState = AIState.Fight;
             return;
@@ -616,37 +672,45 @@ public class CreatureBrain : MonoBehaviour
 
     void HandleFight()
     {
+        if (currentTarget == null || currentTarget.IsDead())
+        {
+            currentTarget = FindBestTarget();
+
+            if (currentTarget == null)
+                return;
+        }
+
         CreatureBrain closeTarget = FindBestTarget();
+
+        float range = combat.AttackRange;
 
         if (closeTarget != null)
         {
             float dist = (closeTarget.transform.position - transform.position).sqrMagnitude;
 
-            if (dist < attackRange * attackRange)
+            if (dist <= range * range)
                 currentTarget = closeTarget;
         }
 
         Vector2 toTarget = currentTarget.transform.position - transform.position;
         float sqrDist = toTarget.sqrMagnitude;
 
-        float stopDist = attackRange * 0.9f;
-
-        if (sqrDist <= attackRange * attackRange)
+        if (sqrDist <= range * range)
         {
             rb.linearVelocity = Vector2.zero;
             FaceDirection(toTarget.x);
 
-            if (attackTimer <= 0f && !isAttacking)
+            if (combat.CanAttack() && !isAttacking)
             {
-                attackTimer = attackCooldown;
+                combat.StartCooldown();
                 StartAttack();
             }
         }
-        else if (sqrDist > stopDist * stopDist)
+        else
         {
             Vector2 dir = toTarget.normalized;
             dir = AvoidObstacle(dir);
-            rb.linearVelocity = dir * moveSpeed;
+            rb.linearVelocity = dir * stats.moveSpeed;
             FaceDirection(dir.x);
         }
     }
@@ -660,7 +724,7 @@ public class CreatureBrain : MonoBehaviour
         }
 
         Vector2 dir = AvoidObstacle(fleeDirection);
-        rb.linearVelocity = dir * moveSpeed;
+        rb.linearVelocity = dir * stats.moveSpeed;
         FaceDirection(dir.x);
     }
 
@@ -678,7 +742,7 @@ public class CreatureBrain : MonoBehaviour
         else
         {
             Vector2 dir = AvoidObstacle(wanderDirection);
-            rb.linearVelocity = dir * moveSpeed;
+            rb.linearVelocity = dir * stats.moveSpeed;
             FaceDirection(dir.x);
 
             if (stateTimer <= 0f)
@@ -726,17 +790,7 @@ public class CreatureBrain : MonoBehaviour
 
     void DoDamage()
     {
-        if (currentTarget == null) return;
-        if (currentTarget.isDead) return;
-        if (currentTarget.isHidden) return;
-
-        float dist = (currentTarget.transform.position - transform.position).sqrMagnitude;
-
-        if (dist <= attackRange * attackRange)
-        {
-            currentTarget.TakeDamage(attackDamage, this);
-            SpawnHitEffectAt(currentTarget.transform.position);
-        }
+        combat.DoDamage();
     }
 
     void EndAttack()
@@ -763,7 +817,7 @@ public class CreatureBrain : MonoBehaviour
         GainXP(xp);
 
         currentHP += heal;
-        currentHP = Mathf.Min(currentHP, maxHP);
+        currentHP = Mathf.Min(currentHP, stats.maxHP);
     }
 
     public bool IsDead()
@@ -778,7 +832,7 @@ public class CreatureBrain : MonoBehaviour
         LevelSystem.Instance.GainXP(this, xp);
     }
 
-    void SpawnHitEffectAt(Vector3 pos)
+    public void SpawnHitEffectAt(Vector3 pos)
     {
         if (hitEffectPrefab == null) return;
         Instantiate(hitEffectPrefab, pos, Quaternion.identity);
@@ -795,6 +849,8 @@ public class CreatureBrain : MonoBehaviour
 
         if (GameManager.Instance != null)
             GameManager.Instance.OnCreatureDeath(this);
+        
+        SetTargetHighlight(false);
 
         Destroy(gameObject);
     }
@@ -827,6 +883,14 @@ public class CreatureBrain : MonoBehaviour
             spriteRenderer.flipX = !initialFlipX;
     }
 
+    public Vector2 GetFacingDirection()
+    {
+        if (spriteRenderer.flipX == initialFlipX)
+            return Vector2.right;
+        else
+            return Vector2.left;
+    }
+
     void HandleAnimatorState()
     {
         if (animator == null) return;
@@ -839,9 +903,9 @@ public class CreatureBrain : MonoBehaviour
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, visionRange);
+        Gizmos.DrawWireSphere(transform.position, stats.visionRange);
 
         Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, attackRange);
+        Gizmos.DrawWireSphere(transform.position, combat.AttackRange);
     }
 }
