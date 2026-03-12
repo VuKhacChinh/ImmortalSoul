@@ -26,7 +26,8 @@ public class GameManager : MonoBehaviour
     public float respawnCheckInterval = 5f;
 
     [Header("Player Highlight")]
-    public GameObject controlRingPrefab;
+    public GameObject controlEffectPrefab;
+    GameObject controlEffectInstance;
 
     [Header("Level Spawn Range")]
     public int levelRange = 3;
@@ -35,8 +36,6 @@ public class GameManager : MonoBehaviour
     public GameObject possessEffectPrefab;
     public GameObject soulPrefab;
     public float soulSpeed = 20f;
-
-    GameObject controlRingInstance;
 
     private List<CreatureBrain> allCreatures = new();
 
@@ -180,30 +179,27 @@ public class GameManager : MonoBehaviour
         SetPlayer(chosen);
     }
 
-    void AttachControlRing(CreatureBrain creature)
+    void AttachControlEffect(CreatureBrain creature)
     {
-        if (controlRingInstance == null)
-        {
-            controlRingInstance = Instantiate(controlRingPrefab);
-        }
+        if (controlEffectInstance == null)
+            controlEffectInstance = Instantiate(controlEffectPrefab);
 
-        controlRingInstance.transform.SetParent(creature.transform);
-        controlRingInstance.transform.localPosition = new Vector3(0, 0, 0);
-    }
+        HPBar bar = HPBarManager.Instance.GetHPBar(creature);
 
-    void ChooseNewPlayer()
-    {
-        int deadLevel = playerCreature.level;
-
-        CreatureBrain chosen = ChooseWeightedCreature(deadLevel);
-
-        if (chosen == null)
-        {
-            Debug.Log("GAME OVER");
+        if (bar == null)
             return;
-        }
 
-        SetPlayer(chosen);
+        controlEffectInstance.transform.SetParent(bar.transform, false);
+
+        // ===== FIX SCALE THEO HPBAR =====
+        float scale = bar.transform.lossyScale.x;
+
+        float fixScale = 1f / scale;
+
+        controlEffectInstance.transform.localScale = Vector3.one * fixScale;
+
+        // ===== VỊ TRÍ BÊN PHẢI HP =====
+        controlEffectInstance.transform.localPosition = new Vector3(0f, 50f, 0f);
     }
 
     void SetPlayer(CreatureBrain creature)
@@ -217,11 +213,18 @@ public class GameManager : MonoBehaviour
 
         playerCreature.currentHP = playerCreature.maxHP;
 
-        AttachControlRing(playerCreature);
+        StartCoroutine(AttachEffectNextFrame(playerCreature));
 
         PlayPossessEffect(playerCreature);
 
         UpdateCameraAndUI();
+    }
+
+    IEnumerator AttachEffectNextFrame(CreatureBrain creature)
+    {
+        yield return null; // chờ HPBar spawn
+
+        AttachControlEffect(creature);
     }
 
     CreatureBrain ChooseWeightedCreature(int maxLevel)
@@ -308,10 +311,13 @@ public class GameManager : MonoBehaviour
 
         CreatureBrain target = ChooseWeightedCreature(deadLevel);
 
+        // =================================================
+        // nếu không tìm được creature thì spawn 1 con mới
+        // =================================================
+
         if (target == null)
         {
-            Debug.Log("GAME OVER");
-            yield break;
+            target = SpawnFallbackCreature(deadLevel, deathPos);
         }
 
         CameraFollow cam = Camera.main.GetComponent<CameraFollow>();
@@ -319,14 +325,20 @@ public class GameManager : MonoBehaviour
         if (cam != null)
             cam.SetTarget(soul.transform);
 
-        while (soul != null && target != null)
+        while (soul != null)
         {
             if (target == null || target.currentHP <= 0)
             {
                 target = ChooseWeightedCreature(deadLevel);
+
+                if (target == null)
+                {
+                    target = SpawnFallbackCreature(deadLevel, soul.transform.position);
+                }
             }
 
             Vector3 dir = target.transform.position - soul.transform.position;
+
             soul.transform.position += dir.normalized * soulSpeed * Time.deltaTime;
 
             soul.transform.position += Vector3.up * Mathf.Sin(Time.time * 12f) * 0.1f;
@@ -339,10 +351,43 @@ public class GameManager : MonoBehaviour
 
         Destroy(soul);
 
-        SetPlayer(target);
+        if (target != null)
+        {
+            SetPlayer(target);
 
-        if (cam != null)
-            cam.SetTarget(playerCreature.transform);
+            if (cam != null)
+                cam.SetTarget(playerCreature.transform);
+        }
+    }
+
+    CreatureBrain SpawnFallbackCreature(int level, Vector3 nearPos)
+    {
+        if (zones.Count == 0)
+            return null;
+
+        int zoneIndex = Random.Range(0, zones.Count);
+        var zone = zones[zoneIndex];
+
+        if (zone.creaturePrefabs.Count == 0)
+            return null;
+
+        CreatureBrain prefab =
+            zone.creaturePrefabs[Random.Range(0, zone.creaturePrefabs.Count)];
+
+        Vector2 spawnPos = nearPos + (Vector3)Random.insideUnitCircle * 3f;
+
+        CreatureBrain creature =
+            Instantiate(prefab, spawnPos, Quaternion.identity);
+
+        creature.isPlayerControlled = false;
+
+        LevelSystem.Instance.SetLevel(creature, level);
+
+        allCreatures.Add(creature);
+        creatureZoneMap[creature] = zoneIndex;
+        zoneCreatures[zoneIndex].Add(creature);
+
+        return creature;
     }
 
     public CreatureBrain GetPlayer()

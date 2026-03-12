@@ -86,7 +86,7 @@ SpriteRenderer:
   m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.67, y: 0.78}
+  m_Size: {x: 1.35, y: 1.08}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -154,7 +154,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2651602349576561444}
@@ -200,7 +200,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 644bea4d9e85f944a8bfb6a08ff027f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CreatureBrain
-  isPlayerControlled: 1
+  isPlayerControlled: 0
   level: 1
   currentXP: 0
   meatPrefab: {fileID: 7905947638849257074, guid: 2ddafcb310b0c914fabab82bc9164a0b, type: 3}

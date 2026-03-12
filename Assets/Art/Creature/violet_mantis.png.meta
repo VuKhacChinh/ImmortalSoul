@@ -1,0 +1,407 @@
+fileFormatVersion: 2
+guid: 24e95d8d6e450d34fb80faa34bb98778
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -1754143886931587075
+    second: violet_mantis_0
+  - first:
+      213: -8199795716695179997
+    second: violet_mantis_1
+  - first:
+      213: -7551399262225885729
+    second: violet_mantis_2
+  - first:
+      213: 4346057067127984942
+    second: violet_mantis_3
+  - first:
+      213: 142618158854296198
+    second: violet_mantis_4
+  - first:
+      213: -5533531826581270121
+    second: violet_mantis_5
+  - first:
+      213: 1139614848200836103
+    second: violet_mantis_6
+  - first:
+      213: -6161920598290817944
+    second: violet_mantis_7
+  - first:
+      213: -3582054767154972313
+    second: violet_mantis_8
+  - first:
+      213: 3766433419237628666
+    second: violet_mantis_9
+  - first:
+      213: -3597466836835120524
+    second: violet_mantis_10
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: violet_mantis_0
+      rect:
+        serializedVersion: 2
+        x: 26
+        y: 318
+        width: 136
+        height: 148
+      alignment: 9
+      pivot: {x: 0.5804479, y: 0.44044927}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dff058ebd6708a7e0800000000000000
+      internalID: -1754143886931587075
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: violet_mantis_1
+      rect:
+        serializedVersion: 2
+        x: 163
+        y: 320
+        width: 140
+        height: 147
+      alignment: 9
+      pivot: {x: 0.5955159, y: 0.41730234}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 32d3d937d39743e80800000000000000
+      internalID: -8199795716695179997
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: violet_mantis_2
+      rect:
+        serializedVersion: 2
+        x: 303
+        y: 317
+        width: 138
+        height: 150
+      alignment: 9
+      pivot: {x: 0.6255299, y: 0.412878}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fd511e9416a043790800000000000000
+      internalID: -7551399262225885729
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: violet_mantis_3
+      rect:
+        serializedVersion: 2
+        x: 446
+        y: 319
+        width: 146
+        height: 150
+      alignment: 9
+      pivot: {x: 0.5978352, y: 0.40882587}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e235dbb40eb405c30800000000000000
+      internalID: 4346057067127984942
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: violet_mantis_4
+      rect:
+        serializedVersion: 2
+        x: 592
+        y: 316
+        width: 153
+        height: 156
+      alignment: 9
+      pivot: {x: 0.6013052, y: 0.3967471}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 682d709b57eaaf100800000000000000
+      internalID: 142618158854296198
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: violet_mantis_5
+      rect:
+        serializedVersion: 2
+        x: 9
+        y: 75
+        width: 152
+        height: 142
+      alignment: 9
+      pivot: {x: 0.60996896, y: 0.35232309}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7911e432f12f433b0800000000000000
+      internalID: -5533531826581270121
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: violet_mantis_6
+      rect:
+        serializedVersion: 2
+        x: 165
+        y: 76
+        width: 115
+        height: 168
+      alignment: 9
+      pivot: {x: 0.54492676, y: 0.38965}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 70485cf9aa9b0df00800000000000000
+      internalID: 1139614848200836103
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: violet_mantis_7
+      rect:
+        serializedVersion: 2
+        x: 431
+        y: 72
+        width: 169
+        height: 157
+      alignment: 9
+      pivot: {x: 0.49640325, y: 0.39740467}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 86c96b4fcd57c7aa0800000000000000
+      internalID: -6161920598290817944
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: violet_mantis_9
+      rect:
+        serializedVersion: 2
+        x: 601
+        y: 73
+        width: 138
+        height: 171
+      alignment: 9
+      pivot: {x: 0.6145192, y: 0.39158595}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: afa91d74d3f054430800000000000000
+      internalID: 3766433419237628666
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: violet_mantis_10
+      rect:
+        serializedVersion: 2
+        x: 280
+        y: 74
+        width: 153
+        height: 129
+      alignment: 9
+      pivot: {x: 0.6291141, y: 0.4505253}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 47ac13bd8fa331ec0800000000000000
+      internalID: -3597466836835120524
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: f5d129fb507013141ab2ca0bd9f0eab1
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      violet_mantis_0: -1754143886931587075
+      violet_mantis_1: -8199795716695179997
+      violet_mantis_10: -3597466836835120524
+      violet_mantis_2: -7551399262225885729
+      violet_mantis_3: 4346057067127984942
+      violet_mantis_4: 142618158854296198
+      violet_mantis_5: -5533531826581270121
+      violet_mantis_6: 1139614848200836103
+      violet_mantis_7: -6161920598290817944
+      violet_mantis_8: -3582054767154972313
+      violet_mantis_9: 3766433419237628666
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

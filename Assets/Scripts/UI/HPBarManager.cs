@@ -38,6 +38,14 @@ public class HPBarManager : MonoBehaviour
         bar.SetColor(c);
     }
 
+    public HPBar GetHPBar(CreatureBrain creature)
+    {
+        if (barMap.TryGetValue(creature, out HPBar bar))
+            return bar;
+
+        return null;
+    }
+
     public void SetHPBarColor(CreatureBrain creature, Color color)
     {
         if (!barMap.TryGetValue(creature, out HPBar bar))
