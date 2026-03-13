@@ -62,7 +62,7 @@ public class LevelSystem : MonoBehaviour
 
         ApplyLevelStats(creature);
 
-        creature.currentHP = creature.maxHP;
+        creature.currentHP = creature.stats.maxHP;
 
         UpdateHPBar(creature);
 
@@ -83,7 +83,7 @@ public class LevelSystem : MonoBehaviour
             ApplyLevelStats(creature);
         }
 
-        creature.currentHP = creature.maxHP;
+        creature.currentHP = creature.stats.maxHP;
 
         UpdateHPBar(creature);
     }
@@ -100,9 +100,9 @@ public class LevelSystem : MonoBehaviour
 
     void ApplyLevelStats(CreatureBrain creature)
     {
-        creature.maxHP += hpPerLevel;
-        creature.attackDamage += damagePerLevel + creature.level * 0.15f;
-        creature.moveSpeed += speedPerLevel;
+        creature.stats.maxHP += hpPerLevel;
+        creature.stats.attackDamage += damagePerLevel + creature.level * 0.15f;
+        creature.stats.moveSpeed += speedPerLevel;
 
         Vector3 s = creature.transform.localScale;
 

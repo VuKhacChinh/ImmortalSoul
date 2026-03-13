@@ -79,7 +79,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -496768567
-  m_SortingLayer: 2
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: 6507982653818034734, guid: c2391d3b822ff6b44821a893c4db18b6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -215,6 +215,7 @@ GameObject:
   - component: {fileID: 2492714350712016835}
   - component: {fileID: 357390411001488482}
   - component: {fileID: 8099261797296490793}
+  - component: {fileID: 3088730794789061606}
   m_Layer: 0
   m_Name: Cro
   m_TagString: Untagged
@@ -281,21 +282,15 @@ MonoBehaviour:
   isPlayerControlled: 0
   level: 1
   currentXP: 0
-  xpToNextLevel: 20
-  maxLevel: 100
-  scalePerLevel: 1
-  hpPerLevel: 10
-  damagePerLevel: 2
   meatPrefab: {fileID: 7905947638849257074, guid: 2ddafcb310b0c914fabab82bc9164a0b, type: 3}
   dropCountMin: 1
   dropCountMax: 2
-  moveSpeed: 3
-  visionRange: 10
-  maxHP: 100
+  stats:
+    maxHP: 100
+    attackDamage: 10
+    moveSpeed: 4
+    visionRange: 10
   currentHP: 0
-  attackDamage: 10
-  attackRange: 5
-  attackCooldown: 1
   lowHPThreshold: 0.25
   fleeDuration: 2
   revengeMemoryDuration: 4
@@ -303,3 +298,18 @@ MonoBehaviour:
   hitEffectPrefab: {fileID: 3333797413733861392, guid: 2c3cd5c202c7878478f42ff44ef8aa8b, type: 3}
   foodSearchRange: 5
   lowHPPriority: 0.6
+  obstacleCheckDistance: 1.5
+  isHidden: 0
+--- !u!114 &3088730794789061606
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7096477749138490320}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1eb2d258edf69ae44ae052577d872aee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CombatController
+  attack: {fileID: 11400000, guid: c8737bd5256fea34ca9cfd3351f9ad7b, type: 2}

@@ -81,9 +81,9 @@ SpriteRenderer:
   m_SortingLayerID: -496768567
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: -2739372785030532668, guid: 492d296e8fa77064daae3dbfe1e52f7f, type: 3}
+  m_Sprite: {fileID: -5052944993645903236, guid: 415a6e30297cf6b45aa6fda3205ea21e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 1
+  m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 0.08, y: 0.07}
@@ -102,7 +102,7 @@ Animator:
   m_GameObject: {fileID: 7250386410483983525}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 687501d94872b9d4c80a032bca4accfa, type: 2}
+  m_Controller: {fileID: 9100000, guid: 2cee1c09afe71cb45a538202abc3d929, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -139,7 +139,7 @@ GameObject:
   - component: {fileID: 6420337514911783703}
   - component: {fileID: 9038398184391069704}
   m_Layer: 0
-  m_Name: WhiteWolve
+  m_Name: Dino
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -210,7 +210,7 @@ MonoBehaviour:
   stats:
     maxHP: 100
     attackDamage: 10
-    moveSpeed: 5
+    moveSpeed: 6
     visionRange: 10
   currentHP: 0
   lowHPThreshold: 0.25
@@ -311,5 +311,5 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1.2, y: 0.8}
+  m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0

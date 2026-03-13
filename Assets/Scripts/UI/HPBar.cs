@@ -15,7 +15,7 @@ public class HPBar : MonoBehaviour
     {
         creature = target;
 
-        SetValue(creature.currentHP / creature.maxHP);
+        SetValue(creature.currentHP / creature.stats.maxHP);
 
         UpdateTexts();
     }
@@ -50,7 +50,7 @@ public class HPBar : MonoBehaviour
         if (hpText != null)
         {
             int hp = Mathf.RoundToInt(creature.currentHP);
-            int max = Mathf.RoundToInt(creature.maxHP);
+            int max = Mathf.RoundToInt(creature.stats.maxHP);
 
             hpText.text = $"{hp}/{max}";
         }

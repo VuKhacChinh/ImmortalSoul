@@ -211,7 +211,7 @@ public class GameManager : MonoBehaviour
         playerCreature.isPlayerControlled = true;
         playerCreature.SetHidden(false);
 
-        playerCreature.currentHP = playerCreature.maxHP;
+        playerCreature.currentHP = playerCreature.stats.maxHP;
 
         StartCoroutine(AttachEffectNextFrame(playerCreature));
 

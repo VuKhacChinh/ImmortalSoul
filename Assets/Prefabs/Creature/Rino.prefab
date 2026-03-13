@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 8044246830942287311}
   - component: {fileID: 5848161897819862798}
   - component: {fileID: 2621780386836133904}
+  - component: {fileID: 7546558474973846437}
   m_Layer: 0
   m_Name: Rino
   m_TagString: Untagged
@@ -77,21 +78,15 @@ MonoBehaviour:
   isPlayerControlled: 0
   level: 1
   currentXP: 0
-  xpToNextLevel: 20
-  maxLevel: 100
-  scalePerLevel: 1
-  hpPerLevel: 10
-  damagePerLevel: 2
   meatPrefab: {fileID: 7905947638849257074, guid: 2ddafcb310b0c914fabab82bc9164a0b, type: 3}
   dropCountMin: 1
   dropCountMax: 2
-  moveSpeed: 3.5
-  visionRange: 10
-  maxHP: 100
+  stats:
+    maxHP: 100
+    attackDamage: 10
+    moveSpeed: 4
+    visionRange: 10
   currentHP: 0
-  attackDamage: 10
-  attackRange: 5
-  attackCooldown: 1
   lowHPThreshold: 0.25
   fleeDuration: 2
   revengeMemoryDuration: 4
@@ -99,6 +94,21 @@ MonoBehaviour:
   hitEffectPrefab: {fileID: 3333797413733861392, guid: 2c3cd5c202c7878478f42ff44ef8aa8b, type: 3}
   foodSearchRange: 5
   lowHPPriority: 0.6
+  obstacleCheckDistance: 1.5
+  isHidden: 0
+--- !u!114 &7546558474973846437
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1739036062129614591}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1eb2d258edf69ae44ae052577d872aee, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CombatController
+  attack: {fileID: 11400000, guid: c8737bd5256fea34ca9cfd3351f9ad7b, type: 2}
 --- !u!1 &7712701422468116988
 GameObject:
   m_ObjectHideFlags: 0
@@ -178,7 +188,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
   m_SortingLayerID: -496768567
-  m_SortingLayer: 2
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_Sprite: {fileID: -7436240511851512137, guid: 3a4538624a49d664f9dabbe525404113, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
