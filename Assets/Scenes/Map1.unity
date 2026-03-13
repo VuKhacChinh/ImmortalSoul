@@ -865,7 +865,7 @@ GameObject:
   - component: {fileID: 1605042682}
   - component: {fileID: 1605042683}
   m_Layer: 0
-  m_Name: HPBarManager
+  m_Name: BarManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -895,10 +895,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1605042681}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 59384ebdf004ac5458603005b0f4a1ac, type: 3}
+  m_Script: {fileID: 11500000, guid: e6e9c489d49f5c147a89a365d1a2ff99, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HPBarManager
-  hpBarPrefab: {fileID: 2122331791142055330, guid: fcfc4dcbeea180b43af1e2c8e8d4fe7d, type: 3}
+  barPrefab: {fileID: 2122331791142055330, guid: fcfc4dcbeea180b43af1e2c8e8d4fe7d, type: 3}
 --- !u!1 &1633688253
 GameObject:
   m_ObjectHideFlags: 0

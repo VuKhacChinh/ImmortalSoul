@@ -1,15 +1,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class HPBarManager : MonoBehaviour
+public class BarManager : MonoBehaviour
 {
-    public static HPBarManager Instance;
+    public static BarManager Instance;
 
     [Header("Prefab")]
-    public HPBar hpBarPrefab;
+    public Bar barPrefab;
 
-    // Map Creature -> HPBar
-    private Dictionary<CreatureBrain, HPBar> barMap = new();
+    private Dictionary<CreatureBrain, Bar> barMap = new();
 
     void Awake()
     {
@@ -22,25 +21,25 @@ public class HPBarManager : MonoBehaviour
     // =========================================================
     // CREATE
     // =========================================================
-    public void CreateHPBar(CreatureBrain creature)
+
+    public void CreateBar(CreatureBrain creature)
     {
         if (creature == null) return;
 
         if (barMap.ContainsKey(creature)) return;
 
-        HPBar bar = Instantiate(hpBarPrefab, transform);
+        Bar bar = Instantiate(barPrefab, transform);
         bar.Init(creature);
 
         barMap.Add(creature, bar);
 
-        // set màu sau khi add
         Color c = LevelSystem.Instance.GetLevelColor(creature.level);
         bar.SetColor(c);
     }
 
-    public HPBar GetHPBar(CreatureBrain creature)
+    public Bar GetHPBar(CreatureBrain creature)
     {
-        if (barMap.TryGetValue(creature, out HPBar bar))
+        if (barMap.TryGetValue(creature, out Bar bar))
             return bar;
 
         return null;
@@ -48,36 +47,60 @@ public class HPBarManager : MonoBehaviour
 
     public void SetHPBarColor(CreatureBrain creature, Color color)
     {
-        if (!barMap.TryGetValue(creature, out HPBar bar))
+        if (!barMap.TryGetValue(creature, out Bar bar))
             return;
 
         bar.SetColor(color);
     }
 
     // =========================================================
-    // UPDATE HP (THÊM MỚI)
+    // UPDATE HP
     // =========================================================
+
     public void UpdateHP(CreatureBrain creature, float normalizedValue)
     {
         if (creature == null) return;
 
-        if (barMap.TryGetValue(creature, out HPBar bar))
+        if (barMap.TryGetValue(creature, out Bar bar))
         {
-            bar.SetValue(normalizedValue);
+            bar.SetHP(normalizedValue);
+        }
+    }
+
+    // =========================================================
+    // UPDATE MP
+    // =========================================================
+
+    public void UpdateMP(CreatureBrain creature, float normalizedValue)
+    {
+        if (creature == null) return;
+
+        if (barMap.TryGetValue(creature, out Bar bar))
+        {
+            bar.SetMP(normalizedValue);
+        }
+    }
+
+    public void SetMPVisible(CreatureBrain creature, bool visible)
+    {
+        if (barMap.TryGetValue(creature, out Bar bar))
+        {
+            bar.SetMPVisible(visible);
         }
     }
 
     // =========================================================
     // REMOVE
     // =========================================================
+
     public void RemoveHPBar(CreatureBrain creature)
     {
         if (creature == null) return;
 
-        if (creature.currentHP > 0)
+        if (creature.runtime.HP > 0)
             return;
 
-        if (barMap.TryGetValue(creature, out HPBar bar))
+        if (barMap.TryGetValue(creature, out Bar bar))
         {
             Destroy(bar.gameObject);
             barMap.Remove(creature);
@@ -86,15 +109,32 @@ public class HPBarManager : MonoBehaviour
 
     public void SetHPBarVisible(CreatureBrain creature, bool visible)
     {
-        if (barMap.TryGetValue(creature, out HPBar bar))
+        if (barMap.TryGetValue(creature, out Bar bar))
         {
             bar.gameObject.SetActive(visible);
         }
     }
 
+    public void UpdateXP(CreatureBrain creature, float normalizedValue)
+    {
+        if (barMap.TryGetValue(creature, out Bar bar))
+        {
+            bar.SetXP(normalizedValue);
+        }
+    }
+
+    public void RefreshBar(CreatureBrain creature)
+    {
+        if (barMap.TryGetValue(creature, out Bar bar))
+        {
+            bar.UpdatePlayerState();
+        }
+    }
+
     // =========================================================
-    // OPTIONAL: CLEAR ALL (tiện reset stage)
+    // CLEAR
     // =========================================================
+
     public void ClearAll()
     {
         foreach (var pair in barMap)

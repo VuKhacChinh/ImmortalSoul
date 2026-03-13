@@ -184,7 +184,7 @@ public class GameManager : MonoBehaviour
         if (controlEffectInstance == null)
             controlEffectInstance = Instantiate(controlEffectPrefab);
 
-        HPBar bar = HPBarManager.Instance.GetHPBar(creature);
+        Bar bar = BarManager.Instance.GetHPBar(creature);
 
         if (bar == null)
             return;
@@ -205,13 +205,22 @@ public class GameManager : MonoBehaviour
     void SetPlayer(CreatureBrain creature)
     {
         if (playerCreature != null)
+        {
             playerCreature.isPlayerControlled = false;
+
+            BarManager.Instance.SetMPVisible(playerCreature, false);
+            BarManager.Instance.RefreshBar(playerCreature); // UPDATE UI
+        }
 
         playerCreature = creature;
         playerCreature.isPlayerControlled = true;
+
+        BarManager.Instance.SetMPVisible(creature, true);
+        BarManager.Instance.RefreshBar(creature); // UPDATE UI
+
         playerCreature.SetHidden(false);
 
-        playerCreature.currentHP = playerCreature.stats.maxHP;
+        playerCreature.runtime.HP = playerCreature.stats.maxHP;
 
         StartCoroutine(AttachEffectNextFrame(playerCreature));
 
@@ -233,7 +242,7 @@ public class GameManager : MonoBehaviour
 
         foreach (var c in allCreatures)
         {
-            if (c != null && c.currentHP > 0 && c.level <= maxLevel)
+            if (c != null && c.runtime.HP > 0 && c.level <= maxLevel)
                 candidates.Add(c);
         }
 
@@ -327,7 +336,7 @@ public class GameManager : MonoBehaviour
 
         while (soul != null)
         {
-            if (target == null || target.currentHP <= 0)
+            if (target == null || target.runtime.HP <= 0)
             {
                 target = ChooseWeightedCreature(deadLevel);
 
@@ -337,13 +346,15 @@ public class GameManager : MonoBehaviour
                 }
             }
 
-            Vector3 dir = target.transform.position - soul.transform.position;
-
-            soul.transform.position += dir.normalized * soulSpeed * Time.deltaTime;
+            soul.transform.position = Vector3.MoveTowards(
+                soul.transform.position,
+                target.transform.position,
+                soulSpeed * Time.deltaTime
+            );
 
             soul.transform.position += Vector3.up * Mathf.Sin(Time.time * 12f) * 0.1f;
 
-            if (Vector3.Distance(soul.transform.position, target.transform.position) < 0.2f)
+            if (Vector3.Distance(soul.transform.position, target.transform.position) < 0.5f)
                 break;
 
             yield return null;
