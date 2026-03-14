@@ -209,14 +209,21 @@ public class GameManager : MonoBehaviour
             playerCreature.isPlayerControlled = false;
 
             BarManager.Instance.SetMPVisible(playerCreature, false);
-            BarManager.Instance.RefreshBar(playerCreature); // UPDATE UI
+            BarManager.Instance.RefreshBar(playerCreature);
         }
 
         playerCreature = creature;
         playerCreature.isPlayerControlled = true;
 
+        CombatController combat = playerCreature.GetComponent<CombatController>();
+
+        if (combat != null)
+        {
+            combat.BuildSkills(PlayerSkillSystem.Instance.skills);
+        }
+
         BarManager.Instance.SetMPVisible(creature, true);
-        BarManager.Instance.RefreshBar(creature); // UPDATE UI
+        BarManager.Instance.RefreshBar(creature);
 
         playerCreature.SetHidden(false);
 
