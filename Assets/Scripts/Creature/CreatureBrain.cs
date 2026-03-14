@@ -10,6 +10,7 @@ public class CreatureBrain : MonoBehaviour
     [Header("Level")]
     public int level = 1;
     public int currentXP = 0;
+    float displayedXP;
 
     [Header("Drop")]
     public GameObject meatPrefab;
@@ -19,9 +20,10 @@ public class CreatureBrain : MonoBehaviour
     [Header("Stats")]
     public CreatureStats stats;
 
-    [Header("HP")]
-    public float currentHP;
+    [Header("HP MP")]
+    public RuntimeStats runtime;
     float displayedHP;
+    float displayedMP;
 
     [Header("AI")]
     public float lowHPThreshold = 0.25f;
@@ -106,6 +108,7 @@ public class CreatureBrain : MonoBehaviour
     Material originalMaterial;
 
     public CreatureBrain CurrentTarget => currentTarget;
+    public CombatController Combat => combat;
     static CreatureBrain playerHighlightTarget;
 
     void Awake()
@@ -120,8 +123,14 @@ public class CreatureBrain : MonoBehaviour
         outlineTargetMaterial = Resources.Load<Material>("Materials/OutlineTarget");
         initialFlipX = spriteRenderer.flipX;
 
-        currentHP = stats.maxHP;
-        displayedHP = stats.maxHP;
+        runtime = new RuntimeStats();
+
+        runtime.HP = stats.maxHP;
+        runtime.MP = stats.maxMP;
+
+        displayedHP = runtime.HP;
+        displayedMP = runtime.MP;
+        displayedXP = LevelSystem.Instance != null ? LevelSystem.Instance.GetXPPercent(this) : 0f;
 
         lastPosition = transform.position;
         combat = GetComponent<CombatController>();
@@ -129,7 +138,7 @@ public class CreatureBrain : MonoBehaviour
 
     void Start()
     {
-        HPBarManager.Instance.CreateHPBar(this);
+        BarManager.Instance.CreateBar(this);
         ChangeToIdle();
     }
 
@@ -165,7 +174,7 @@ public class CreatureBrain : MonoBehaviour
         if (isPlayerControlled) {
             if (currentTarget == null || currentTarget.IsDead())
             {
-                CreatureBrain newTarget = FindBestTarget();
+                CreatureBrain newTarget = FindBestTargetInRange(combat.AttackRange);
                 currentTarget = newTarget;
                 UpdatePlayerHighlight(newTarget);
             }
@@ -179,6 +188,8 @@ public class CreatureBrain : MonoBehaviour
 
         HandleAnimatorState();
         UpdateHPVisual();
+        UpdateMPVisual();
+        UpdateXPVisual();
     }
 
     public void SetHidden(bool value)
@@ -199,14 +210,14 @@ public class CreatureBrain : MonoBehaviour
             spriteRenderer.enabled = true;
 
             // player luôn thấy HP bar
-            HPBarManager.Instance.SetHPBarVisible(this, true);
+            BarManager.Instance.SetHPBarVisible(this, true);
         }
         else
         {
             spriteRenderer.enabled = !value;
 
             // AI ẩn thì ẩn luôn HP bar
-            HPBarManager.Instance.SetHPBarVisible(this, !value);
+            BarManager.Instance.SetHPBarVisible(this, !value);
         }
     }
 
@@ -328,10 +339,37 @@ public class CreatureBrain : MonoBehaviour
 
     void UpdateHPVisual()
     {
-        if (displayedHP != currentHP)
+        if (displayedHP != runtime.HP)
         {
-            displayedHP = Mathf.MoveTowards(displayedHP, currentHP, 60f * Time.deltaTime);
-            HPBarManager.Instance.UpdateHP(this, displayedHP / stats.maxHP);
+            displayedHP = Mathf.MoveTowards(displayedHP, runtime.HP, 60f * Time.deltaTime);
+            BarManager.Instance.UpdateHP(this, displayedHP / stats.maxHP);
+        }
+    }
+
+    void UpdateMPVisual()
+    {
+        if (displayedMP != runtime.MP)
+        {
+            displayedMP = Mathf.MoveTowards(displayedMP, runtime.MP, 60f * Time.deltaTime);
+
+            BarManager.Instance.UpdateMP(this, displayedMP / stats.maxMP);
+        }
+    }
+
+    void UpdateXPVisual()
+    {
+        if (LevelSystem.Instance == null) return;
+
+        float targetXP = LevelSystem.Instance.GetXPPercent(this);
+
+        if (displayedXP != targetXP)
+        {
+            if (targetXP < displayedXP)
+                displayedXP = targetXP;
+            
+            displayedXP = Mathf.MoveTowards(displayedXP, targetXP, 1.5f * Time.deltaTime);
+
+            BarManager.Instance.UpdateXP(this, displayedXP);
         }
     }
 
@@ -359,11 +397,8 @@ public class CreatureBrain : MonoBehaviour
         if (isAttacking) return;
         if (!combat.CanAttack()) return;
 
-        currentTarget = FindBestTarget();
+        currentTarget = FindBestTargetInRange(combat.AttackRange);
         UpdatePlayerHighlight(currentTarget);
-
-        if (currentTarget == null || currentTarget.IsDead())
-            return;
 
         combat.StartCooldown();
         StartAttack();
@@ -390,7 +425,7 @@ public class CreatureBrain : MonoBehaviour
             scanTimer = SCAN_INTERVAL;
 
             AutoTarget();
-            CreatureBrain newTarget = FindBestTarget();
+            CreatureBrain newTarget = FindBestTargetInRange(combat.AttackRange);
 
             if (newTarget != null)
             {
@@ -481,11 +516,11 @@ public class CreatureBrain : MonoBehaviour
         FaceDirection(dir.x);
     }
 
-    public CreatureBrain FindBestTarget()
+    public CreatureBrain FindBestTargetInRange(float range)
     {
         int hitCount = Physics2D.OverlapCircleNonAlloc(
             transform.position,
-            stats.visionRange,
+            range,
             scanBuffer
         );
 
@@ -494,11 +529,9 @@ public class CreatureBrain : MonoBehaviour
 
         for (int i = 0; i < hitCount; i++)
         {
-            Collider2D hit = scanBuffer[i];
+            CreatureBrain other = scanBuffer[i].GetComponentInParent<CreatureBrain>();
 
-            CreatureBrain other = hit.attachedRigidbody?.GetComponent<CreatureBrain>();
-
-            if (other == null || other == this || other.isDead || other.isHidden)
+            if (other == null || other == this || other.IsDead() || other.isHidden)
                 continue;
 
             float score = EvaluateThreat(other);
@@ -517,7 +550,7 @@ public class CreatureBrain : MonoBehaviour
     {
         if (currentTarget == null || currentTarget.IsDead() || currentTarget.isHidden)
         {
-            currentTarget = FindBestTarget();
+            currentTarget = FindBestTargetInRange(combat.AttackRange);
             return;
         }
 
@@ -525,7 +558,7 @@ public class CreatureBrain : MonoBehaviour
 
         if (dist > stats.visionRange * stats.visionRange)
         {
-            currentTarget = FindBestTarget();
+            currentTarget = FindBestTargetInRange(combat.AttackRange);
         }
     }
 
@@ -540,15 +573,15 @@ public class CreatureBrain : MonoBehaviour
 
         score += (stats.visionRange * stats.visionRange - dist) * 0.5f;
 
-        float myPower = currentHP * stats.attackDamage;
-        float enemyPower = enemy.currentHP * enemy.stats.attackDamage;
+        float myPower = runtime.HP * stats.attackDamage;
+        float enemyPower = enemy.runtime.HP * enemy.stats.attackDamage;
 
         float ratio = myPower / (enemyPower + 1f);
 
         if (ratio > 1.3f)
             score += 20f;
 
-        if (enemy.currentHP / enemy.stats.maxHP < lowHPThreshold)
+        if (enemy.runtime.HP / enemy.stats.maxHP < lowHPThreshold)
             score += 35f;
 
         if (enemy == lastAttacker)
@@ -621,7 +654,7 @@ public class CreatureBrain : MonoBehaviour
 
     void DecideCombatState()
     {
-        float hpRatio = currentHP / stats.maxHP;
+        float hpRatio = runtime.HP / stats.maxHP;
 
         if (hpRatio < lowHPThreshold)
         {
@@ -635,8 +668,8 @@ public class CreatureBrain : MonoBehaviour
             cachedConfidence = CalculateConfidence();
         }
 
-        float myPower = currentHP * stats.attackDamage;
-        float enemyPower = currentTarget.currentHP * currentTarget.stats.attackDamage;
+        float myPower = runtime.HP * stats.attackDamage;
+        float enemyPower = currentTarget.runtime.HP * currentTarget.stats.attackDamage;
 
         float ratio = myPower / (enemyPower + 1f);
         float confidence = cachedConfidence;
@@ -674,17 +707,16 @@ public class CreatureBrain : MonoBehaviour
     {
         if (currentTarget == null || currentTarget.IsDead())
         {
-            currentTarget = FindBestTarget();
+            currentTarget = FindBestTargetInRange(combat.AttackRange);
 
             if (currentTarget == null)
                 return;
         }
 
-        CreatureBrain closeTarget = FindBestTarget();
-
+        CreatureBrain closeTarget = FindBestTargetInRange(combat.AttackRange);
         float range = combat.AttackRange;
 
-        if (closeTarget != null)
+        if (closeTarget != null && closeTarget != currentTarget)
         {
             float dist = (closeTarget.transform.position - transform.position).sqrMagnitude;
 
@@ -802,13 +834,13 @@ public class CreatureBrain : MonoBehaviour
     {
         if (isDead) return;
 
-        currentHP -= dmg;
-        currentHP = Mathf.Max(currentHP, 0);
+        runtime.HP -= dmg;
+        runtime.HP = Mathf.Max(runtime.HP, 0);
 
         lastAttacker = attacker;
         revengeTimer = revengeMemoryDuration;
 
-        if (currentHP <= 0)
+        if (runtime.HP <= 0)
             Die();
     }
 
@@ -816,8 +848,8 @@ public class CreatureBrain : MonoBehaviour
     {
         GainXP(xp);
 
-        currentHP += heal;
-        currentHP = Mathf.Min(currentHP, stats.maxHP);
+        runtime.HP += heal;
+        runtime.HP = Mathf.Min(runtime.HP, stats.maxHP);
     }
 
     public bool IsDead()
@@ -845,7 +877,7 @@ public class CreatureBrain : MonoBehaviour
 
         DropItems();
 
-        HPBarManager.Instance.RemoveHPBar(this);
+        BarManager.Instance.RemoveHPBar(this);
 
         if (GameManager.Instance != null)
             GameManager.Instance.OnCreatureDeath(this);

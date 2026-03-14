@@ -49,11 +49,24 @@ public class LevelSystem : MonoBehaviour
         creature.currentXP += xp;
 
         while (creature.currentXP >= GetXPRequired(creature.level)
-               && creature.level < maxLevel)
+            && creature.level < maxLevel)
         {
             creature.currentXP -= GetXPRequired(creature.level);
             LevelUp(creature);
         }
+
+        UpdateXPBar(creature);
+    }
+
+    void UpdateXPBar(CreatureBrain creature)
+    {
+        if (!creature.isPlayerControlled) return;
+
+        if (BarManager.Instance == null) return;
+
+        float percent = GetXPPercent(creature);
+
+        BarManager.Instance.UpdateXP(creature, percent);
     }
 
     void LevelUp(CreatureBrain creature)
@@ -62,7 +75,7 @@ public class LevelSystem : MonoBehaviour
 
         ApplyLevelStats(creature);
 
-        creature.currentHP = creature.stats.maxHP;
+        creature.runtime.HP = creature.stats.maxHP;
 
         UpdateHPBar(creature);
 
@@ -83,19 +96,19 @@ public class LevelSystem : MonoBehaviour
             ApplyLevelStats(creature);
         }
 
-        creature.currentHP = creature.stats.maxHP;
+        creature.runtime.HP = creature.stats.maxHP;
 
         UpdateHPBar(creature);
     }
 
     void UpdateHPBar(CreatureBrain creature)
     {
-        if (HPBarManager.Instance == null) return;
+        if (BarManager.Instance == null) return;
 
-        HPBarManager.Instance.UpdateHP(creature, 1f);
+        BarManager.Instance.UpdateHP(creature, 1f);
 
         Color c = GetLevelColor(creature.level);
-        HPBarManager.Instance.SetHPBarColor(creature, c);
+        BarManager.Instance.SetHPBarColor(creature, c);
     }
 
     void ApplyLevelStats(CreatureBrain creature)
@@ -133,6 +146,15 @@ public class LevelSystem : MonoBehaviour
             return levelColors[levelColors.Length - 1];
 
         return levelColors[tier];
+    }
+
+    public float GetXPPercent(CreatureBrain creature)
+    {
+        int required = GetXPRequired(creature.level);
+
+        if (required <= 0) return 0;
+
+        return (float)creature.currentXP / required;
     }
 
 }
