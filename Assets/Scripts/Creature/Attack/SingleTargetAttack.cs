@@ -10,14 +10,20 @@ public class SingleTargetAttack : AttackDefinition
         // ===== AUTO RETARGET =====
         if (target == null || target.IsDead() || target.isHidden)
         {
-            target = owner.FindBestTarget();
+            target = owner.FindBestTargetInRange(owner.Combat.AttackRange);
         }
 
         if (target == null) return;
 
-        float dist = (target.transform.position - owner.transform.position).sqrMagnitude;
+        var myCol = owner.GetComponentInChildren<Collider2D>();
+        var targetCol = target.GetComponentInChildren<Collider2D>();
 
-        if (dist <= range * range)
+        float dist = Vector2.Distance(
+            myCol.ClosestPoint(target.transform.position),
+            targetCol.ClosestPoint(owner.transform.position)
+        );
+
+        if (dist <= range)
         {
             target.TakeDamage(owner.stats.attackDamage, owner);
             owner.SpawnHitEffectAt(target.transform.position);

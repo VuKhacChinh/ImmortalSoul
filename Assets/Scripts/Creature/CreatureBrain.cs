@@ -108,6 +108,7 @@ public class CreatureBrain : MonoBehaviour
     Material originalMaterial;
 
     public CreatureBrain CurrentTarget => currentTarget;
+    public CombatController Combat => combat;
     static CreatureBrain playerHighlightTarget;
 
     void Awake()
@@ -173,7 +174,7 @@ public class CreatureBrain : MonoBehaviour
         if (isPlayerControlled) {
             if (currentTarget == null || currentTarget.IsDead())
             {
-                CreatureBrain newTarget = FindBestTarget();
+                CreatureBrain newTarget = FindBestTargetInRange(combat.AttackRange);
                 currentTarget = newTarget;
                 UpdatePlayerHighlight(newTarget);
             }
@@ -396,11 +397,8 @@ public class CreatureBrain : MonoBehaviour
         if (isAttacking) return;
         if (!combat.CanAttack()) return;
 
-        currentTarget = FindBestTarget();
+        currentTarget = FindBestTargetInRange(combat.AttackRange);
         UpdatePlayerHighlight(currentTarget);
-
-        if (currentTarget == null || currentTarget.IsDead())
-            return;
 
         combat.StartCooldown();
         StartAttack();
@@ -427,7 +425,7 @@ public class CreatureBrain : MonoBehaviour
             scanTimer = SCAN_INTERVAL;
 
             AutoTarget();
-            CreatureBrain newTarget = FindBestTarget();
+            CreatureBrain newTarget = FindBestTargetInRange(combat.AttackRange);
 
             if (newTarget != null)
             {
@@ -518,11 +516,11 @@ public class CreatureBrain : MonoBehaviour
         FaceDirection(dir.x);
     }
 
-    public CreatureBrain FindBestTarget()
+    public CreatureBrain FindBestTargetInRange(float range)
     {
         int hitCount = Physics2D.OverlapCircleNonAlloc(
             transform.position,
-            stats.visionRange,
+            range,
             scanBuffer
         );
 
@@ -531,11 +529,9 @@ public class CreatureBrain : MonoBehaviour
 
         for (int i = 0; i < hitCount; i++)
         {
-            Collider2D hit = scanBuffer[i];
+            CreatureBrain other = scanBuffer[i].GetComponentInParent<CreatureBrain>();
 
-            CreatureBrain other = hit.attachedRigidbody?.GetComponent<CreatureBrain>();
-
-            if (other == null || other == this || other.isDead || other.isHidden)
+            if (other == null || other == this || other.IsDead() || other.isHidden)
                 continue;
 
             float score = EvaluateThreat(other);
@@ -554,7 +550,7 @@ public class CreatureBrain : MonoBehaviour
     {
         if (currentTarget == null || currentTarget.IsDead() || currentTarget.isHidden)
         {
-            currentTarget = FindBestTarget();
+            currentTarget = FindBestTargetInRange(combat.AttackRange);
             return;
         }
 
@@ -562,7 +558,7 @@ public class CreatureBrain : MonoBehaviour
 
         if (dist > stats.visionRange * stats.visionRange)
         {
-            currentTarget = FindBestTarget();
+            currentTarget = FindBestTargetInRange(combat.AttackRange);
         }
     }
 
@@ -711,17 +707,16 @@ public class CreatureBrain : MonoBehaviour
     {
         if (currentTarget == null || currentTarget.IsDead())
         {
-            currentTarget = FindBestTarget();
+            currentTarget = FindBestTargetInRange(combat.AttackRange);
 
             if (currentTarget == null)
                 return;
         }
 
-        CreatureBrain closeTarget = FindBestTarget();
-
+        CreatureBrain closeTarget = FindBestTargetInRange(combat.AttackRange);
         float range = combat.AttackRange;
 
-        if (closeTarget != null)
+        if (closeTarget != null && closeTarget != currentTarget)
         {
             float dist = (closeTarget.transform.position - transform.position).sqrMagnitude;
 
