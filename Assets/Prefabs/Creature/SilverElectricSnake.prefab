@@ -81,7 +81,7 @@ SpriteRenderer:
   m_SortingLayerID: -496768567
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: -5238015647865888477, guid: ff4bdbcaab152174ebadcb3034ecb943, type: 3}
+  m_Sprite: {fileID: -6877910138880676505, guid: 6c7bf1864e205994892407352c4318b5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0
@@ -102,7 +102,7 @@ Animator:
   m_GameObject: {fileID: 7250386410483983525}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 015c624f287047943ace830e2674d4d8, type: 2}
+  m_Controller: {fileID: 9100000, guid: d850fe1a030b0104e9e0fe418d4473c2, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -139,7 +139,7 @@ GameObject:
   - component: {fileID: 6420337514911783703}
   - component: {fileID: 9038398184391069704}
   m_Layer: 0
-  m_Name: SilverSnake
+  m_Name: SilverElectricSnake
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -155,7 +155,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 5, y: 5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2651602349576561444}
@@ -204,18 +204,18 @@ MonoBehaviour:
   isPlayerControlled: 0
   isBoss: 0
   defeatedSprite: {fileID: 0}
-  level: 1
+  level: 20
   currentXP: 0
   meatPrefab: {fileID: 7905947638849257074, guid: 2ddafcb310b0c914fabab82bc9164a0b, type: 3}
   dropCountMin: 1
   dropCountMax: 2
   stats:
-    maxHP: 100
-    maxMP: 50
+    maxHP: 300
+    maxMP: 200
     mpRegen: 5
-    attackDamage: 10
-    moveSpeed: 5
-    visionRange: 10
+    attackDamage: 100
+    moveSpeed: 10
+    visionRange: 20
   runtime:
     HP: 0
     MP: 0
@@ -240,7 +240,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1eb2d258edf69ae44ae052577d872aee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CombatController
-  attack: {fileID: 11400000, guid: c8737bd5256fea34ca9cfd3351f9ad7b, type: 2}
+  attack: {fileID: 11400000, guid: d6d62b354dca6424d9137d97ec664e82, type: 2}
   creatureSkills: []
 --- !u!1 &8486137727984323457
 GameObject:
@@ -308,7 +308,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: -0.2, y: 0}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
