@@ -70,5 +70,8 @@ TagManager:
   - name: ControlSoul
     uniqueID: 762429663
     locked: 0
+  - name: SpeechBubble
+    uniqueID: 1927476025
+    locked: 0
   m_RenderingLayers:
   - Default

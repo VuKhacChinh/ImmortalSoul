@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 57cabb1576c23c64c820cdebcf900eae
+guid: 296d07e251a79894d8d63cb4b5039563
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7237490697824819851
-    second: immortalsoul_icon_0
+      213: 3661905313073588946
+    second: emotional_ghost_king_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,23 +126,89 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: immortalsoul_icon_0
+      name: emotional_ghost_king_0
       rect:
         serializedVersion: 2
-        x: 0
-        y: 0
-        width: 512
-        height: 512
+        x: 15
+        y: 35
+        width: 150
+        height: 319
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 57525f26e844f8b90800000000000000
-      internalID: -7237490697824819851
+      spriteID: 2daedda0b73b1d230800000000000000
+      internalID: 3661905313073588946
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: emotional_ghost_king_1
+      rect:
+        serializedVersion: 2
+        x: 166
+        y: 33
+        width: 143
+        height: 321
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 72517407daf796640b53301cff0452f5
+      internalID: -1652241815
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: emotional_ghost_king_2
+      rect:
+        serializedVersion: 2
+        x: 310
+        y: 33
+        width: 142
+        height: 345
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 30e1cb6f0a8d9e041a0547287f19f717
+      internalID: 327827653
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: emotional_ghost_king_3
+      rect:
+        serializedVersion: 2
+        x: 457
+        y: 34
+        width: 150
+        height: 323
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af02aea2e09082b4b9e4683425c559d4
+      internalID: 1054830329
       vertices: []
       indices: 
       edges: []
@@ -151,7 +217,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: 2fe80bc516eb86a44b013d226ed8f907
     internalID: 0
     vertices: []
     indices: 
@@ -161,7 +227,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      immortalsoul_icon_0: -7237490697824819851
+      emotional_ghost_king_0: 3661905313073588946
+      emotional_ghost_king_1: -1652241815
+      emotional_ghost_king_2: 327827653
+      emotional_ghost_king_3: 1054830329
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
