@@ -141,4 +141,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 848f6d62acfb982468b43862b421bd3e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EyeController
-  bossPrefab: {fileID: 8023603854736640244, guid: dd05a19583e307d418a4a6d78170f1a4, type: 3}
+  bossPrefab: {fileID: 8023603854736640244, guid: a128ea0466c0517448b49602e338ac61, type: 3}

@@ -7,6 +7,11 @@ public class CreatureBrain : MonoBehaviour
     [Header("Control")]
     public bool isPlayerControlled = false;
 
+    [Header("Boss")]
+    public bool isBoss = false;
+    public Sprite defeatedSprite;
+    bool isDefeated = false;
+
     [Header("Level")]
     public int level = 1;
     public int currentXP = 0;
@@ -854,7 +859,7 @@ public class CreatureBrain : MonoBehaviour
 
     public bool IsDead()
     {
-        return isDead;
+        return isDead || isDefeated;
     }
 
     public void GainXP(int xp)
@@ -870,10 +875,37 @@ public class CreatureBrain : MonoBehaviour
         Instantiate(hitEffectPrefab, pos, Quaternion.identity);
     }
 
+    public void ReviveForPossession()
+    {
+        isDead = false;
+        isDefeated = false;
+        isBoss = false;
+
+        runtime.HP = stats.maxHP;
+        runtime.MP = stats.maxMP;
+
+        Combat.enabled = true;
+    }
+
     void Die()
     {
+        if (isDead) return;
+
         isDead = true;
         rb.linearVelocity = Vector2.zero;
+
+        // =========================
+        // BOSS LOGIC
+        // =========================
+        if (isBoss)
+        {
+            EnterDefeatedState();
+            return;
+        }
+
+        // =========================
+        // NORMAL CREATURE
+        // =========================
 
         DropItems();
 
@@ -881,10 +913,32 @@ public class CreatureBrain : MonoBehaviour
 
         if (GameManager.Instance != null)
             GameManager.Instance.OnCreatureDeath(this);
-        
+
         SetTargetHighlight(false);
 
         Destroy(gameObject);
+    }
+
+    void EnterDefeatedState()
+    {
+        isDefeated = true;
+
+        if (spriteRenderer != null && defeatedSprite != null)
+            spriteRenderer.sprite = defeatedSprite;
+
+        rb.linearVelocity = Vector2.zero;
+
+        // disable combat
+        Combat.enabled = false;
+
+        // boss không còn AI
+        isPlayerControlled = false;
+
+        BarManager.Instance.RefreshBar(this);
+
+        // gọi GameManager xử lý possession
+        if (GameManager.Instance != null)
+            GameManager.Instance.OnBossDefeated(this);
     }
 
     void DropItems()
@@ -939,5 +993,11 @@ public class CreatureBrain : MonoBehaviour
 
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, combat.AttackRange);
+    }
+
+    void OnDestroy()
+    {
+        if (BarManager.Instance != null)
+            BarManager.Instance.RemoveHPBar(this);
     }
 }

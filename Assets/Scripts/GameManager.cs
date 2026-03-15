@@ -412,4 +412,47 @@ public class GameManager : MonoBehaviour
     {
         return playerCreature;
     }
+
+    public void OnBossDefeated(CreatureBrain boss)
+    {
+        StartCoroutine(BossPossessionSequence(boss));
+    }
+
+    IEnumerator BossPossessionSequence(CreatureBrain boss)
+    {
+        if (playerCreature == null)
+            yield break;
+
+        CreatureBrain oldPlayer = playerCreature;
+
+        Vector3 playerPos = oldPlayer.transform.position;
+
+        GameObject soul = Instantiate(soulPrefab, playerPos, Quaternion.identity);
+
+        CameraFollow cam = Camera.main.GetComponent<CameraFollow>();
+
+        if (cam != null)
+            cam.SetTarget(soul.transform);
+
+        while (Vector3.Distance(soul.transform.position, boss.transform.position) > 0.5f)
+        {
+            soul.transform.position = Vector3.MoveTowards(
+                soul.transform.position,
+                boss.transform.position,
+                soulSpeed * Time.deltaTime
+            );
+
+            yield return null;
+        }
+
+        Destroy(soul);
+
+        Destroy(oldPlayer.gameObject);
+
+        boss.ReviveForPossession();
+
+        // chiếm boss
+        SetPlayer(boss);
+    }
+
 }
