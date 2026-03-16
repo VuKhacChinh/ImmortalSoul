@@ -202,6 +202,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CreatureBrain
   isPlayerControlled: 0
+  isBoss: 0
+  defeatedSprite: {fileID: 0}
   level: 1
   currentXP: 0
   meatPrefab: {fileID: 7905947638849257074, guid: 2ddafcb310b0c914fabab82bc9164a0b, type: 3}
@@ -209,13 +211,19 @@ MonoBehaviour:
   dropCountMax: 2
   stats:
     maxHP: 100
+    maxMP: 50
+    mpRegen: 5
     attackDamage: 10
     moveSpeed: 6
     visionRange: 10
-  currentHP: 0
+  runtime:
+    HP: 0
+    MP: 0
   lowHPThreshold: 0.25
   fleeDuration: 2
   revengeMemoryDuration: 4
+  skillUseChance: 0.35
+  skillRangeMultiplier: 1.3
   allyAssistRange: 3
   hitEffectPrefab: {fileID: 3333797413733861392, guid: 2c3cd5c202c7878478f42ff44ef8aa8b, type: 3}
   foodSearchRange: 5
@@ -235,6 +243,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CombatController
   attack: {fileID: 11400000, guid: c8737bd5256fea34ca9cfd3351f9ad7b, type: 2}
+  creatureSkills:
+  - {fileID: 11400000, guid: be99b2054ce81694faf54a7bd81c5e05, type: 2}
 --- !u!1 &8486137727984323457
 GameObject:
   m_ObjectHideFlags: 0

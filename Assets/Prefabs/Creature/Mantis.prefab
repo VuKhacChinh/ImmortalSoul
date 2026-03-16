@@ -222,6 +222,8 @@ MonoBehaviour:
   lowHPThreshold: 0.25
   fleeDuration: 2
   revengeMemoryDuration: 4
+  skillUseChance: 0.35
+  skillRangeMultiplier: 1.3
   allyAssistRange: 3
   hitEffectPrefab: {fileID: 3333797413733861392, guid: 2c3cd5c202c7878478f42ff44ef8aa8b, type: 3}
   foodSearchRange: 5
@@ -241,7 +243,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CombatController
   attack: {fileID: 11400000, guid: e7cec14fe38554a4c80cb9ac515f3ac6, type: 2}
-  creatureSkills: []
+  creatureSkills:
+  - {fileID: 11400000, guid: 545d470ef546730439759a9ae1ec8c2f, type: 2}
 --- !u!1 &8486137727984323457
 GameObject:
   m_ObjectHideFlags: 0

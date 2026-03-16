@@ -7,7 +7,11 @@ public class UIController : MonoBehaviour
 {
     public static UIController Instance { get; private set; }
 
+    [Header("Move UI")]
     public UIMovePad MovePad { get; private set; }
+
+    [Header("Soul UI")]
+    public TMP_Text soulText;
 
     private CreatureBrain player;
 
@@ -38,7 +42,12 @@ public class UIController : MonoBehaviour
         }
     }
 
-        public void SetPlayer(CreatureBrain newPlayer)
+    void Start()
+    {
+        UpdateSoul(SoulManager.Instance.souls);
+    }
+
+    public void SetPlayer(CreatureBrain newPlayer)
     {
         player = newPlayer;
 
@@ -62,6 +71,12 @@ public class UIController : MonoBehaviour
                 skillButtons[i].gameObject.SetActive(true);
             }
         }
+    }
+
+    public void UpdateSoul(int value)
+    {
+        if (soulText != null)
+            soulText.text = value.ToString();
     }
     
 }

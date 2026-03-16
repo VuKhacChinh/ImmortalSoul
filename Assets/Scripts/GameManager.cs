@@ -87,10 +87,42 @@ public class GameManager : MonoBehaviour
 
         Vector2 pos = RandomPointInRing(innerRadius, outerRadius);
 
+        int playerLevel = 1;
+
+        if (playerCreature != null)
+            playerLevel = playerCreature.level;
+
+        int minLevel = Mathf.Max(1, playerLevel - levelRange);
+
+        // FIX 1: max level spawn = maxLevel - 1
+        int maxSpawnLevel = Mathf.Min(LevelSystem.Instance.maxLevel - 1, playerLevel + levelRange);
+
+        // =========================================
+        // LỌC CREATURE HỢP LỆ
+        // =========================================
+
+        List<CreatureBrain> validPrefabs = new();
+
+        foreach (var p in zone.creaturePrefabs)
+        {
+            // nếu prefab có level định sẵn (>1)
+            if (p.level > 1)
+            {
+                if (p.level >= minLevel && p.level <= maxSpawnLevel)
+                    validPrefabs.Add(p);
+            }
+            else
+            {
+                // prefab level 1 thì cho spawn random
+                validPrefabs.Add(p);
+            }
+        }
+
+        if (validPrefabs.Count == 0)
+            return;
+
         CreatureBrain prefab =
-            zone.creaturePrefabs[
-                Random.Range(0, zone.creaturePrefabs.Count)
-            ];
+            validPrefabs[Random.Range(0, validPrefabs.Count)];
 
         CreatureBrain creature =
             Instantiate(prefab, pos, Quaternion.identity);
@@ -98,20 +130,22 @@ public class GameManager : MonoBehaviour
         creature.isPlayerControlled = false;
 
         // =========================================
-        // LEVEL RANDOM THEO PLAYER
+        // LEVEL RANDOM
         // =========================================
 
-        int playerLevel = 1;
+        int randomLevel;
 
-        if (playerCreature != null)
-            playerLevel = playerCreature.level;
-
-        int minLevel = Mathf.Max(1, playerLevel - levelRange);
-        int maxSpawnLevel = Mathf.Min(LevelSystem.Instance.maxLevel, playerLevel + levelRange);
-
-        int randomLevel = Mathf.RoundToInt(
-            Mathf.Lerp(minLevel, maxSpawnLevel, Random.value * Random.value)
-        );
+        if (prefab.level > 1)
+        {
+            // dùng level định sẵn
+            randomLevel = prefab.level;
+        }
+        else
+        {
+            randomLevel = Mathf.RoundToInt(
+                Mathf.Lerp(minLevel, maxSpawnLevel, Random.value * Random.value)
+            );
+        }
 
         LevelSystem.Instance.SetLevel(creature, randomLevel);
 
