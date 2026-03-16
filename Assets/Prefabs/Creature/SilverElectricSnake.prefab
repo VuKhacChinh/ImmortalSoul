@@ -81,12 +81,12 @@ SpriteRenderer:
   m_SortingLayerID: -496768567
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: -5052944993645903236, guid: 415a6e30297cf6b45aa6fda3205ea21e, type: 3}
+  m_Sprite: {fileID: -6877910138880676505, guid: 6c7bf1864e205994892407352c4318b5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
+  m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.08, y: 0.07}
+  m_Size: {x: 0.67, y: 0.78}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -102,7 +102,7 @@ Animator:
   m_GameObject: {fileID: 7250386410483983525}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 2cee1c09afe71cb45a538202abc3d929, type: 2}
+  m_Controller: {fileID: 9100000, guid: d850fe1a030b0104e9e0fe418d4473c2, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -139,7 +139,7 @@ GameObject:
   - component: {fileID: 6420337514911783703}
   - component: {fileID: 9038398184391069704}
   m_Layer: 0
-  m_Name: Dino
+  m_Name: SilverElectricSnake
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -155,7 +155,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 1}
+  m_LocalScale: {x: 5, y: 5, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2651602349576561444}
@@ -204,26 +204,24 @@ MonoBehaviour:
   isPlayerControlled: 0
   isBoss: 0
   defeatedSprite: {fileID: 0}
-  level: 1
+  level: 20
   currentXP: 0
   meatPrefab: {fileID: 7905947638849257074, guid: 2ddafcb310b0c914fabab82bc9164a0b, type: 3}
   dropCountMin: 1
   dropCountMax: 2
   stats:
-    maxHP: 100
-    maxMP: 50
+    maxHP: 300
+    maxMP: 200
     mpRegen: 5
-    attackDamage: 10
-    moveSpeed: 6
-    visionRange: 10
+    attackDamage: 100
+    moveSpeed: 10
+    visionRange: 20
   runtime:
     HP: 0
     MP: 0
   lowHPThreshold: 0.25
   fleeDuration: 2
   revengeMemoryDuration: 4
-  skillUseChance: 0.35
-  skillRangeMultiplier: 1.3
   allyAssistRange: 3
   hitEffectPrefab: {fileID: 3333797413733861392, guid: 2c3cd5c202c7878478f42ff44ef8aa8b, type: 3}
   foodSearchRange: 5
@@ -242,9 +240,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1eb2d258edf69ae44ae052577d872aee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CombatController
-  attack: {fileID: 11400000, guid: c8737bd5256fea34ca9cfd3351f9ad7b, type: 2}
-  creatureSkills:
-  - {fileID: 11400000, guid: be99b2054ce81694faf54a7bd81c5e05, type: 2}
+  attack: {fileID: 11400000, guid: d6d62b354dca6424d9137d97ec664e82, type: 2}
+  creatureSkills: []
 --- !u!1 &8486137727984323457
 GameObject:
   m_ObjectHideFlags: 0

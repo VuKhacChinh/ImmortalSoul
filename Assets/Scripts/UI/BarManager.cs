@@ -97,9 +97,6 @@ public class BarManager : MonoBehaviour
     {
         if (creature == null) return;
 
-        if (creature.runtime.HP > 0)
-            return;
-
         if (barMap.TryGetValue(creature, out Bar bar))
         {
             Destroy(bar.gameObject);

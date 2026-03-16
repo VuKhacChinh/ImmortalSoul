@@ -155,7 +155,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2651602349576561444}
@@ -202,6 +202,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CreatureBrain
   isPlayerControlled: 0
+  isBoss: 0
+  defeatedSprite: {fileID: 0}
   level: 1
   currentXP: 0
   meatPrefab: {fileID: 7905947638849257074, guid: 2ddafcb310b0c914fabab82bc9164a0b, type: 3}
@@ -209,10 +211,14 @@ MonoBehaviour:
   dropCountMax: 2
   stats:
     maxHP: 100
+    maxMP: 50
+    mpRegen: 5
     attackDamage: 10
     moveSpeed: 5
     visionRange: 10
-  currentHP: 0
+  runtime:
+    HP: 0
+    MP: 0
   lowHPThreshold: 0.25
   fleeDuration: 2
   revengeMemoryDuration: 4
@@ -235,6 +241,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CombatController
   attack: {fileID: 11400000, guid: c8737bd5256fea34ca9cfd3351f9ad7b, type: 2}
+  creatureSkills: []
 --- !u!1 &8486137727984323457
 GameObject:
   m_ObjectHideFlags: 0

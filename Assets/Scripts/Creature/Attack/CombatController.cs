@@ -21,6 +21,7 @@ public class CombatController : MonoBehaviour
     void Awake()
     {
         owner = GetComponent<CreatureBrain>();
+        BuildSkills(null);
     }
 
     public void BuildSkills(SkillDefinition[] playerSkills)

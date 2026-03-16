@@ -7,6 +7,11 @@ public class CreatureBrain : MonoBehaviour
     [Header("Control")]
     public bool isPlayerControlled = false;
 
+    [Header("Boss")]
+    public bool isBoss = false;
+    public Sprite defeatedSprite;
+    bool isDefeated = false;
+
     [Header("Level")]
     public int level = 1;
     public int currentXP = 0;
@@ -29,6 +34,10 @@ public class CreatureBrain : MonoBehaviour
     public float lowHPThreshold = 0.25f;
     public float fleeDuration = 2f;
     public float revengeMemoryDuration = 4f;
+
+    [Header("AI Skills")]
+    public float skillUseChance = 0.35f;
+    public float skillRangeMultiplier = 1.3f;
 
     [Header("Pack")]
     public float allyAssistRange = 3f;
@@ -404,6 +413,41 @@ public class CreatureBrain : MonoBehaviour
         StartAttack();
     }
 
+    bool TryUseAISkill()
+    {
+        if (combat == null)
+            return false;
+
+        if (currentTarget == null)
+            return false;
+
+        float dist = (currentTarget.transform.position - transform.position).magnitude;
+
+        for (int i = 0; i < 3; i++)
+        {
+            SkillDefinition skill = combat.GetSkill(i);
+
+            if (skill == null)
+                continue;
+
+            if (!combat.CanUseSkill(i))
+                continue;
+
+            float range = skill.range * skillRangeMultiplier;
+
+            if (dist > range)
+                continue;
+
+            FaceDirection(currentTarget.transform.position.x - transform.position.x);
+
+            combat.UseSkill(i);
+
+            return true;
+        }
+
+        return false;
+    }
+
     void HandleAI()
     {
         if (isAttacking)
@@ -425,7 +469,7 @@ public class CreatureBrain : MonoBehaviour
             scanTimer = SCAN_INTERVAL;
 
             AutoTarget();
-            CreatureBrain newTarget = FindBestTargetInRange(combat.AttackRange);
+            CreatureBrain newTarget = FindBestTargetInRange(stats.visionRange);
 
             if (newTarget != null)
             {
@@ -713,38 +757,41 @@ public class CreatureBrain : MonoBehaviour
                 return;
         }
 
-        CreatureBrain closeTarget = FindBestTargetInRange(combat.AttackRange);
-        float range = combat.AttackRange;
-
-        if (closeTarget != null && closeTarget != currentTarget)
-        {
-            float dist = (closeTarget.transform.position - transform.position).sqrMagnitude;
-
-            if (dist <= range * range)
-                currentTarget = closeTarget;
-        }
-
         Vector2 toTarget = currentTarget.transform.position - transform.position;
         float sqrDist = toTarget.sqrMagnitude;
 
-        if (sqrDist <= range * range)
-        {
-            rb.linearVelocity = Vector2.zero;
-            FaceDirection(toTarget.x);
+        float attackRange = combat.AttackRange;
 
-            if (combat.CanAttack() && !isAttacking)
+        if (!isAttacking)
+        {
+            // ===== AI ƯU TIÊN SKILL =====
+            if (TryUseAISkill())
             {
+                rb.linearVelocity = Vector2.zero;
+                return;
+            }
+
+            // ===== ATTACK THƯỜNG =====
+            if (sqrDist <= attackRange * attackRange && combat.CanAttack())
+            {
+                rb.linearVelocity = Vector2.zero;
+
+                FaceDirection(toTarget.x);
+
                 combat.StartCooldown();
                 StartAttack();
+
+                return;
             }
         }
-        else
-        {
-            Vector2 dir = toTarget.normalized;
-            dir = AvoidObstacle(dir);
-            rb.linearVelocity = dir * stats.moveSpeed;
-            FaceDirection(dir.x);
-        }
+
+        // ===== DI CHUYỂN TỚI TARGET =====
+        Vector2 dir = toTarget.normalized;
+        dir = AvoidObstacle(dir);
+
+        rb.linearVelocity = dir * stats.moveSpeed;
+
+        FaceDirection(dir.x);
     }
 
     void HandleFlee()
@@ -854,7 +901,7 @@ public class CreatureBrain : MonoBehaviour
 
     public bool IsDead()
     {
-        return isDead;
+        return isDead || isDefeated;
     }
 
     public void GainXP(int xp)
@@ -870,10 +917,44 @@ public class CreatureBrain : MonoBehaviour
         Instantiate(hitEffectPrefab, pos, Quaternion.identity);
     }
 
+    public void ReviveForPossession()
+    {
+        isDead = false;
+        isDefeated = false;
+        isBoss = false;
+
+        runtime.HP = stats.maxHP;
+        runtime.MP = stats.maxMP;
+
+        Combat.enabled = true;
+    }
+
     void Die()
     {
+        if (isDead) return;
+
         isDead = true;
+
+        // player chết → mất 1 linh hồn
+        if (isPlayerControlled && SoulManager.Instance != null)
+        {
+            SoulManager.Instance.ConsumeSoul();
+        }
+
         rb.linearVelocity = Vector2.zero;
+
+        // =========================
+        // BOSS LOGIC
+        // =========================
+        if (isBoss)
+        {
+            EnterDefeatedState();
+            return;
+        }
+
+        // =========================
+        // NORMAL CREATURE
+        // =========================
 
         DropItems();
 
@@ -881,10 +962,32 @@ public class CreatureBrain : MonoBehaviour
 
         if (GameManager.Instance != null)
             GameManager.Instance.OnCreatureDeath(this);
-        
+
         SetTargetHighlight(false);
 
         Destroy(gameObject);
+    }
+
+    void EnterDefeatedState()
+    {
+        isDefeated = true;
+
+        if (spriteRenderer != null && defeatedSprite != null)
+            spriteRenderer.sprite = defeatedSprite;
+
+        rb.linearVelocity = Vector2.zero;
+
+        // disable combat
+        Combat.enabled = false;
+
+        // boss không còn AI
+        isPlayerControlled = false;
+
+        BarManager.Instance.RefreshBar(this);
+
+        // gọi GameManager xử lý possession
+        if (GameManager.Instance != null)
+            GameManager.Instance.OnBossDefeated(this);
     }
 
     void DropItems()
@@ -939,5 +1042,11 @@ public class CreatureBrain : MonoBehaviour
 
         Gizmos.color = Color.red;
         Gizmos.DrawWireSphere(transform.position, combat.AttackRange);
+    }
+
+    void OnDestroy()
+    {
+        if (BarManager.Instance != null)
+            BarManager.Instance.RemoveHPBar(this);
     }
 }
