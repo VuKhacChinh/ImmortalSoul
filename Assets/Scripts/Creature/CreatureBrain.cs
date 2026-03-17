@@ -7,8 +7,12 @@ public class CreatureBrain : MonoBehaviour
     [Header("Control")]
     public bool isPlayerControlled = false;
 
+    [Header("Identity")]
+    public string creatureName = "Unknown";
+
     [Header("Boss")]
     public bool isBoss = false;
+    bool wasBoss = false;
     public Sprite defeatedSprite;
     bool isDefeated = false;
 
@@ -120,6 +124,8 @@ public class CreatureBrain : MonoBehaviour
     public CombatController Combat => combat;
     static CreatureBrain playerHighlightTarget;
 
+    float knockbackTimer = 0f;
+
     void Awake()
     {
         hideZoneLayer = LayerMask.NameToLayer("HideZone");
@@ -149,6 +155,16 @@ public class CreatureBrain : MonoBehaviour
     {
         BarManager.Instance.CreateBar(this);
         ChangeToIdle();
+
+        // ===== BOSS SPAWN DIALOG =====
+        if (isBoss && SpeechBubbleSystem.Instance != null)
+        {
+            SpeechBubbleSystem.Instance.Say(
+                "X",
+                Emotion.Angry,
+                3f
+            );
+        }
     }
 
     void Update()
@@ -156,6 +172,13 @@ public class CreatureBrain : MonoBehaviour
         if (isDead) return;
 
         float dt = Time.deltaTime;
+
+            // ✅ CHẶN NGAY TỪ ĐẦU
+        if (knockbackTimer > 0)
+        {
+            knockbackTimer -= dt;
+            return;
+        }
 
         combat.Tick(dt);
         scanTimer -= dt;
@@ -199,6 +222,12 @@ public class CreatureBrain : MonoBehaviour
         UpdateHPVisual();
         UpdateMPVisual();
         UpdateXPVisual();
+
+    }
+
+    public void ApplyKnockback(float duration)
+    {
+        knockbackTimer = duration;
     }
 
     public void SetHidden(bool value)
@@ -637,6 +666,43 @@ public class CreatureBrain : MonoBehaviour
         return score;
     }
 
+    public void OnPossessed(bool hasPossessedBefore)
+    {
+        if (SpeechBubbleSystem.Instance == null)
+            return;
+
+        // ===== LẦN ĐẦU =====
+        if (!hasPossessedBefore)
+        {
+            SpeechBubbleSystem.Instance.Say(
+                "Ta... đã thoát khỏi xiềng xích...",
+                Emotion.Normal,
+                3f
+            );
+            return;
+        }
+
+        // ===== ƯU TIÊN BOSS (KỂ CẢ ĐÃ BỊ CHIẾM) =====
+        if (wasBoss)
+        {
+            SpeechBubbleSystem.Instance.Say(
+                $"Ngay cả {creatureName} cũng phải khuất phục ta!",
+                Emotion.Angry,
+                3f
+            );
+            return;
+        }
+
+        // ===== NHỮNG LẦN SAU =====
+        string msg = $"Thân xác mới: {creatureName}";
+
+        SpeechBubbleSystem.Instance.Say(
+            msg,
+            Emotion.Happy,
+            2.5f
+        );
+    }
+
     float CalculateConfidence()
     {
         int hitCount = Physics2D.OverlapCircleNonAlloc(
@@ -762,27 +828,31 @@ public class CreatureBrain : MonoBehaviour
 
         float attackRange = combat.AttackRange;
 
-        if (!isAttacking)
+        if (sqrDist <= attackRange * attackRange)
         {
-            // ===== AI ƯU TIÊN SKILL =====
-            if (TryUseAISkill())
+            // luôn quay mặt
+            FaceDirection(toTarget.x);
+
+            // thử dùng skill
+            if (!isAttacking && TryUseAISkill())
             {
                 rb.linearVelocity = Vector2.zero;
                 return;
             }
 
-            // ===== ATTACK THƯỜNG =====
-            if (sqrDist <= attackRange * attackRange && combat.CanAttack())
+            // attack nếu có thể
+            if (!isAttacking && combat.CanAttack())
             {
                 rb.linearVelocity = Vector2.zero;
-
-                FaceDirection(toTarget.x);
 
                 combat.StartCooldown();
                 StartAttack();
-
                 return;
             }
+
+            // ❗ QUAN TRỌNG: đang trong range nhưng chưa đánh được → đứng yên
+            rb.linearVelocity = Vector2.zero;
+            return;
         }
 
         // ===== DI CHUYỂN TỚI TARGET =====
@@ -921,6 +991,9 @@ public class CreatureBrain : MonoBehaviour
     {
         isDead = false;
         isDefeated = false;
+
+        // ===== LƯU TRẠNG THÁI BOSS =====
+        wasBoss = true;
         isBoss = false;
 
         runtime.HP = stats.maxHP;
@@ -977,15 +1050,14 @@ public class CreatureBrain : MonoBehaviour
 
         rb.linearVelocity = Vector2.zero;
 
-        // disable combat
         Combat.enabled = false;
-
-        // boss không còn AI
         isPlayerControlled = false;
 
         BarManager.Instance.RefreshBar(this);
 
-        // gọi GameManager xử lý possession
+        // ===== FIX: trigger eye luôn =====
+        GetComponent<BossLink>()?.NotifyBossDefeated();
+        
         if (GameManager.Instance != null)
             GameManager.Instance.OnBossDefeated(this);
     }

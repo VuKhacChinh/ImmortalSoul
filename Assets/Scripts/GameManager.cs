@@ -37,6 +37,9 @@ public class GameManager : MonoBehaviour
     public GameObject soulPrefab;
     public float soulSpeed = 20f;
 
+    [Header("Possession State")]
+    public bool hasFirstPossession = false;
+
     private List<CreatureBrain> allCreatures = new();
 
     private Dictionary<CreatureBrain, int> creatureZoneMap = new();
@@ -268,6 +271,12 @@ public class GameManager : MonoBehaviour
         PlayPossessEffect(playerCreature);
 
         UpdateCameraAndUI();
+
+        playerCreature.OnPossessed(hasFirstPossession);
+
+        // sau khi gọi xong thì đánh dấu đã possess lần đầu
+        if (!hasFirstPossession)
+            hasFirstPossession = true;
     }
 
     IEnumerator AttachEffectNextFrame(CreatureBrain creature)

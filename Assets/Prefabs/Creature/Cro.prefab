@@ -232,7 +232,7 @@ Transform:
   m_GameObject: {fileID: 7096477749138490320}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 10, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -280,6 +280,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CreatureBrain
   isPlayerControlled: 0
+  creatureName: Unknown
   isBoss: 0
   defeatedSprite: {fileID: 0}
   level: 1

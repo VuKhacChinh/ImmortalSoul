@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 7524932120163777831}
   - component: {fileID: 3773736188962857978}
   - component: {fileID: 5413102744179203593}
+  - component: {fileID: -1318342170767034163}
   m_Layer: 0
   m_Name: EnergyBarrier
   m_TagString: Untagged
@@ -122,7 +123,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
@@ -160,3 +161,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &-1318342170767034163
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 781663818581458018}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 63c3c47c00674a147847e430f8c43143, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::EnergyBarrier
+  requiredLevel: 5
+  damagePercent: 0.5
+  knockbackForce: 10
+  cooldown: 1.5
