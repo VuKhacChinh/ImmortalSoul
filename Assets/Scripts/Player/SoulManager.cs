@@ -4,7 +4,11 @@ public class SoulManager : MonoBehaviour
 {
     public static SoulManager Instance;
 
+    public int maxSoul = 5;
+
     public int souls;
+
+    bool isOutOfSoulTriggered = false;
 
     void Awake()
     {
@@ -14,6 +18,16 @@ public class SoulManager : MonoBehaviour
     public void StartRun(int startSouls)
     {
         souls = startSouls;
+        isOutOfSoulTriggered = false;
+        UpdateUI();
+    }
+
+    public void RefillFullSoul()
+    {
+        souls = maxSoul;
+        isOutOfSoulTriggered = false;
+        Debug.Log("Refill full soul: " + souls);
+
         UpdateUI();
     }
 

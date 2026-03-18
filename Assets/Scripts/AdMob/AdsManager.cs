@@ -272,12 +272,11 @@ public class AdsManager : MonoBehaviour
         );
     }
 
-    public void ShowRewarded(Action onReward)
+    public void ShowRewarded(Action onReward, Action onClosed = null)
     {
-        if (!IsOnline ||
-            !IsRewardedReady ||
-            !CanShowRewarded)
+        if (!IsOnline || !IsRewardedReady || !CanShowRewarded)
         {
+            onClosed?.Invoke();
             TryLoadAllAds();
             return;
         }
@@ -288,6 +287,11 @@ public class AdsManager : MonoBehaviour
         {
             onReward?.Invoke();
         });
+
+        rewardedAd.OnAdFullScreenContentClosed += () =>
+        {
+            onClosed?.Invoke(); // 🔥 QUAN TRỌNG
+        };
     }
 
     // =====================================================
