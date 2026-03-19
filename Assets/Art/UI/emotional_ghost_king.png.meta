@@ -5,6 +5,21 @@ TextureImporter:
   - first:
       213: 3661905313073588946
     second: emotional_ghost_king_0
+  - first:
+      213: -8559197806214324378
+    second: emotional_ghost_king_1
+  - first:
+      213: 6363298725272525395
+    second: emotional_ghost_king_2
+  - first:
+      213: -3733889258535573012
+    second: emotional_ghost_king_3
+  - first:
+      213: 1620241735130994630
+    second: emotional_ghost_king_4
+  - first:
+      213: -8966339793965901006
+    second: emotional_ghost_king_5
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -129,10 +144,10 @@ TextureImporter:
       name: emotional_ghost_king_0
       rect:
         serializedVersion: 2
-        x: 15
-        y: 35
-        width: 150
-        height: 319
+        x: 11
+        y: 200
+        width: 187
+        height: 203
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -148,67 +163,67 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: emotional_ghost_king_1
-      rect:
-        serializedVersion: 2
-        x: 166
-        y: 33
-        width: 143
-        height: 321
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 72517407daf796640b53301cff0452f5
-      internalID: -1652241815
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
       name: emotional_ghost_king_2
       rect:
         serializedVersion: 2
-        x: 310
-        y: 33
-        width: 142
-        height: 345
+        x: 210
+        y: 206
+        width: 189
+        height: 197
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 30e1cb6f0a8d9e041a0547287f19f717
-      internalID: 327827653
+      spriteID: 35a9097f97afe4850800000000000000
+      internalID: 6363298725272525395
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: emotional_ghost_king_3
+      name: emotional_ghost_king_4
       rect:
         serializedVersion: 2
-        x: 457
-        y: 34
-        width: 150
-        height: 323
+        x: 11
+        y: 8
+        width: 186
+        height: 189
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: af02aea2e09082b4b9e4683425c559d4
-      internalID: 1054830329
+      spriteID: 6c7deb016414c7610800000000000000
+      internalID: 1620241735130994630
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: emotional_ghost_king_5
+      rect:
+        serializedVersion: 2
+        x: 213
+        y: 6
+        width: 188
+        height: 191
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 23b963d8679219380800000000000000
+      internalID: -8966339793965901006
       vertices: []
       indices: 
       edges: []
@@ -217,7 +232,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 2fe80bc516eb86a44b013d226ed8f907
+    spriteID: 04e75a0061160fd47954a92c28743a57
     internalID: 0
     vertices: []
     indices: 
@@ -228,9 +243,11 @@ TextureImporter:
       entries: []
     nameFileIdTable:
       emotional_ghost_king_0: 3661905313073588946
-      emotional_ghost_king_1: -1652241815
-      emotional_ghost_king_2: 327827653
-      emotional_ghost_king_3: 1054830329
+      emotional_ghost_king_1: -8559197806214324378
+      emotional_ghost_king_2: 6363298725272525395
+      emotional_ghost_king_3: -3733889258535573012
+      emotional_ghost_king_4: 1620241735130994630
+      emotional_ghost_king_5: -8966339793965901006
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

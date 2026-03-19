@@ -1,0 +1,615 @@
+fileFormatVersion: 2
+guid: 6c67b23e3b819dd4ab69a0e712b98d92
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -6843172713237484545
+    second: dark_obstacle_0
+  - first:
+      213: -6923365144099579174
+    second: dark_obstacle_1
+  - first:
+      213: -5006669088902679059
+    second: dark_obstacle_2
+  - first:
+      213: 4884834111710408407
+    second: dark_obstacle_3
+  - first:
+      213: -3406019172721316788
+    second: dark_obstacle_4
+  - first:
+      213: -3708736022569861834
+    second: dark_obstacle_5
+  - first:
+      213: -1038194199072777370
+    second: dark_obstacle_6
+  - first:
+      213: 9110922238186915229
+    second: dark_obstacle_7
+  - first:
+      213: -2315184633876439081
+    second: dark_obstacle_8
+  - first:
+      213: -6827731369701705649
+    second: dark_obstacle_9
+  - first:
+      213: 2045550535475470055
+    second: dark_obstacle_10
+  - first:
+      213: 1559733095837732928
+    second: dark_obstacle_11
+  - first:
+      213: -229058723250424215
+    second: dark_obstacle_12
+  - first:
+      213: -8661347384739644427
+    second: dark_obstacle_13
+  - first:
+      213: -5934290840316968956
+    second: dark_obstacle_14
+  - first:
+      213: -5314258266268966537
+    second: dark_obstacle_15
+  - first:
+      213: 280259574350485155
+    second: dark_obstacle_16
+  - first:
+      213: 9060608628243016987
+    second: dark_obstacle_17
+  - first:
+      213: 7731776151465484680
+    second: dark_obstacle_18
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: dark_obstacle_0
+      rect:
+        serializedVersion: 2
+        x: 27
+        y: 496
+        width: 197
+        height: 177
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ffb65da8caa2801a0800000000000000
+      internalID: -6843172713237484545
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dark_obstacle_1
+      rect:
+        serializedVersion: 2
+        x: 257
+        y: 488
+        width: 163
+        height: 187
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ada9f9f35144bef90800000000000000
+      internalID: -6923365144099579174
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dark_obstacle_2
+      rect:
+        serializedVersion: 2
+        x: 433
+        y: 500
+        width: 170
+        height: 167
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: de5f6087dfcb48ab0800000000000000
+      internalID: -5006669088902679059
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dark_obstacle_3
+      rect:
+        serializedVersion: 2
+        x: 619
+        y: 496
+        width: 190
+        height: 136
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7dea53f5eba6ac340800000000000000
+      internalID: 4884834111710408407
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dark_obstacle_4
+      rect:
+        serializedVersion: 2
+        x: 822
+        y: 490
+        width: 207
+        height: 146
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c4ca6c7bb936bb0d0800000000000000
+      internalID: -3406019172721316788
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dark_obstacle_5
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 362
+        width: 207
+        height: 105
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 63d3709bc3ce78cc0800000000000000
+      internalID: -3708736022569861834
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dark_obstacle_6
+      rect:
+        serializedVersion: 2
+        x: 249
+        y: 372
+        width: 325
+        height: 96
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 66b556460e79791f0800000000000000
+      internalID: -1038194199072777370
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dark_obstacle_7
+      rect:
+        serializedVersion: 2
+        x: 577
+        y: 342
+        width: 232
+        height: 124
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d95865ff08f707e70800000000000000
+      internalID: 9110922238186915229
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dark_obstacle_8
+      rect:
+        serializedVersion: 2
+        x: 813
+        y: 330
+        width: 217
+        height: 133
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7df1a5487dfcedfd0800000000000000
+      internalID: -2315184633876439081
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dark_obstacle_9
+      rect:
+        serializedVersion: 2
+        x: 20
+        y: 220
+        width: 203
+        height: 106
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f48732f7e760f31a0800000000000000
+      internalID: -6827731369701705649
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dark_obstacle_10
+      rect:
+        serializedVersion: 2
+        x: 224
+        y: 206
+        width: 164
+        height: 155
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 7ee102dcf51436c10800000000000000
+      internalID: 2045550535475470055
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dark_obstacle_11
+      rect:
+        serializedVersion: 2
+        x: 395
+        y: 225
+        width: 178
+        height: 103
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 04014d1acf845a510800000000000000
+      internalID: 1559733095837732928
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dark_obstacle_12
+      rect:
+        serializedVersion: 2
+        x: 567
+        y: 200
+        width: 259
+        height: 128
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 96634f70e4832dcf0800000000000000
+      internalID: -229058723250424215
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dark_obstacle_13
+      rect:
+        serializedVersion: 2
+        x: 838
+        y: 50
+        width: 193
+        height: 250
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5fbb5508176bcc780800000000000000
+      internalID: -8661347384739644427
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dark_obstacle_14
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 30
+        width: 267
+        height: 153
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4008d050ce925ada0800000000000000
+      internalID: -5934290840316968956
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dark_obstacle_15
+      rect:
+        serializedVersion: 2
+        x: 299
+        y: 32
+        width: 160
+        height: 156
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 771ea525346ff36b0800000000000000
+      internalID: -5314258266268966537
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dark_obstacle_17
+      rect:
+        serializedVersion: 2
+        x: 692
+        y: 38
+        width: 154
+        height: 136
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b1da34fca8fbdbd70800000000000000
+      internalID: 9060608628243016987
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dark_obstacle_18
+      rect:
+        serializedVersion: 2
+        x: 463
+        y: 35
+        width: 214
+        height: 123
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 881efeee179cc4b60800000000000000
+      internalID: 7731776151465484680
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: b4d461957caf5bb4d973219a7b891821
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      dark_obstacle_0: -6843172713237484545
+      dark_obstacle_1: -6923365144099579174
+      dark_obstacle_10: 2045550535475470055
+      dark_obstacle_11: 1559733095837732928
+      dark_obstacle_12: -229058723250424215
+      dark_obstacle_13: -8661347384739644427
+      dark_obstacle_14: -5934290840316968956
+      dark_obstacle_15: -5314258266268966537
+      dark_obstacle_16: 280259574350485155
+      dark_obstacle_17: 9060608628243016987
+      dark_obstacle_18: 7731776151465484680
+      dark_obstacle_2: -5006669088902679059
+      dark_obstacle_3: 4884834111710408407
+      dark_obstacle_4: -3406019172721316788
+      dark_obstacle_5: -3708736022569861834
+      dark_obstacle_6: -1038194199072777370
+      dark_obstacle_7: 9110922238186915229
+      dark_obstacle_8: -2315184633876439081
+      dark_obstacle_9: -6827731369701705649
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

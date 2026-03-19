@@ -675,7 +675,7 @@ public class CreatureBrain : MonoBehaviour
         if (!hasPossessedBefore)
         {
             SpeechBubbleSystem.Instance.Say(
-                "Ta... đã thoát khỏi xiềng xích...",
+                "I've escaped! Those bastards dared to destroy my demon lord's body! I will definitely get revenge!",
                 Emotion.Normal,
                 3f
             );
@@ -686,15 +686,15 @@ public class CreatureBrain : MonoBehaviour
         if (wasBoss)
         {
             SpeechBubbleSystem.Instance.Say(
-                $"Ngay cả {creatureName} cũng phải khuất phục ta!",
-                Emotion.Angry,
+                $"Even {creatureName} would have to lose to me, haha.",
+                Emotion.Happy,
                 3f
             );
             return;
         }
 
         // ===== NHỮNG LẦN SAU =====
-        string msg = $"Thân xác mới: {creatureName}";
+        string msg = $"Thanks to the soul stone, which caused my harm, my soul is now immortal, and this body is... {creatureName}";
 
         SpeechBubbleSystem.Instance.Say(
             msg,

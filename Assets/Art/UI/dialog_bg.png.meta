@@ -129,10 +129,10 @@ TextureImporter:
       name: dialog_bg_0
       rect:
         serializedVersion: 2
-        x: 17
-        y: 151
-        width: 739
-        height: 274
+        x: 16
+        y: 84
+        width: 587
+        height: 264
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
