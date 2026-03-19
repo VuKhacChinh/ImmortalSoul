@@ -1266,8 +1266,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 181ca249240f14e49afa64be896b4f46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SoulManager
-  maxSoul: 1
-  souls: 0
+  maxSoul: 3
+  souls: 2
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
