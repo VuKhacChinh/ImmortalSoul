@@ -12,6 +12,7 @@ public class UIController : MonoBehaviour
 
     [Header("Soul UI")]
     public TMP_Text soulText;
+    public OutOfSoulPopup outOfSoulPopup;
 
     private CreatureBrain player;
 
@@ -40,6 +41,8 @@ public class UIController : MonoBehaviour
                     combat.UseSkill(index);
             });
         }
+
+        outOfSoulPopup.Hide();
     }
 
     void Start()
@@ -77,6 +80,51 @@ public class UIController : MonoBehaviour
     {
         if (soulText != null)
             soulText.text = value.ToString();
+    }
+
+    public void ShowOutOfSoulPopup()
+    {
+        outOfSoulPopup.Show();
+    }
+
+    public void OnWatchAds()
+    {
+        bool canShowAds =
+            AdsManager.Instance.IsRewardedReady &&
+            AdsManager.Instance.CanShowRewarded;
+
+        // 🔥 FALLBACK (QUAN TRỌNG NHẤT)
+        if (!canShowAds)
+        {
+            Debug.Log("Ads cooldown → fallback revive");
+
+            Time.timeScale = 1f;
+
+            SoulManager.Instance.RefillFullSoul();
+            outOfSoulPopup.Hide();
+            GameManager.Instance.ReviveAfterAds();
+
+            return;
+        }
+
+        // 👉 Có ads thì mới gọi
+        AdsManager.Instance.ShowRewarded(
+            onReward: () =>
+            {
+                SoulManager.Instance.RefillFullSoul();
+                GameManager.Instance.ReviveAfterAds();
+            },
+            onClosed: () =>
+            {
+                Time.timeScale = 1f;
+                outOfSoulPopup.Hide();
+            }
+        );
+    }
+
+    public void OnRestart()
+    {
+        GameManager.Instance.StartNewRun();
     }
     
 }

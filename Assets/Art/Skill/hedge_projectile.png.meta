@@ -1,37 +1,22 @@
 fileFormatVersion: 2
-guid: 68a19c2c30d0f0a4388ab751416622a6
+guid: 2696a71419ce8cb46818968af75a6aa1
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2027814255969482940
-    second: energy_barier_0
+      213: 2844708231932977807
+    second: hedge_projectile_0
   - first:
-      213: -2321056320946263659
-    second: energy_barier_1
+      213: -9047471811520921646
+    second: hedge_projectile_1
   - first:
-      213: 75339362186561735
-    second: energy_barier_2
+      213: -3346135055752162802
+    second: hedge_projectile_2
   - first:
-      213: -703888907628677259
-    second: energy_barier_3
+      213: -3010037048942053166
+    second: hedge_projectile_3
   - first:
-      213: 7563829208145298898
-    second: energy_barier_4
-  - first:
-      213: 8270607694587249267
-    second: energy_barier_5
-  - first:
-      213: -2279820121654144921
-    second: energy_barier_6
-  - first:
-      213: 2765019382866922959
-    second: energy_barier_7
-  - first:
-      213: 4795708363076693852
-    second: energy_barier_8
-  - first:
-      213: -4110322489137427931
-    second: energy_barier_9
+      213: -4355889651755246568
+    second: hedge_projectile_4
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -153,13 +138,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: energy_barier_0
+      name: hedge_projectile_0
       rect:
         serializedVersion: 2
-        x: 119
-        y: 1069
-        width: 611
-        height: 97
+        x: 24
+        y: 269
+        width: 251
+        height: 82
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -168,20 +153,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: cb8b88d625e342c10800000000000000
-      internalID: 2027814255969482940
+      spriteID: f82aef5a01f6a7720800000000000000
+      internalID: 2844708231932977807
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: energy_barier_3
+      name: hedge_projectile_2
       rect:
         serializedVersion: 2
-        x: 119
-        y: 803
-        width: 608
-        height: 113
+        x: 307
+        y: 268
+        width: 270
+        height: 91
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -190,20 +175,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 577747394c84b36f0800000000000000
-      internalID: -703888907628677259
+      spriteID: e02196735e32091d0800000000000000
+      internalID: -3346135055752162802
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: energy_barier_4
+      name: hedge_projectile_3
       rect:
         serializedVersion: 2
-        x: 122
-        y: 554
-        width: 608
-        height: 87
+        x: 21
+        y: 72
+        width: 260
+        height: 91
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -212,20 +197,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2d58935079e18f860800000000000000
-      internalID: 7563829208145298898
+      spriteID: 2d83b0970433a36d0800000000000000
+      internalID: -3010037048942053166
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: energy_barier_8
+      name: hedge_projectile_4
       rect:
         serializedVersion: 2
-        x: 121
-        y: 278
-        width: 607
-        height: 83
+        x: 307
+        y: 69
+        width: 279
+        height: 102
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -234,8 +219,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c5f6e83f857cd8240800000000000000
-      internalID: 4795708363076693852
+      spriteID: 81c1452b075cc83c0800000000000000
+      internalID: -4355889651755246568
       vertices: []
       indices: 
       edges: []
@@ -244,7 +229,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 72e1d34c1a8dcc0418e573c031080c83
+    spriteID: 343cf2dcac585fe499a52e48db3148bf
     internalID: 0
     vertices: []
     indices: 
@@ -254,16 +239,11 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      energy_barier_0: 2027814255969482940
-      energy_barier_1: -2321056320946263659
-      energy_barier_2: 75339362186561735
-      energy_barier_3: -703888907628677259
-      energy_barier_4: 7563829208145298898
-      energy_barier_5: 8270607694587249267
-      energy_barier_6: -2279820121654144921
-      energy_barier_7: 2765019382866922959
-      energy_barier_8: 4795708363076693852
-      energy_barier_9: -4110322489137427931
+      hedge_projectile_0: 2844708231932977807
+      hedge_projectile_1: -9047471811520921646
+      hedge_projectile_2: -3346135055752162802
+      hedge_projectile_3: -3010037048942053166
+      hedge_projectile_4: -4355889651755246568
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

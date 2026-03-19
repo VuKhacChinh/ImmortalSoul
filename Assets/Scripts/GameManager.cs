@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
@@ -46,6 +47,8 @@ public class GameManager : MonoBehaviour
     private Dictionary<int, List<CreatureBrain>> zoneCreatures = new();
 
     private CreatureBrain playerCreature;
+    Vector3 lastDeathPos;
+    int lastDeathLevel;
 
     void Awake()
     {
@@ -58,6 +61,13 @@ public class GameManager : MonoBehaviour
         ChooseInitialPlayer();
 
         InvokeRepeating(nameof(CheckRespawn), respawnCheckInterval, respawnCheckInterval);
+    }
+
+    public void StartNewRun()
+    {
+        Time.timeScale = 1f;
+
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     // =========================================================
@@ -360,8 +370,30 @@ public class GameManager : MonoBehaviour
 
         if (creature == playerCreature)
         {
-            StartCoroutine(SoulPossessionSequence(creature.transform.position, creature.level));
+            if (SoulManager.Instance.HasSoul())
+            {
+                SoulManager.Instance.ConsumeSoul();
+                StartCoroutine(SoulPossessionSequence(creature.transform.position, creature.level));
+            }
+            else
+            {
+                // 🔥 LƯU LẠI STATE
+                lastDeathPos = creature.transform.position;
+                lastDeathLevel = creature.level;
+
+                UIController.Instance.ShowOutOfSoulPopup();
+            }
         }
+    }
+
+    public void ReviveAfterAds()
+    {
+        if (!SoulManager.Instance.HasSoul())
+            return;
+
+        SoulManager.Instance.ConsumeSoul();
+
+        StartCoroutine(SoulPossessionSequence(lastDeathPos, lastDeathLevel));
     }
 
     IEnumerator SoulPossessionSequence(Vector3 deathPos, int deadLevel)

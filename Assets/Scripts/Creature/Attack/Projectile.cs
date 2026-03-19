@@ -22,6 +22,10 @@ public class Projectile : MonoBehaviour
         damage = dmg;
         owner = o;
 
+        // 👉 Xoay theo hướng bay
+        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0f, 0f, angle);
+
         timer = lifetime;
     }
 
@@ -39,8 +43,11 @@ public class Projectile : MonoBehaviour
 
         dir = (impactPoint - transform.position).normalized;
 
-        useImpactPoint = true;
+        // 👉 Xoay luôn ở đây
+        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        transform.rotation = Quaternion.Euler(0f, 0f, angle);
 
+        useImpactPoint = true;
         timer = lifetime;
     }
 

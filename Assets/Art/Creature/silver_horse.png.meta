@@ -1,37 +1,31 @@
 fileFormatVersion: 2
-guid: 68a19c2c30d0f0a4388ab751416622a6
+guid: 9b2afae339a64cc42afcdcdb0c4bbf79
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2027814255969482940
-    second: energy_barier_0
+      213: -911410516877754683
+    second: silver_horse_0
   - first:
-      213: -2321056320946263659
-    second: energy_barier_1
+      213: 3299708472484656949
+    second: silver_horse_1
   - first:
-      213: 75339362186561735
-    second: energy_barier_2
+      213: 2226662869592449280
+    second: silver_horse_2
   - first:
-      213: -703888907628677259
-    second: energy_barier_3
+      213: -62350967795496617
+    second: silver_horse_3
   - first:
-      213: 7563829208145298898
-    second: energy_barier_4
+      213: -1279794904956249537
+    second: silver_horse_4
   - first:
-      213: 8270607694587249267
-    second: energy_barier_5
+      213: -2968294439570437203
+    second: silver_horse_5
   - first:
-      213: -2279820121654144921
-    second: energy_barier_6
+      213: 6234545728150067916
+    second: silver_horse_6
   - first:
-      213: 2765019382866922959
-    second: energy_barier_7
-  - first:
-      213: 4795708363076693852
-    second: energy_barier_8
-  - first:
-      213: -4110322489137427931
-    second: energy_barier_9
+      213: 6846182416881714242
+    second: silver_horse_7
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -153,89 +147,177 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: energy_barier_0
+      name: silver_horse_0
       rect:
         serializedVersion: 2
-        x: 119
-        y: 1069
-        width: 611
-        height: 97
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 3
+        y: 239
+        width: 127
+        height: 120
+      alignment: 9
+      pivot: {x: 0.6020385, y: 0.7014445}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: cb8b88d625e342c10800000000000000
-      internalID: 2027814255969482940
+      spriteID: 5ce32f8b6f40a53f0800000000000000
+      internalID: -911410516877754683
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: energy_barier_3
+      name: silver_horse_1
       rect:
         serializedVersion: 2
-        x: 119
-        y: 803
-        width: 608
-        height: 113
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 139
+        y: 236
+        width: 125
+        height: 123
+      alignment: 9
+      pivot: {x: 0.5877218, y: 0.7005836}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 577747394c84b36f0800000000000000
-      internalID: -703888907628677259
+      spriteID: 5377bc48f5beacd20800000000000000
+      internalID: 3299708472484656949
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: energy_barier_4
+      name: silver_horse_2
       rect:
         serializedVersion: 2
-        x: 122
-        y: 554
-        width: 608
-        height: 87
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 271
+        y: 234
+        width: 131
+        height: 123
+      alignment: 9
+      pivot: {x: 0.5913135, y: 0.7107139}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2d58935079e18f860800000000000000
-      internalID: 7563829208145298898
+      spriteID: 0012c902512b6ee10800000000000000
+      internalID: 2226662869592449280
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: energy_barier_8
+      name: silver_horse_3
       rect:
         serializedVersion: 2
-        x: 121
-        y: 278
-        width: 607
-        height: 83
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 405
+        y: 234
+        width: 133
+        height: 122
+      alignment: 9
+      pivot: {x: 0.6068037, y: 0.7001848}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c5f6e83f857cd8240800000000000000
-      internalID: 4795708363076693852
+      spriteID: 759c529002c722ff0800000000000000
+      internalID: -62350967795496617
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: silver_horse_4
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 53
+        width: 131
+        height: 123
+      alignment: 9
+      pivot: {x: 0.5722898, y: 0.7188181}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f3a5ab880514d3ee0800000000000000
+      internalID: -1279794904956249537
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: silver_horse_5
+      rect:
+        serializedVersion: 2
+        x: 137
+        y: 57
+        width: 131
+        height: 119
+      alignment: 9
+      pivot: {x: 0.5703873, y: 0.6863841}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dab03a41fef7ec6d0800000000000000
+      internalID: -2968294439570437203
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: silver_horse_6
+      rect:
+        serializedVersion: 2
+        x: 271
+        y: 49
+        width: 136
+        height: 124
+      alignment: 9
+      pivot: {x: 0.5897888, y: 0.70097584}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cca5056ce4e858650800000000000000
+      internalID: 6234545728150067916
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: silver_horse_7
+      rect:
+        serializedVersion: 2
+        x: 412
+        y: 56
+        width: 129
+        height: 122
+      alignment: 9
+      pivot: {x: 0.60818434, y: 0.68792874}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 24482c1b2a6820f50800000000000000
+      internalID: 6846182416881714242
       vertices: []
       indices: 
       edges: []
@@ -244,7 +326,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 72e1d34c1a8dcc0418e573c031080c83
+    spriteID: eb5f3dd0b352f5b4686020450d88a2c6
     internalID: 0
     vertices: []
     indices: 
@@ -254,16 +336,14 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      energy_barier_0: 2027814255969482940
-      energy_barier_1: -2321056320946263659
-      energy_barier_2: 75339362186561735
-      energy_barier_3: -703888907628677259
-      energy_barier_4: 7563829208145298898
-      energy_barier_5: 8270607694587249267
-      energy_barier_6: -2279820121654144921
-      energy_barier_7: 2765019382866922959
-      energy_barier_8: 4795708363076693852
-      energy_barier_9: -4110322489137427931
+      silver_horse_0: -911410516877754683
+      silver_horse_1: 3299708472484656949
+      silver_horse_2: 2226662869592449280
+      silver_horse_3: -62350967795496617
+      silver_horse_4: -1279794904956249537
+      silver_horse_5: -2968294439570437203
+      silver_horse_6: 6234545728150067916
+      silver_horse_7: 6846182416881714242
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
