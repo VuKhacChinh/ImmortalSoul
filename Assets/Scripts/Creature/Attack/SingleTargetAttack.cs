@@ -25,8 +25,14 @@ public class SingleTargetAttack : AttackDefinition
 
         if (dist <= range)
         {
+            // ✅ 1. Spawn attack VFX (đâm / cào)
+            SpawnAttackVFX(owner);
+
+            // ✅ 2. Damage
             target.TakeDamage(owner.stats.attackDamage, owner);
-            owner.SpawnHitEffectAt(target.transform.position);
+
+            // ✅ 3. Hit VFX (impact)
+            SpawnHitVFX(target.transform.position);
         }
     }
 }

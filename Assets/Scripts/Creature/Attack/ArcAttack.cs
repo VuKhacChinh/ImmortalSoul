@@ -9,13 +9,17 @@ public class ArcAttack : AttackDefinition
 
     public override void Execute(CreatureBrain owner)
     {
+        Vector2 forward = owner.GetFacingDirection();
+
+        // ✅ 1. Spawn slash effect
+        SpawnAttackVFX(owner);
+
+        // ✅ 2. Damage
         int hitCount = Physics2D.OverlapCircleNonAlloc(
             owner.transform.position,
             range,
             buffer
         );
-
-        Vector2 forward = owner.GetFacingDirection();
 
         for (int i = 0; i < hitCount; i++)
         {
@@ -33,7 +37,9 @@ public class ArcAttack : AttackDefinition
             if (angle <= arcAngle * 0.5f)
             {
                 other.TakeDamage(owner.stats.attackDamage, owner);
-                owner.SpawnHitEffectAt(other.transform.position);
+
+                // ✅ spawn hit effect đúng chỗ
+                SpawnHitVFX(other.transform.position);
             }
         }
     }
