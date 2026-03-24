@@ -16,5 +16,5 @@ MonoBehaviour:
   hitVFX: {fileID: 1107951463874692846, guid: d7583ade321382740af117d0bfb29f6f, type: 3}
   range: 6
   cooldown: 1
-  projectilePrefab: {fileID: 2511979569016334866, guid: 533aeb9544afd214b8c9b9d0d4713bd2, type: 3}
+  projectilePrefab: {fileID: 1234120734334243587, guid: 936cfc3cae6e5b847ac150a822d7b9ca, type: 3}
   projectileSpeed: 8
