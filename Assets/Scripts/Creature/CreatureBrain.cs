@@ -17,6 +17,10 @@ public class CreatureBrain : MonoBehaviour
     public Sprite defeatedSprite;
     bool isDefeated = false;
 
+    [Header("Tower")]
+    public bool isTower = false;
+    public CreatureBrain bossPrefab;
+
     [Header("Level")]
     public int level = 1;
     public int currentXP = 0;
@@ -115,7 +119,6 @@ public class CreatureBrain : MonoBehaviour
     const float STUCK_TIME = 0.4f;
 
     Material outlineMaterial;
-    Material outlineTargetMaterial;
     Material originalMaterial;
 
     public CreatureBrain CurrentTarget => currentTarget;
@@ -123,6 +126,8 @@ public class CreatureBrain : MonoBehaviour
     static CreatureBrain playerHighlightTarget;
 
     float knockbackTimer = 0f;
+
+    public System.Action<CreatureBrain> OnDeathCallback;
 
     void Awake()
     {
@@ -133,7 +138,6 @@ public class CreatureBrain : MonoBehaviour
         spriteRenderer = GetComponentInChildren<SpriteRenderer>();
         originalMaterial = spriteRenderer.material;
         outlineMaterial = Resources.Load<Material>("Materials/OutlineRed");
-        outlineTargetMaterial = Resources.Load<Material>("Materials/OutlineTarget");
         initialFlipX = spriteRenderer.flipX;
 
         runtime = new RuntimeStats();
@@ -152,6 +156,7 @@ public class CreatureBrain : MonoBehaviour
     void Start()
     {
         BarManager.Instance.CreateBar(this);
+        BarManager.Instance.SetHPBarVisible(this, isPlayerControlled);
         ChangeToIdle();
 
         // ===== BOSS SPAWN DIALOG =====
@@ -211,8 +216,16 @@ public class CreatureBrain : MonoBehaviour
 
             HandlePlayerInput();
         }
-        else
-            HandleAI();
+        else {
+            if (isTower)
+            {
+                HandleTowerLogic();
+            }
+            else
+            {
+                HandleAI();
+            }
+        }
 
         CheckStuck();
 
@@ -221,6 +234,34 @@ public class CreatureBrain : MonoBehaviour
         UpdateMPVisual();
         UpdateXPVisual();
 
+    }
+
+    void HandleTowerLogic()
+    {
+        rb.linearVelocity = Vector2.zero; // đứng im
+
+        if (currentTarget == null || currentTarget.IsDead())
+        {
+            currentTarget = FindBestTargetInRange(stats.visionRange);
+        }
+
+        if (currentTarget == null) return;
+
+        Vector2 toTarget = currentTarget.transform.position - transform.position;
+        float sqrDist = toTarget.sqrMagnitude;
+
+        float range = combat.AttackRange;
+
+        if (sqrDist <= range * range)
+        {
+            FaceDirection(toTarget.x);
+
+            if (!isAttacking && combat.CanAttack())
+            {
+                combat.StartCooldown();
+                StartAttack();
+            }
+        }
     }
 
     public void ApplyKnockback(float duration)
@@ -267,27 +308,23 @@ public class CreatureBrain : MonoBehaviour
             spriteRenderer.material = originalMaterial;
     }
 
-    void SetTargetHighlight(bool value)
-    {
-        if (spriteRenderer == null) return;
-
-        if (value)
-            spriteRenderer.material = outlineTargetMaterial;
-        else
-            spriteRenderer.material = originalMaterial;
-    }
-
     void UpdatePlayerHighlight(CreatureBrain newTarget)
     {
         if (!isPlayerControlled) return;
 
+        // ẩn bar target cũ
         if (playerHighlightTarget != null)
-            playerHighlightTarget.SetTargetHighlight(false);
+        {
+            BarManager.Instance.SetHPBarVisible(playerHighlightTarget, false);
+        }
 
         playerHighlightTarget = newTarget;
 
+        // hiện bar target mới
         if (playerHighlightTarget != null)
-            playerHighlightTarget.SetTargetHighlight(true);
+        {
+            BarManager.Instance.SetHPBarVisible(playerHighlightTarget, true);
+        }
     }
 
     void CheckStuck()
@@ -1008,6 +1045,14 @@ public class CreatureBrain : MonoBehaviour
 
         rb.linearVelocity = Vector2.zero;
 
+        if (isTower)
+        {
+            OnDeathCallback?.Invoke(this);
+            SpawnBoss();
+            Destroy(gameObject);
+            return;
+        }
+
         // =========================
         // BOSS LOGIC
         // =========================
@@ -1028,9 +1073,25 @@ public class CreatureBrain : MonoBehaviour
         if (GameManager.Instance != null)
             GameManager.Instance.OnCreatureDeath(this);
 
-        SetTargetHighlight(false);
-
         Destroy(gameObject);
+    }
+
+    void SpawnBoss()
+    {
+        if (bossPrefab == null) return;
+
+        CreatureBrain boss = Instantiate(
+            bossPrefab,
+            transform.position,
+            Quaternion.identity
+        );
+
+        boss.isBoss = true;
+
+        if (GameManager.Instance != null)
+        {
+            GameManager.Instance.RegisterExternalCreature(boss);
+        }
     }
 
     void EnterDefeatedState()
@@ -1046,9 +1107,6 @@ public class CreatureBrain : MonoBehaviour
         isPlayerControlled = false;
 
         BarManager.Instance.RefreshBar(this);
-
-        // ===== FIX: trigger eye luôn =====
-        GetComponent<BossLink>()?.NotifyBossDefeated();
         
         if (GameManager.Instance != null)
             GameManager.Instance.OnBossDefeated(this);

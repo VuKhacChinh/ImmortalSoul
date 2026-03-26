@@ -1768,7 +1768,7 @@ GameObject:
   - component: {fileID: 726455418}
   - component: {fileID: 726455419}
   m_Layer: 0
-  m_Name: EyeBattleManager
+  m_Name: TowerManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1798,14 +1798,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 726455417}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ac7b26b2c31925742868aa67ffddf197, type: 3}
+  m_Script: {fileID: 11500000, guid: 6bad2f7e2a36e034db86e471e9cfe2fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EyeFormationManager
-  topEyePrefab: {fileID: 3357716389416937767, guid: 63b7fbd7c7e62494da9b9012ade064f2, type: 3}
-  bottomEyePrefab: {fileID: 3357716389416937767, guid: 900928f1d2d95444a84a640eb5d5e9ad, type: 3}
-  leftEyePrefab: {fileID: 3357716389416937767, guid: 0f956915a9e0a0d4b8a34a444de014af, type: 3}
-  rightEyePrefab: {fileID: 3357716389416937767, guid: e91215875036ad34ab47561794842647, type: 3}
-  centerEyePrefab: {fileID: 3357716389416937767, guid: a775aee15564e204da4f40cc3dfe0753, type: 3}
+  topTowerPrefab: {fileID: 6420337514911783703, guid: 81254d1894c13c640ba6a579a975bfd8, type: 3}
+  bottomTowerPrefab: {fileID: 6420337514911783703, guid: 81254d1894c13c640ba6a579a975bfd8, type: 3}
+  leftTowerPrefab: {fileID: 6420337514911783703, guid: 81254d1894c13c640ba6a579a975bfd8, type: 3}
+  rightTowerPrefab: {fileID: 6420337514911783703, guid: 81254d1894c13c640ba6a579a975bfd8, type: 3}
+  centerGatePrefab: {fileID: 8023603854736640244, guid: 81254d1894c13c640ba6a579a975bfd8, type: 3}
 --- !u!1 &1021155929
 GameObject:
   m_ObjectHideFlags: 0

@@ -10,9 +10,6 @@ public class GroundGenerator : MonoBehaviour
     public GameObject boundaryHorizontalPrefab;
     public GameObject boundaryVerticalPrefab;
 
-    [Header("Boss Zone")]
-    public GameObject breakableWallPrefab;
-
     public float MapWidth { get; private set; }
     public float MapHeight { get; private set; }
 
@@ -27,7 +24,7 @@ public class GroundGenerator : MonoBehaviour
     void Start()
     {
         GenerateGround();
-        SpawnEyeFormation();
+        SpawnTowers();
     }
 
     void GenerateGround()
@@ -75,11 +72,11 @@ public class GroundGenerator : MonoBehaviour
         CreateOuterBossBoundaries();
     }
 
-    void SpawnEyeFormation()
+    void SpawnTowers()
     {
         float offset = MapWidth * 0.5f + bossZoneSize * 0.5f;
 
-        EyeFormationManager.Instance.SpawnEyes(Vector2.zero, offset);
+        TowerManager.Instance.SpawnTowers(Vector2.zero, offset);
     }
 
     void SpawnTileFromIndex(int ix, int iy)
@@ -115,11 +112,6 @@ public class GroundGenerator : MonoBehaviour
 
         SpawnZone(-halfMain - tiles, -tiles/2, tiles, tiles, 2, 2); 
         SpawnZone(halfMain, -tiles/2, tiles, tiles, 2, 2);          
-
-        SpawnWall(new Vector2(0, MapHeight * 0.5f), true);
-        SpawnWall(new Vector2(0, -MapHeight * 0.5f), true);
-        SpawnWall(new Vector2(-MapWidth * 0.5f, 0), false);
-        SpawnWall(new Vector2(MapWidth * 0.5f, 0), false);
     }
 
     void SpawnZone(int startX, int startY, int sizeX, int sizeY, int padX, int padY)
@@ -130,35 +122,6 @@ public class GroundGenerator : MonoBehaviour
             {
                 SpawnTileFromIndex(startX + x, startY + y);
             }
-        }
-    }
-
-    void SpawnWall(Vector2 pos, bool horizontal)
-    {
-        SpriteRenderer sr = breakableWallPrefab.GetComponent<SpriteRenderer>();
-
-        float pieceLength = sr.bounds.size.x;
-
-        int count = Mathf.CeilToInt(bossZoneSize / pieceLength);
-
-        float startOffset = -bossZoneSize * 0.5f + pieceLength * 0.5f;
-
-        for (int i = 0; i < count; i++)
-        {
-            float offset = startOffset + i * pieceLength;
-
-            Vector2 spawnPos;
-
-            if (horizontal)
-                spawnPos = new Vector2(pos.x + offset, pos.y);
-            else
-                spawnPos = new Vector2(pos.x, pos.y + offset);
-
-            Quaternion rot = horizontal
-                ? Quaternion.identity
-                : Quaternion.Euler(0, 0, 90f);
-
-            Instantiate(breakableWallPrefab, spawnPos, rot, transform);
         }
     }
 

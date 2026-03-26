@@ -35,6 +35,8 @@ public class BarManager : MonoBehaviour
 
         Color c = LevelSystem.Instance.GetLevelColor(creature.level);
         bar.SetColor(c);
+
+        bar.gameObject.SetActive(creature.isPlayerControlled);
     }
 
     public Bar GetHPBar(CreatureBrain creature)

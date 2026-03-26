@@ -386,6 +386,11 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void RegisterExternalCreature(CreatureBrain creature)
+    {
+        allCreatures.Add(creature);
+    }
+
     public void ReviveAfterAds()
     {
         if (!SoulManager.Instance.HasSoul())

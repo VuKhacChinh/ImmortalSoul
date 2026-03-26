@@ -1,10 +1,19 @@
 fileFormatVersion: 2
-guid: 9da6c560d78fa05499b795f054d26e4a
+guid: efc5ca5a8995e1346be6129245d2ac41
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 713344910440399238
-    second: earth_eye_0
+      213: 6304826840174917774
+    second: tower_0
+  - first:
+      213: 6156901781275099173
+    second: tower_1
+  - first:
+      213: 4625833658082079308
+    second: tower_2
+  - first:
+      213: -7577164617122143832
+    second: tower_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,13 +135,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: earth_eye_0
+      name: tower_0
       rect:
         serializedVersion: 2
-        x: 10
-        y: 14
-        width: 391
-        height: 382
+        x: 67
+        y: 129
+        width: 132
+        height: 290
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +150,74 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 6810225aa6f46e900800000000000000
-      internalID: 713344910440399238
+      spriteID: e8879f25b9e3f7750800000000000000
+      internalID: 6304826840174917774
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tower_1
+      rect:
+        serializedVersion: 2
+        x: 227
+        y: 112
+        width: 133
+        height: 281
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5204fd5ac85b17550800000000000000
+      internalID: 6156901781275099173
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tower_2
+      rect:
+        serializedVersion: 2
+        x: 388
+        y: 94
+        width: 134
+        height: 282
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c42370c0433423040800000000000000
+      internalID: 4625833658082079308
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: tower_3
+      rect:
+        serializedVersion: 2
+        x: 550
+        y: 77
+        width: 136
+        height: 280
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8a1a6cf1de088d690800000000000000
+      internalID: -7577164617122143832
       vertices: []
       indices: 
       edges: []
@@ -161,7 +236,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      earth_eye_0: 713344910440399238
+      tower_0: 6304826840174917774
+      tower_1: 6156901781275099173
+      tower_2: 4625833658082079308
+      tower_3: -7577164617122143832
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
