@@ -1802,9 +1802,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EyeFormationManager
   topTowerPrefab: {fileID: 6420337514911783703, guid: 81254d1894c13c640ba6a579a975bfd8, type: 3}
-  bottomTowerPrefab: {fileID: 6420337514911783703, guid: 81254d1894c13c640ba6a579a975bfd8, type: 3}
-  leftTowerPrefab: {fileID: 6420337514911783703, guid: 81254d1894c13c640ba6a579a975bfd8, type: 3}
-  rightTowerPrefab: {fileID: 6420337514911783703, guid: 81254d1894c13c640ba6a579a975bfd8, type: 3}
+  bottomTowerPrefab: {fileID: 6420337514911783703, guid: c446e842abdb2a44fa9e4cb0582637e3, type: 3}
+  leftTowerPrefab: {fileID: 6420337514911783703, guid: c87619fa26493144abc14cdf61a7f60e, type: 3}
+  rightTowerPrefab: {fileID: 6420337514911783703, guid: fb70d5205ca062c43beb5eb08c7cc1a6, type: 3}
   centerGatePrefab: {fileID: 8023603854736640244, guid: 81254d1894c13c640ba6a579a975bfd8, type: 3}
 --- !u!1 &1021155929
 GameObject:
@@ -1855,7 +1855,6 @@ MonoBehaviour:
   boundaryThickness: 5
   boundaryHorizontalPrefab: {fileID: 7465242119516537897, guid: 0f6c1bc868a9e6c4dac8659214ce9f65, type: 3}
   boundaryVerticalPrefab: {fileID: 5960180860332800994, guid: e60094b383598f6409afbad3a6dc1de2, type: 3}
-  breakableWallPrefab: {fileID: 781663818581458018, guid: 0458e5d238add924ba405a3dac2ebbec, type: 3}
 --- !u!1 &1066243146
 GameObject:
   m_ObjectHideFlags: 0
