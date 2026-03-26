@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76100ca3725bcc24f958d248d7c37e3b, type: 3}
   m_Name: ProjectileAttack
   m_EditorClassIdentifier: Assembly-CSharp::ProjectileAttack
+  vfxPrefab: {fileID: 0}
+  hitVFX: {fileID: 1107951463874692846, guid: d7583ade321382740af117d0bfb29f6f, type: 3}
   range: 6
   cooldown: 1
-  projectilePrefab: {fileID: 2511979569016334866, guid: 533aeb9544afd214b8c9b9d0d4713bd2, type: 3}
+  projectilePrefab: {fileID: 3632775770547235149, guid: b1f3f60d1f012674499322f8e41fc7c6, type: 3}
   projectileSpeed: 8

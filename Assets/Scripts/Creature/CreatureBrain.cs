@@ -4,6 +4,7 @@ using UnityEngine;
 [RequireComponent(typeof(CombatController))]
 public class CreatureBrain : MonoBehaviour
 {
+
     [Header("Control")]
     public bool isPlayerControlled = false;
 
@@ -45,9 +46,6 @@ public class CreatureBrain : MonoBehaviour
 
     [Header("Pack")]
     public float allyAssistRange = 3f;
-
-    [Header("VFX")]
-    public GameObject hitEffectPrefab;
 
     [Header("Food AI")]
     public float foodSearchRange = 5f;
@@ -979,12 +977,6 @@ public class CreatureBrain : MonoBehaviour
         if (LevelSystem.Instance == null) return;
 
         LevelSystem.Instance.GainXP(this, xp);
-    }
-
-    public void SpawnHitEffectAt(Vector3 pos)
-    {
-        if (hitEffectPrefab == null) return;
-        Instantiate(hitEffectPrefab, pos, Quaternion.identity);
     }
 
     public void ReviveForPossession()

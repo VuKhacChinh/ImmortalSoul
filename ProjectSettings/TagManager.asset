@@ -61,6 +61,9 @@ TagManager:
   - name: Boundary
     uniqueID: 2047842309
     locked: 0
+  - name: AttackEffect
+    uniqueID: 3925162439
+    locked: 0
   - name: Explosion
     uniqueID: 733146663
     locked: 0

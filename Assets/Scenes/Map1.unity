@@ -707,19 +707,10 @@ MonoBehaviour:
     - {fileID: 6420337514911783703, guid: 44e7e4aff2fb4e24196fdb035699290e, type: 3}
     - {fileID: 6420337514911783703, guid: 686ff11c5fc388c4c98cd5477873ae7e, type: 3}
     - {fileID: 6420337514911783703, guid: e3c0607f3e2c55b4c93e0e9db117a760, type: 3}
-    - {fileID: 6420337514911783703, guid: 06b82af156c04434880fbfd913537476, type: 3}
-  - outerRadius: 100
-    spawnCount: 20
-    creaturePrefabs:
-    - {fileID: 6420337514911783703, guid: 5e800c9c407f9da44a0fb46b6457a978, type: 3}
-    - {fileID: 6420337514911783703, guid: e8c9ee309fa326e48ba24f846848000a, type: 3}
-    - {fileID: 6420337514911783703, guid: 598369977d0ccb34b8c54575e4fa147d, type: 3}
-    - {fileID: 6420337514911783703, guid: 211f29d3b324ae948b8a46eeceff3d39, type: 3}
-    - {fileID: 6420337514911783703, guid: ec839a5db384f5b45bb9ecc4cf4ecd3a, type: 3}
   respawnCheckInterval: 5
   controlEffectPrefab: {fileID: 781663818581458018, guid: d1044e390b772b84ab162ed1c9a22438, type: 3}
   levelRange: 3
-  possessEffectPrefab: {fileID: 781663818581458018, guid: 18eab59c1e911d946aa69b817669ebd5, type: 3}
+  possessEffectPrefab: {fileID: 5102044880070558781, guid: 36756a2ef26936d40a72a8c27abfc7ca, type: 3}
   soulPrefab: {fileID: 781663818581458018, guid: d1044e390b772b84ab162ed1c9a22438, type: 3}
   soulSpeed: 30
   hasFirstPossession: 1
@@ -1074,6 +1065,55 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 318892471}
   m_CullTransparentMesh: 1
+--- !u!1 &359175575
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 359175577}
+  - component: {fileID: 359175576}
+  m_Layer: 0
+  m_Name: PostProcessing
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!114 &359175576
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 359175575}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Core.Runtime::UnityEngine.Rendering.Volume
+  m_IsGlobal: 1
+  priority: 0
+  blendDistance: 0
+  weight: 1
+  sharedProfile: {fileID: 11400000, guid: a81175d319ebef64c846ee8bb37985b4, type: 2}
+--- !u!4 &359175577
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 359175575}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &370981603
 GameObject:
   m_ObjectHideFlags: 0
@@ -1320,7 +1360,7 @@ MonoBehaviour:
     m_Bits: 1
   m_VolumeTrigger: {fileID: 0}
   m_VolumeFrameworkUpdateModeOption: 2
-  m_RenderPostProcessing: 0
+  m_RenderPostProcessing: 1
   m_Antialiasing: 0
   m_AntialiasingQuality: 2
   m_StopNaN: 0
@@ -1470,7 +1510,7 @@ MonoBehaviour:
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeEnabled: 0
-  m_ApplyToSortingLayers: 00000000c5ceba95a90e9518cba5402677e6a6a5c9e963e2e3a945de27eeb22b03fde7df334a41275ff8bf7b05980f7adfc0712d39f3e272
+  m_ApplyToSortingLayers: 00000000c5ceba95a90e9518cba5402677e6a6a5c9e963e2e3a945de27eeb22b03fde7df334a41275ff8bf7b05980f7adfc0712d39f3e272c739f5e9
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
@@ -3000,3 +3040,4 @@ SceneRoots:
   - {fileID: 52335926}
   - {fileID: 257279842}
   - {fileID: 188306301}
+  - {fileID: 359175577}

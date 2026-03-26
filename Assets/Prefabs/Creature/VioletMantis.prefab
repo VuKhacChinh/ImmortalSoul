@@ -202,6 +202,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CreatureBrain
   isPlayerControlled: 0
+  creatureName: Unknown
   isBoss: 0
   defeatedSprite: {fileID: 0}
   level: 1
@@ -226,6 +227,7 @@ MonoBehaviour:
   skillRangeMultiplier: 1.3
   allyAssistRange: 3
   hitEffectPrefab: {fileID: 3333797413733861392, guid: 2c3cd5c202c7878478f42ff44ef8aa8b, type: 3}
+  slashEffectPrefab: {fileID: 5271271443054720984, guid: b818d87b9f5c34546aad45516784f6de, type: 3}
   foodSearchRange: 5
   lowHPPriority: 0.6
   obstacleCheckDistance: 1.2
