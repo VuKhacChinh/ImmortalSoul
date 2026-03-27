@@ -2224,6 +2224,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::HPBarManager
   barPrefab: {fileID: 2122331791142055330, guid: fcfc4dcbeea180b43af1e2c8e8d4fe7d, type: 3}
+  healEffectPrefab: {fileID: 339158821923109191, guid: 108ca465382c11742bd2c91fe4fdb13f, type: 3}
 --- !u!1 &1633688253
 GameObject:
   m_ObjectHideFlags: 0
@@ -2639,7 +2640,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1986186576
 Transform:
   m_ObjectHideFlags: 0
@@ -3027,9 +3028,9 @@ MonoBehaviour:
   - {fileID: 81252098595613775, guid: 62a895f6d906e6d4fbbcaae5b8a6e0db, type: 3}
   - {fileID: 81252098595613775, guid: a581f5eec0316cf4c9efb52df3cc8e35, type: 3}
   hideZonePrefab: {fileID: 81252098595613775, guid: d840c3f78aae27940b12590725397d1b, type: 3}
-  hideZoneCount: 20
-  hideZoneSize: 2
-  cellSize: 8
+  hideZoneCount: 10
+  hideZoneSize: 4
+  cellSize: 16
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

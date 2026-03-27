@@ -642,6 +642,18 @@ public class CreatureBrain : MonoBehaviour
             if (other == null || other == this || other.IsDead() || other.isHidden)
                 continue;
 
+            if (isBoss)
+            {
+                if (!other.isPlayerControlled)
+                    continue;
+            }
+            // CREATURE THƯỜNG → không đánh boss + tower
+            else if (!isPlayerControlled)
+            {
+                if (other.isBoss || other.isTower)
+                    continue;
+            }
+
             float score = EvaluateThreat(other);
 
             if (score > bestScore)
@@ -985,6 +997,9 @@ public class CreatureBrain : MonoBehaviour
     public void TakeDamage(float dmg, CreatureBrain attacker)
     {
         if (isDead) return;
+
+        if (isBoss && !attacker.isPlayerControlled)
+            return;
 
         runtime.HP -= dmg;
         runtime.HP = Mathf.Max(runtime.HP, 0);

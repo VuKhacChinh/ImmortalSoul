@@ -1,31 +1,34 @@
 fileFormatVersion: 2
-guid: 99a8133ca499fe9439e60d16ff85a432
+guid: 33857cbd0f32db64f950744a2cc0e01a
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 4993490330342921801
-    second: violet_control_ring_0
+      213: -9044209456634400411
+    second: fire_snake_0
   - first:
-      213: 2991890900911599610
-    second: violet_control_ring_1
+      213: -371342179482015143
+    second: fire_snake_1
   - first:
-      213: 7450548860339209311
-    second: violet_control_ring_2
+      213: 7771525869704647345
+    second: fire_snake_2
   - first:
-      213: -1681123643223317343
-    second: violet_control_ring_3
+      213: -5021131570488477349
+    second: fire_snake_3
   - first:
-      213: 5053371668993407005
-    second: violet_control_ring_4
+      213: 18366397537022909
+    second: fire_snake_4
   - first:
-      213: -8116581245121586093
-    second: violet_control_ring_5
+      213: -7034463497521647267
+    second: fire_snake_5
   - first:
-      213: 6410310142342923207
-    second: violet_control_ring_6
+      213: 4737249002694716574
+    second: fire_snake_6
   - first:
-      213: -7472037302541688056
-    second: violet_control_ring_7
+      213: 4674564042127608329
+    second: fire_snake_7
+  - first:
+      213: 5606824511360301703
+    second: fire_snake_8
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -147,177 +150,199 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: violet_control_ring_0
+      name: fire_snake_0
       rect:
         serializedVersion: 2
-        x: 10
-        y: 271
-        width: 179
-        height: 92
+        x: 60
+        y: 324
+        width: 118
+        height: 114
       alignment: 9
-      pivot: {x: 0.5081496, y: 0.33879355}
+      pivot: {x: 0.30683407, y: 0.4840045}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9461071bff07c4540800000000000000
-      internalID: 4993490330342921801
+      spriteID: 561f31fda638c7280800000000000000
+      internalID: -9044209456634400411
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: violet_control_ring_1
+      name: fire_snake_1
       rect:
         serializedVersion: 2
-        x: 202
-        y: 271
-        width: 189
-        height: 94
+        x: 188
+        y: 324
+        width: 128
+        height: 111
       alignment: 9
-      pivot: {x: 0.49356806, y: 0.32929084}
+      pivot: {x: 0.30293036, y: 0.5082139}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: aff2f833ce4558920800000000000000
-      internalID: 2991890900911599610
+      spriteID: 95aead5514ab8daf0800000000000000
+      internalID: -371342179482015143
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: violet_control_ring_2
+      name: fire_snake_2
       rect:
         serializedVersion: 2
-        x: 399
-        y: 271
-        width: 185
-        height: 95
+        x: 323
+        y: 323
+        width: 124
+        height: 114
       alignment: 9
-      pivot: {x: 0.51445675, y: 0.33108777}
+      pivot: {x: 0.32353383, y: 0.50000024}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: f54c53ab6baa56760800000000000000
-      internalID: 7450548860339209311
+      spriteID: 1b2118a6a910adb60800000000000000
+      internalID: 7771525869704647345
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: violet_control_ring_3
+      name: fire_snake_3
       rect:
         serializedVersion: 2
-        x: 16
-        y: 127
-        width: 178
-        height: 96
+        x: 451
+        y: 323
+        width: 133
+        height: 114
       alignment: 9
-      pivot: {x: 0.48224318, y: 0.33031464}
+      pivot: {x: 0.3331898, y: 0.50000024}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 1a4e92614f27ba8e0800000000000000
-      internalID: -1681123643223317343
+      spriteID: b59f882907b515ab0800000000000000
+      internalID: -5021131570488477349
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: violet_control_ring_4
+      name: fire_snake_4
       rect:
         serializedVersion: 2
-        x: 205
-        y: 127
-        width: 187
-        height: 96
+        x: 594
+        y: 323
+        width: 138
+        height: 113
       alignment: 9
-      pivot: {x: 0.49609962, y: 0.32778215}
+      pivot: {x: 0.32161546, y: 0.5000003}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d18ff5052ce212640800000000000000
-      internalID: 5053371668993407005
+      spriteID: db37ff82420414000800000000000000
+      internalID: 18366397537022909
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: violet_control_ring_5
+      name: fire_snake_5
       rect:
         serializedVersion: 2
-        x: 404
-        y: 127
-        width: 180
-        height: 96
+        x: 201
+        y: 116
+        width: 128
+        height: 120
       alignment: 9
-      pivot: {x: 0.5054028, y: 0.32271686}
+      pivot: {x: 0.3290484, y: 0.48733684}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 35c1eed6c5c1c5f80800000000000000
-      internalID: -8116581245121586093
+      spriteID: d5135cc18b0906e90800000000000000
+      internalID: -7034463497521647267
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: violet_control_ring_6
+      name: fire_snake_6
       rect:
         serializedVersion: 2
-        x: 85
-        y: 23
-        width: 205
-        height: 93
+        x: 328
+        y: 116
+        width: 133
+        height: 120
       alignment: 9
-      pivot: {x: 0.5106742, y: 0.3692845}
+      pivot: {x: 0.37432104, y: 0.48480427}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 7c30f667c1ff5f850800000000000000
-      internalID: 6410310142342923207
+      spriteID: e9c21327ed61eb140800000000000000
+      internalID: 4737249002694716574
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: violet_control_ring_7
+      name: fire_snake_7
       rect:
         serializedVersion: 2
-        x: 309
-        y: 24
-        width: 197
-        height: 92
+        x: 459
+        y: 116
+        width: 130
+        height: 120
       alignment: 9
-      pivot: {x: 0.5, y: 0.34936404}
+      pivot: {x: 0.3410297, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 803e88179adfd4890800000000000000
-      internalID: -7472037302541688056
+      spriteID: 90a84daba336fd040800000000000000
+      internalID: 4674564042127608329
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fire_snake_8
+      rect:
+        serializedVersion: 2
+        x: 588
+        y: 116
+        width: 141
+        height: 120
+      alignment: 9
+      pivot: {x: 0.38791868, y: 0.48986968}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 78a7595df217fcd40800000000000000
+      internalID: 5606824511360301703
       vertices: []
       indices: 
       edges: []
@@ -326,7 +351,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: fcf50ed6a12929545beda95bcc8fdb33
+    spriteID: f767dec377d2166459b7c9f484dc262d
     internalID: 0
     vertices: []
     indices: 
@@ -336,14 +361,15 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      violet_control_ring_0: 4993490330342921801
-      violet_control_ring_1: 2991890900911599610
-      violet_control_ring_2: 7450548860339209311
-      violet_control_ring_3: -1681123643223317343
-      violet_control_ring_4: 5053371668993407005
-      violet_control_ring_5: -8116581245121586093
-      violet_control_ring_6: 6410310142342923207
-      violet_control_ring_7: -7472037302541688056
+      fire_snake_0: -9044209456634400411
+      fire_snake_1: -371342179482015143
+      fire_snake_2: 7771525869704647345
+      fire_snake_3: -5021131570488477349
+      fire_snake_4: 18366397537022909
+      fire_snake_5: -7034463497521647267
+      fire_snake_6: 4737249002694716574
+      fire_snake_7: 4674564042127608329
+      fire_snake_8: 5606824511360301703
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

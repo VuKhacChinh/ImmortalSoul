@@ -1,13 +1,10 @@
 fileFormatVersion: 2
-guid: 36d6a3d014316664ba28c5ce68745420
+guid: 0414674936b05854fb4792d8921866a3
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -3887895096137159641
-    second: boundary_0
-  - first:
-      213: 1371404516249603944
-    second: boundary_1
+      213: -8645639154665540912
+    second: violet_grass_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -129,45 +126,23 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: boundary_0
+      name: violet_grass_0
       rect:
         serializedVersion: 2
-        x: 40
-        y: 1124
-        width: 947
-        height: 207
+        x: 32
+        y: 373
+        width: 541
+        height: 240
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 72ce2ce420c6b0ac0800000000000000
-      internalID: -3887895096137159641
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: boundary_1
-      rect:
-        serializedVersion: 2
-        x: 268
-        y: 305
-        width: 490
-        height: 710
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 86f8c6a3425380310800000000000000
-      internalID: 1371404516249603944
+      spriteID: 0d2b3f1def4840880800000000000000
+      internalID: -8645639154665540912
       vertices: []
       indices: 
       edges: []
@@ -176,7 +151,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 4956bc7e5b624ac4f9887cc066de6ce7
+    spriteID: 
     internalID: 0
     vertices: []
     indices: 
@@ -186,8 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      boundary_0: -3887895096137159641
-      boundary_1: 1371404516249603944
+      violet_grass_0: -8645639154665540912
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

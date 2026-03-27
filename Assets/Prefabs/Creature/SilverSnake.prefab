@@ -202,8 +202,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CreatureBrain
   isPlayerControlled: 0
+  creatureName: Unknown
   isBoss: 0
   defeatedSprite: {fileID: 0}
+  isTower: 0
+  bossPrefab: {fileID: 0}
   level: 1
   currentXP: 0
   meatPrefab: {fileID: 7905947638849257074, guid: 2ddafcb310b0c914fabab82bc9164a0b, type: 3}
@@ -222,8 +225,9 @@ MonoBehaviour:
   lowHPThreshold: 0.25
   fleeDuration: 2
   revengeMemoryDuration: 4
+  skillUseChance: 0.35
+  skillRangeMultiplier: 1.3
   allyAssistRange: 3
-  hitEffectPrefab: {fileID: 3333797413733861392, guid: 2c3cd5c202c7878478f42ff44ef8aa8b, type: 3}
   foodSearchRange: 5
   lowHPPriority: 0.6
   obstacleCheckDistance: 1.2
@@ -240,7 +244,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1eb2d258edf69ae44ae052577d872aee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CombatController
-  attack: {fileID: 11400000, guid: c8737bd5256fea34ca9cfd3351f9ad7b, type: 2}
+  attack: {fileID: 11400000, guid: ed93bef710c144d4982ca076060f7221, type: 2}
   creatureSkills: []
 --- !u!1 &8486137727984323457
 GameObject:
