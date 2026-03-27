@@ -1,0 +1,377 @@
+fileFormatVersion: 2
+guid: 33857cbd0f32db64f950744a2cc0e01a
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -9044209456634400411
+    second: fire_snake_0
+  - first:
+      213: -371342179482015143
+    second: fire_snake_1
+  - first:
+      213: 7771525869704647345
+    second: fire_snake_2
+  - first:
+      213: -5021131570488477349
+    second: fire_snake_3
+  - first:
+      213: 18366397537022909
+    second: fire_snake_4
+  - first:
+      213: -7034463497521647267
+    second: fire_snake_5
+  - first:
+      213: 4737249002694716574
+    second: fire_snake_6
+  - first:
+      213: 4674564042127608329
+    second: fire_snake_7
+  - first:
+      213: 5606824511360301703
+    second: fire_snake_8
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: fire_snake_0
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 324
+        width: 118
+        height: 114
+      alignment: 9
+      pivot: {x: 0.30683407, y: 0.4840045}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 561f31fda638c7280800000000000000
+      internalID: -9044209456634400411
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fire_snake_1
+      rect:
+        serializedVersion: 2
+        x: 188
+        y: 324
+        width: 128
+        height: 111
+      alignment: 9
+      pivot: {x: 0.30293036, y: 0.5082139}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 95aead5514ab8daf0800000000000000
+      internalID: -371342179482015143
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fire_snake_2
+      rect:
+        serializedVersion: 2
+        x: 323
+        y: 323
+        width: 124
+        height: 114
+      alignment: 9
+      pivot: {x: 0.32353383, y: 0.50000024}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1b2118a6a910adb60800000000000000
+      internalID: 7771525869704647345
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fire_snake_3
+      rect:
+        serializedVersion: 2
+        x: 451
+        y: 323
+        width: 133
+        height: 114
+      alignment: 9
+      pivot: {x: 0.3331898, y: 0.50000024}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b59f882907b515ab0800000000000000
+      internalID: -5021131570488477349
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fire_snake_4
+      rect:
+        serializedVersion: 2
+        x: 594
+        y: 323
+        width: 138
+        height: 113
+      alignment: 9
+      pivot: {x: 0.32161546, y: 0.5000003}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: db37ff82420414000800000000000000
+      internalID: 18366397537022909
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fire_snake_5
+      rect:
+        serializedVersion: 2
+        x: 201
+        y: 116
+        width: 128
+        height: 120
+      alignment: 9
+      pivot: {x: 0.3290484, y: 0.48733684}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d5135cc18b0906e90800000000000000
+      internalID: -7034463497521647267
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fire_snake_6
+      rect:
+        serializedVersion: 2
+        x: 328
+        y: 116
+        width: 133
+        height: 120
+      alignment: 9
+      pivot: {x: 0.37432104, y: 0.48480427}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e9c21327ed61eb140800000000000000
+      internalID: 4737249002694716574
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fire_snake_7
+      rect:
+        serializedVersion: 2
+        x: 459
+        y: 116
+        width: 130
+        height: 120
+      alignment: 9
+      pivot: {x: 0.3410297, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 90a84daba336fd040800000000000000
+      internalID: 4674564042127608329
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fire_snake_8
+      rect:
+        serializedVersion: 2
+        x: 588
+        y: 116
+        width: 141
+        height: 120
+      alignment: 9
+      pivot: {x: 0.38791868, y: 0.48986968}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 78a7595df217fcd40800000000000000
+      internalID: 5606824511360301703
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: f767dec377d2166459b7c9f484dc262d
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      fire_snake_0: -9044209456634400411
+      fire_snake_1: -371342179482015143
+      fire_snake_2: 7771525869704647345
+      fire_snake_3: -5021131570488477349
+      fire_snake_4: 18366397537022909
+      fire_snake_5: -7034463497521647267
+      fire_snake_6: 4737249002694716574
+      fire_snake_7: 4674564042127608329
+      fire_snake_8: 5606824511360301703
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

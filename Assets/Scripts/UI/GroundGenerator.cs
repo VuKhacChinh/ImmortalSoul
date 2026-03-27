@@ -10,9 +10,6 @@ public class GroundGenerator : MonoBehaviour
     public GameObject boundaryHorizontalPrefab;
     public GameObject boundaryVerticalPrefab;
 
-    [Header("Boss Zone")]
-    public GameObject breakableWallPrefab;
-
     public float MapWidth { get; private set; }
     public float MapHeight { get; private set; }
 
@@ -27,7 +24,7 @@ public class GroundGenerator : MonoBehaviour
     void Start()
     {
         GenerateGround();
-        SpawnEyeFormation();
+        SpawnTowers();
     }
 
     void GenerateGround()
@@ -36,16 +33,10 @@ public class GroundGenerator : MonoBehaviour
 
         tileWidth = groundSprite.bounds.size.x;
         tileHeight = groundSprite.bounds.size.y;
-
         tileSize = Mathf.Max(tileWidth, tileHeight);
 
         MapWidth = gridSize * tileSize;
         MapHeight = gridSize * tileSize;
-
-        bossZoneSize = MapWidth * 0.25f;
-
-        float halfWidth = MapWidth * 0.5f;
-        float halfHeight = MapHeight * 0.5f;
 
         float camHeight = Camera.main.orthographicSize * 2f;
         float camWidth = camHeight * Camera.main.aspect;
@@ -56,8 +47,8 @@ public class GroundGenerator : MonoBehaviour
         int totalX = gridSize + extraX * 2;
         int totalY = gridSize + extraY * 2;
 
-        int startIX = -gridSize/2 - extraX;
-        int startIY = -gridSize/2 - extraY;
+        int startIX = -gridSize / 2 - extraX;
+        int startIY = -gridSize / 2 - extraY;
 
         for (int y = 0; y < totalY; y++)
         {
@@ -75,11 +66,10 @@ public class GroundGenerator : MonoBehaviour
         CreateOuterBossBoundaries();
     }
 
-    void SpawnEyeFormation()
+    void SpawnTowers()
     {
         float offset = MapWidth * 0.5f + bossZoneSize * 0.5f;
-
-        EyeFormationManager.Instance.SpawnEyes(Vector2.zero, offset);
+        TowerManager.Instance.SpawnTowers(Vector2.zero, offset);
     }
 
     void SpawnTileFromIndex(int ix, int iy)
@@ -108,18 +98,14 @@ public class GroundGenerator : MonoBehaviour
     {
         int tiles = Mathf.RoundToInt((MapWidth * 0.25f) / tileSize);
         bossZoneSize = tiles * tileSize;
+
         int halfMain = gridSize / 2;
 
-        SpawnZone(-tiles/2, halfMain, tiles, tiles, 4, 4);          
-        SpawnZone(-tiles/2, -halfMain - tiles, tiles, tiles, 4, 4); 
+        SpawnZone(-tiles / 2, halfMain, tiles, tiles, 4, 4);
+        SpawnZone(-tiles / 2, -halfMain - tiles, tiles, tiles, 4, 4);
 
-        SpawnZone(-halfMain - tiles, -tiles/2, tiles, tiles, 2, 2); 
-        SpawnZone(halfMain, -tiles/2, tiles, tiles, 2, 2);          
-
-        SpawnWall(new Vector2(0, MapHeight * 0.5f), true);
-        SpawnWall(new Vector2(0, -MapHeight * 0.5f), true);
-        SpawnWall(new Vector2(-MapWidth * 0.5f, 0), false);
-        SpawnWall(new Vector2(MapWidth * 0.5f, 0), false);
+        SpawnZone(-halfMain - tiles, -tiles / 2, tiles, tiles, 2, 2);
+        SpawnZone(halfMain, -tiles / 2, tiles, tiles, 2, 2);
     }
 
     void SpawnZone(int startX, int startY, int sizeX, int sizeY, int padX, int padY)
@@ -133,65 +119,74 @@ public class GroundGenerator : MonoBehaviour
         }
     }
 
-    void SpawnWall(Vector2 pos, bool horizontal)
-    {
-        SpriteRenderer sr = breakableWallPrefab.GetComponent<SpriteRenderer>();
-
-        float pieceLength = sr.bounds.size.x;
-
-        int count = Mathf.CeilToInt(bossZoneSize / pieceLength);
-
-        float startOffset = -bossZoneSize * 0.5f + pieceLength * 0.5f;
-
-        for (int i = 0; i < count; i++)
-        {
-            float offset = startOffset + i * pieceLength;
-
-            Vector2 spawnPos;
-
-            if (horizontal)
-                spawnPos = new Vector2(pos.x + offset, pos.y);
-            else
-                spawnPos = new Vector2(pos.x, pos.y + offset);
-
-            Quaternion rot = horizontal
-                ? Quaternion.identity
-                : Quaternion.Euler(0, 0, 90f);
-
-            Instantiate(breakableWallPrefab, spawnPos, rot, transform);
-        }
-    }
-
+    // ================== FIX CHÍNH NẰM Ở ĐÂY ==================
     void CreateBoundary()
     {
         float halfWidth = MapWidth * 0.5f;
         float halfHeight = MapHeight * 0.5f;
+        float halfBoss = bossZoneSize * 0.5f;
 
         float hSize = boundaryHorizontalPrefab.GetComponent<SpriteRenderer>().bounds.size.x;
         float vSize = boundaryVerticalPrefab.GetComponent<SpriteRenderer>().bounds.size.y;
 
+        // ===== Horizontal =====
         int fullH = Mathf.FloorToInt(MapWidth / hSize);
+        float remainH = MapWidth - fullH * hSize;
 
         for (int i = 0; i < fullH; i++)
         {
             float x = -halfWidth + hSize * 0.5f + i * hSize;
 
-            if (Mathf.Abs(x) < MapWidth * 0.125f) continue;
+            // FIX: dùng bossZoneSize thật
+            float edge = halfBoss;
+
+            if (Mathf.Abs(x) < edge - hSize * 0.5f)
+                continue;
 
             SpawnBoundary(boundaryHorizontalPrefab, new Vector2(x, halfHeight));
             SpawnBoundary(boundaryHorizontalPrefab, new Vector2(x, -halfHeight));
         }
 
+        // phần dư ngang
+        if (remainH > 0.01f)
+        {
+            float x = -halfWidth + fullH * hSize + remainH * 0.5f;
+
+            if (Mathf.Abs(x) >= halfBoss)
+            {
+                SpawnScaledPiece(boundaryHorizontalPrefab, new Vector2(x, halfHeight), remainH / hSize, true);
+                SpawnScaledPiece(boundaryHorizontalPrefab, new Vector2(x, -halfHeight), remainH / hSize, true);
+            }
+        }
+
+        // ===== Vertical =====
         int fullV = Mathf.FloorToInt(MapHeight / vSize);
+        float remainV = MapHeight - fullV * vSize;
 
         for (int i = 0; i < fullV; i++)
         {
             float y = -halfHeight + vSize * 0.5f + i * vSize;
 
-            if (Mathf.Abs(y) < MapHeight * 0.125f) continue;
+            float edge = halfBoss;
+
+            // chỉ skip phần NẰM SÂU bên trong, giữ lại mép
+            if (Mathf.Abs(y) < edge - vSize * 0.5f)
+                continue;
 
             SpawnBoundary(boundaryVerticalPrefab, new Vector2(-halfWidth, y));
             SpawnBoundary(boundaryVerticalPrefab, new Vector2(halfWidth, y));
+        }
+
+        // phần dư dọc
+        if (remainV > 0.01f)
+        {
+            float y = -halfHeight + fullV * vSize + remainV * 0.5f;
+
+            if (Mathf.Abs(y) >= halfBoss)
+            {
+                SpawnScaledPiece(boundaryVerticalPrefab, new Vector2(-halfWidth, y), remainV / vSize, false);
+                SpawnScaledPiece(boundaryVerticalPrefab, new Vector2(halfWidth, y), remainV / vSize, false);
+            }
         }
     }
 
@@ -243,14 +238,7 @@ public class GroundGenerator : MonoBehaviour
         if (remain > 0.01f)
         {
             float x = start + full * piece + remain * 0.5f;
-
-            GameObject obj = Instantiate(boundaryHorizontalPrefab,
-                new Vector2(x, y),
-                Quaternion.identity,
-                transform);
-
-            Vector3 s = obj.transform.localScale;
-            obj.transform.localScale = new Vector3(s.x * remain / piece, s.y, s.z);
+            SpawnScaledPiece(boundaryHorizontalPrefab, new Vector2(x, y), remain / piece, true);
         }
     }
 
@@ -272,15 +260,19 @@ public class GroundGenerator : MonoBehaviour
         if (remain > 0.01f)
         {
             float y = start + full * piece + remain * 0.5f;
-
-            GameObject obj = Instantiate(boundaryVerticalPrefab,
-                new Vector2(x, y),
-                Quaternion.identity,
-                transform);
-
-            Vector3 s = obj.transform.localScale;
-            obj.transform.localScale = new Vector3(s.x, s.y * remain / piece, s.z);
+            SpawnScaledPiece(boundaryVerticalPrefab, new Vector2(x, y), remain / piece, false);
         }
+    }
+
+    void SpawnScaledPiece(GameObject prefab, Vector2 pos, float scaleRatio, bool isHorizontal)
+    {
+        GameObject obj = Instantiate(prefab, pos, Quaternion.identity, transform);
+        Vector3 s = obj.transform.localScale;
+
+        if (isHorizontal)
+            obj.transform.localScale = new Vector3(s.x * scaleRatio, s.y, s.z);
+        else
+            obj.transform.localScale = new Vector3(s.x, s.y * scaleRatio, s.z);
     }
 
     void SpawnBoundary(GameObject prefab, Vector2 pos)

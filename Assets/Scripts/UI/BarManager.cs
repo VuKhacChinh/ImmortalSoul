@@ -8,7 +8,11 @@ public class BarManager : MonoBehaviour
     [Header("Prefab")]
     public Bar barPrefab;
 
+    [Header("VFX")]
+    public GameObject healEffectPrefab;
+
     private Dictionary<CreatureBrain, Bar> barMap = new();
+    private Dictionary<CreatureBrain, float> lastHPMap = new();    
 
     void Awake()
     {
@@ -25,7 +29,6 @@ public class BarManager : MonoBehaviour
     public void CreateBar(CreatureBrain creature)
     {
         if (creature == null) return;
-
         if (barMap.ContainsKey(creature)) return;
 
         Bar bar = Instantiate(barPrefab, transform);
@@ -33,8 +36,13 @@ public class BarManager : MonoBehaviour
 
         barMap.Add(creature, bar);
 
+        // ✅ INIT HP
+        lastHPMap[creature] = creature.runtime.HP;
+
         Color c = LevelSystem.Instance.GetLevelColor(creature.level);
         bar.SetColor(c);
+
+        bar.gameObject.SetActive(creature.isPlayerControlled);
     }
 
     public Bar GetHPBar(CreatureBrain creature)
@@ -63,8 +71,35 @@ public class BarManager : MonoBehaviour
 
         if (barMap.TryGetValue(creature, out Bar bar))
         {
+            float currentHP = creature.runtime.HP;
+
+            // ===== CHECK HEAL =====
+            if (lastHPMap.TryGetValue(creature, out float lastHP))
+            {
+                if (currentHP > lastHP)
+                {
+                    PlayHealEffect(creature);
+                }
+            }
+
+            lastHPMap[creature] = currentHP;
+
             bar.SetHP(normalizedValue);
         }
+    }
+
+    void PlayHealEffect(CreatureBrain creature)
+    {
+        if (healEffectPrefab == null) return;
+
+        GameObject fx = Instantiate(
+            healEffectPrefab,
+            creature.transform.position,
+            Quaternion.identity,
+            creature.transform
+        );
+
+        Destroy(fx, 1.5f);
     }
 
     // =========================================================
@@ -102,6 +137,8 @@ public class BarManager : MonoBehaviour
             Destroy(bar.gameObject);
             barMap.Remove(creature);
         }
+
+        lastHPMap.Remove(creature);
     }
 
     public void SetHPBarVisible(CreatureBrain creature, bool visible)
