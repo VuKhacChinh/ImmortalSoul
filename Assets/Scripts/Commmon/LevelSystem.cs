@@ -116,15 +116,6 @@ public class LevelSystem : MonoBehaviour
         creature.stats.maxHP += hpPerLevel;
         creature.stats.attackDamage += damagePerLevel + creature.level * 0.15f;
         creature.stats.moveSpeed += speedPerLevel;
-
-        Vector3 s = creature.transform.localScale;
-
-        float sign = Mathf.Sign(s.x);
-
-        s.x = sign * (Mathf.Abs(s.x) + scalePerLevel);
-        s.y += scalePerLevel;
-
-        creature.transform.localScale = s;
     }
 
     public int GetLevelColorTier(int level)

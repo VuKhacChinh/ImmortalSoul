@@ -70,7 +70,7 @@ public class Bar : MonoBehaviour
         if (creature == null) return;
 
         // follow creature
-        Vector3 worldPos = creature.transform.position + new Vector3(0, 2f, 0);
+        Vector3 worldPos = creature.transform.position + new Vector3(0, 3f, 0);
         transform.position = worldPos;
 
         UpdateTexts();

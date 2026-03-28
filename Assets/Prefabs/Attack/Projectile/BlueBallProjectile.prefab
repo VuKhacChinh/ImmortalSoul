@@ -223,7 +223,7 @@ ParticleSystem:
       serializedVersion: 2
       minMaxState: 0
       minColor: {r: 0.18867922, g: 0.18867922, b: 0.18867922, a: 1}
-      maxColor: {r: 1, g: 0, b: 0, a: 1}
+      maxColor: {r: 0, g: 0, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
         key0: {r: 1, g: 1, b: 1, a: 1}
@@ -4850,7 +4850,7 @@ GameObject:
   - component: {fileID: 3643802841434109096}
   - component: {fileID: -8196404377285910217}
   m_Layer: 0
-  m_Name: RedBallProjectile
+  m_Name: BlueBallProjectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9690,7 +9690,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Projectile
   lifetime: 3
-  hitEffectPrefab: {fileID: 1107951463874692846, guid: d7583ade321382740af117d0bfb29f6f, type: 3}
+  hitEffectPrefab: {fileID: 1107951463874692846, guid: ec9c4f7fdd1d5ce48969d0a141b2cc33, type: 3}
 --- !u!58 &-8196404377285910217
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -9726,7 +9726,7 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 0.2
+  m_Radius: 0.3
 --- !u!1 &7808558778708491833
 GameObject:
   m_ObjectHideFlags: 0
@@ -11044,8 +11044,8 @@ ParticleSystem:
       maxColor: {r: 1, g: 1, b: 1, a: 1}
       maxGradient:
         serializedVersion: 2
-        key0: {r: 1, g: 0, b: 0, a: 1}
-        key1: {r: 1, g: 0, b: 0, a: 0.5882353}
+        key0: {r: 0, g: 0.32, b: 1, a: 1}
+        key1: {r: 0, g: 0.227, b: 1, a: 0.5882353}
         key2: {r: 1, g: 1, b: 1, a: 1}
         key3: {r: 1, g: 1, b: 1, a: 0}
         key4: {r: 0, g: 0, b: 0, a: 0}
@@ -14674,7 +14674,7 @@ TrailRenderer:
       m_RotationOrder: 4
     colorGradient:
       serializedVersion: 2
-      key0: {r: 1, g: 0, b: 0, a: 1}
+      key0: {r: 0, g: 0, b: 1, a: 1}
       key1: {r: 1, g: 1, b: 1, a: 0}
       key2: {r: 0, g: 0, b: 0, a: 0}
       key3: {r: 0, g: 0, b: 0, a: 0}
