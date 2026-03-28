@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 76100ca3725bcc24f958d248d7c37e3b, type: 3}
-  m_Name: GreenProjectileAttack
+  m_Name: YellowThunderBallProjectileAttack
   m_EditorClassIdentifier: Assembly-CSharp::ProjectileAttack
   vfxPrefab: {fileID: 0}
   hitVFX: {fileID: 1107951463874692846, guid: d7583ade321382740af117d0bfb29f6f, type: 3}
   range: 12
   cooldown: 1
-  projectilePrefab: {fileID: 3632775770547235149, guid: 0e450b8415bd9b349a3d5f6a6e3319f6, type: 3}
+  projectilePrefab: {fileID: 1234120734334243587, guid: 0f6cd802350cd3a4291aac630062a672, type: 3}
   projectileSpeed: 12

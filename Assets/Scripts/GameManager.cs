@@ -34,12 +34,15 @@ public class GameManager : MonoBehaviour
     public int levelRange = 3;
 
     [Header("Possession")]
-    public GameObject possessEffectPrefab;
+    public List<GameObject> possessEffectPrefabs = new();
     public GameObject soulPrefab;
     public float soulSpeed = 20f;
 
     [Header("Possession State")]
     public bool hasFirstPossession = false;
+
+    [Header("Boss")]
+    public List<GameObject> bossSpawnEffects = new();
 
     private List<CreatureBrain> allCreatures = new();
 
@@ -331,16 +334,43 @@ public class GameManager : MonoBehaviour
 
     void PlayPossessEffect(CreatureBrain creature)
     {
-        if (possessEffectPrefab == null) return;
+        if (possessEffectPrefabs == null || possessEffectPrefabs.Count == 0)
+            return;
+
+        GameObject prefab = possessEffectPrefabs[
+            Random.Range(0, possessEffectPrefabs.Count)
+        ];
+
+        if (prefab == null) return;
 
         GameObject fx = Instantiate(
-            possessEffectPrefab,
+            prefab,
             creature.transform.position,
             Quaternion.identity,
             creature.transform
         );
 
         Destroy(fx, 1f);
+    }
+
+    public void PlayBossSpawnEffect(CreatureBrain boss)
+    {
+        if (bossSpawnEffects == null || bossSpawnEffects.Count == 0)
+            return;
+
+        GameObject prefab = bossSpawnEffects[
+            Random.Range(0, bossSpawnEffects.Count)
+        ];
+
+        if (prefab == null) return;
+
+        GameObject fx = Instantiate(
+            prefab,
+            boss.transform.position,
+            Quaternion.identity
+        );
+
+        Destroy(fx, 2f);
     }
 
     void UpdateCameraAndUI()

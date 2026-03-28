@@ -81,12 +81,12 @@ SpriteRenderer:
   m_SortingLayerID: -496768567
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: -1754143886931587075, guid: 24e95d8d6e450d34fb80faa34bb98778, type: 3}
+  m_Sprite: {fileID: -371342179482015143, guid: 33857cbd0f32db64f950744a2cc0e01a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.37, y: 1.45}
+  m_Size: {x: 1.35, y: 1.08}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -102,7 +102,7 @@ Animator:
   m_GameObject: {fileID: 7250386410483983525}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: c4a92700f0988c247b4fdf19a0e54040, type: 2}
+  m_Controller: {fileID: 9100000, guid: 0571c49eb3288b846b66472038527195, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -139,7 +139,7 @@ GameObject:
   - component: {fileID: 6420337514911783703}
   - component: {fileID: 9038398184391069704}
   m_Layer: 0
-  m_Name: VioletMantis
+  m_Name: FireSnake
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -244,7 +244,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1eb2d258edf69ae44ae052577d872aee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CombatController
-  attack: {fileID: 11400000, guid: e7cec14fe38554a4c80cb9ac515f3ac6, type: 2}
+  attack: {fileID: 11400000, guid: 97d68b66f27778b4e92f76cbc9b57d07, type: 2}
   creatureSkills: []
 --- !u!1 &8486137727984323457
 GameObject:
@@ -312,7 +312,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.2, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}

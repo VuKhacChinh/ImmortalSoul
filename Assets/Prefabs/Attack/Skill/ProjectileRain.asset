@@ -15,7 +15,7 @@ MonoBehaviour:
   range: 10
   cooldown: 5
   mpCost: 10
-  projectilePrefab: {fileID: 2511979569016334866, guid: 533aeb9544afd214b8c9b9d0d4713bd2, type: 3}
+  projectilePrefab: {fileID: 3632775770547235149, guid: 0e450b8415bd9b349a3d5f6a6e3319f6, type: 3}
   radius: 6
   spawnHeight: 6
   projectileSpeed: 10

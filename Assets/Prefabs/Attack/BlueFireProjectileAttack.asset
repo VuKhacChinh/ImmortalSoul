@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 76100ca3725bcc24f958d248d7c37e3b, type: 3}
-  m_Name: BlueProjectileAttack
+  m_Name: BlueFireProjectileAttack
   m_EditorClassIdentifier: Assembly-CSharp::ProjectileAttack
   vfxPrefab: {fileID: 0}
-  hitVFX: {fileID: 1107951463874692846, guid: d7583ade321382740af117d0bfb29f6f, type: 3}
-  range: 6
+  hitVFX: {fileID: 5162910912013668194, guid: 4d42c70dae132074d907677fe81576f5, type: 3}
+  range: 12
   cooldown: 1
-  projectilePrefab: {fileID: 3632775770547235149, guid: b1f3f60d1f012674499322f8e41fc7c6, type: 3}
-  projectileSpeed: 8
+  projectilePrefab: {fileID: 3632775770547235149, guid: 30cc26816e0ff12489b4f745f9745522, type: 3}
+  projectileSpeed: 12

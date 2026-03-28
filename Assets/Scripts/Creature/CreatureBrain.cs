@@ -1106,6 +1106,9 @@ public class CreatureBrain : MonoBehaviour
         if (GameManager.Instance != null)
         {
             GameManager.Instance.RegisterExternalCreature(boss);
+
+            // 🔥 SPAWN EFFECT KHI BOSS XUẤT HIỆN
+            GameManager.Instance.PlayBossSpawnEffect(boss);
         }
     }
 

@@ -211,13 +211,13 @@ MonoBehaviour:
   currentXP: 0
   meatPrefab: {fileID: 7905947638849257074, guid: 2ddafcb310b0c914fabab82bc9164a0b, type: 3}
   dropCountMin: 1
-  dropCountMax: 2
+  dropCountMax: 1
   stats:
     maxHP: 100
     maxMP: 50
     mpRegen: 5
     attackDamage: 10
-    moveSpeed: 5
+    moveSpeed: 6
     visionRange: 10
   runtime:
     HP: 0
@@ -244,7 +244,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1eb2d258edf69ae44ae052577d872aee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CombatController
-  attack: {fileID: 11400000, guid: ed93bef710c144d4982ca076060f7221, type: 2}
+  attack: {fileID: 11400000, guid: 6ae9ae8da90cbc44197ca3d970949a00, type: 2}
   creatureSkills: []
 --- !u!1 &8486137727984323457
 GameObject:
