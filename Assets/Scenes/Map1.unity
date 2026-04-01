@@ -303,6 +303,7 @@ Transform:
   - {fileID: 1754751579}
   - {fileID: 726455418}
   - {fileID: 1752544860}
+  - {fileID: 565430561}
   - {fileID: 1986186576}
   - {fileID: 389606260}
   - {fileID: 65334808}
@@ -718,13 +719,13 @@ MonoBehaviour:
   levelRange: 3
   possessEffectPrefabs:
   - {fileID: 3300650454287748456, guid: 674c7a3eeb9c43e4a9c6ab6408086cd7, type: 3}
-  - {fileID: 5102044880070558781, guid: 36756a2ef26936d40a72a8c27abfc7ca, type: 3}
+  - {fileID: 5536301876269613564, guid: 36756a2ef26936d40a72a8c27abfc7ca, type: 3}
   soulPrefab: {fileID: 781663818581458018, guid: d1044e390b772b84ab162ed1c9a22438, type: 3}
   soulSpeed: 30
   hasFirstPossession: 1
   bossSpawnEffects:
   - {fileID: 3300650454287748456, guid: 674c7a3eeb9c43e4a9c6ab6408086cd7, type: 3}
-  - {fileID: 5102044880070558781, guid: 36756a2ef26936d40a72a8c27abfc7ca, type: 3}
+  - {fileID: 5536301876269613564, guid: 36756a2ef26936d40a72a8c27abfc7ca, type: 3}
 --- !u!1 &188306298
 GameObject:
   m_ObjectHideFlags: 0
@@ -1484,6 +1485,50 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82710f7cd2bd7d64a83d9a8e3fd8a9ee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CameraShake
+--- !u!1 &565430560
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 565430561}
+  - component: {fileID: 565430562}
+  m_Layer: 0
+  m_Name: PlayerTargetingSystem
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &565430561
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 565430560}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 52335926}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &565430562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 565430560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ef0fe4b2991fac84283b160319d7e13d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::PlayerTargetingSystem
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0

@@ -265,6 +265,9 @@ public class GameManager : MonoBehaviour
         playerCreature = creature;
         playerCreature.isPlayerControlled = true;
 
+        CreatureBrain.ResetPlayerHighlight();
+        playerCreature.ClearManualTarget();
+
         CombatController combat = playerCreature.GetComponent<CombatController>();
 
         if (combat != null)
