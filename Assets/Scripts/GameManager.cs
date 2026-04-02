@@ -61,6 +61,52 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         SpawnCreatures();
+    }
+
+    void OnEnable()
+    {
+        GroundGenerator generator = FindObjectOfType<GroundGenerator>();
+
+        if (generator != null)
+        {
+            generator.OnGroundReady += StartIntroSequence;
+        }
+    }
+
+    void StartIntroSequence()
+    {
+        StartCoroutine(IntroCoroutine());
+    }
+
+    IEnumerator IntroCoroutine()
+    {
+        yield return new WaitForSeconds(0.5f);
+
+        var towers = TowerManager.Instance.GetAllTowers();
+
+        if (towers == null || towers.Count == 0)
+            yield break;
+
+        CreatureBrain randomTower = towers[Random.Range(0, towers.Count)];
+
+        CameraFollow cam = Camera.main.GetComponent<CameraFollow>();
+
+        // 🎯 focus tower
+        if (cam != null)
+            cam.SetTarget(randomTower.transform);
+
+        yield return new WaitForSeconds(1.5f);
+
+        // 💬 chat
+        SpeechBubbleSystem.Instance.Say(
+            "Destroy the towers to break the seal...",
+            Emotion.Angry,
+            3f
+        );
+
+        yield return new WaitForSeconds(3f);
+
+        // 🎮 bắt đầu game
         ChooseInitialPlayer();
 
         InvokeRepeating(nameof(CheckRespawn), respawnCheckInterval, respawnCheckInterval);

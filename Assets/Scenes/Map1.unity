@@ -1857,11 +1857,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6bad2f7e2a36e034db86e471e9cfe2fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::EyeFormationManager
-  topTowerPrefab: {fileID: 6420337514911783703, guid: 81254d1894c13c640ba6a579a975bfd8, type: 3}
-  bottomTowerPrefab: {fileID: 6420337514911783703, guid: c446e842abdb2a44fa9e4cb0582637e3, type: 3}
-  leftTowerPrefab: {fileID: 6420337514911783703, guid: c87619fa26493144abc14cdf61a7f60e, type: 3}
-  rightTowerPrefab: {fileID: 6420337514911783703, guid: fb70d5205ca062c43beb5eb08c7cc1a6, type: 3}
-  centerGatePrefab: {fileID: 8023603854736640244, guid: 81254d1894c13c640ba6a579a975bfd8, type: 3}
+  topTowerPrefab: {fileID: 3824147497748142640, guid: 81254d1894c13c640ba6a579a975bfd8, type: 3}
+  bottomTowerPrefab: {fileID: 5649742054797922935, guid: c446e842abdb2a44fa9e4cb0582637e3, type: 3}
+  leftTowerPrefab: {fileID: 8098053521032069229, guid: fb70d5205ca062c43beb5eb08c7cc1a6, type: 3}
+  rightTowerPrefab: {fileID: 3626369032869348462, guid: c87619fa26493144abc14cdf61a7f60e, type: 3}
+  centerGatePrefab: {fileID: 293715470073304973, guid: c87619fa26493144abc14cdf61a7f60e, type: 3}
 --- !u!1 &1021155929
 GameObject:
   m_ObjectHideFlags: 0
@@ -2695,7 +2695,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1986186576
 Transform:
   m_ObjectHideFlags: 0
