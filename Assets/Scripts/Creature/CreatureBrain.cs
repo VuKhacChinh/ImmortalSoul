@@ -129,6 +129,8 @@ public class CreatureBrain : MonoBehaviour
 
     public System.Action<CreatureBrain> OnDeathCallback;
 
+    bool hasManualTarget = false;
+
     void Awake()
     {
         hideZoneLayer = LayerMask.NameToLayer("HideZone");
@@ -206,15 +208,62 @@ public class CreatureBrain : MonoBehaviour
                 EndAttack();
         }
 
-        if (isPlayerControlled) {
-            if (currentTarget == null || currentTarget.IsDead())
+        if (isPlayerControlled)
+        {
+            // ===== AUTO TARGET =====
+            if (!hasManualTarget && (currentTarget == null || currentTarget.IsDead()))
             {
                 CreatureBrain newTarget = FindBestTargetInRange(combat.AttackRange);
                 currentTarget = newTarget;
                 UpdatePlayerHighlight(newTarget);
             }
 
-            HandlePlayerInput();
+            // reset manual nếu target chết
+            if (hasManualTarget && (currentTarget == null || currentTarget.IsDead()))
+            {
+                hasManualTarget = false;
+            }
+
+            // ===== INPUT LUÔN CHẠY =====
+            Vector2 input = Vector2.zero;
+
+            if (UIController.Instance != null && UIController.Instance.MovePad != null)
+            {
+                input = UIController.Instance.MovePad.Input;
+                input = Vector2.ClampMagnitude(input, 1f);
+            }
+
+            // ===== LOGIC ƯU TIÊN =====
+            if (hasManualTarget && currentTarget != null && !isAttacking)
+            {
+                float dist = (currentTarget.transform.position - transform.position).sqrMagnitude;
+                float range = combat.AttackRange;
+
+                if (dist > range * range)
+                {
+                    // 👉 chỉ auto move nếu player KHÔNG kéo joystick
+                    if (input.sqrMagnitude < 0.01f)
+                    {
+                        MoveToTarget();
+                    }
+                    else
+                    {
+                        rb.linearVelocity = input * stats.moveSpeed;
+                        FaceDirection(input.x);
+                    }
+                }
+                else
+                {
+                    rb.linearVelocity = Vector2.zero;
+                }
+            }
+            else
+            {
+                rb.linearVelocity = input * stats.moveSpeed;
+
+                if (input.sqrMagnitude > 0.01f)
+                    FaceDirection(input.x);
+            }
         }
         else {
             if (isTower)
@@ -234,6 +283,25 @@ public class CreatureBrain : MonoBehaviour
         UpdateMPVisual();
         UpdateXPVisual();
 
+    }
+
+    public void SetManualTarget(CreatureBrain target)
+    {
+        if (!isPlayerControlled) return;
+        if (target == null || target.IsDead() || target.isHidden) return;
+
+        currentTarget = target;
+        hasManualTarget = true;
+        UpdatePlayerHighlight(target);
+    }
+
+    public void ClearManualTarget()
+    {
+        if (!isPlayerControlled) return;
+
+        currentTarget = null;
+        hasManualTarget = false;
+        UpdatePlayerHighlight(null);
     }
 
     void HandleTowerLogic()
@@ -470,11 +538,54 @@ public class CreatureBrain : MonoBehaviour
         if (isAttacking) return;
         if (!combat.CanAttack()) return;
 
-        currentTarget = FindBestTargetInRange(combat.AttackRange);
-        UpdatePlayerHighlight(currentTarget);
+        if (currentTarget == null) return;
 
+        float dist = (currentTarget.transform.position - transform.position).sqrMagnitude;
+        float range = combat.AttackRange;
+
+        // ❗ Nếu ngoài tầm → KHÔNG bắn
+        if (dist > range * range)
+        {
+            // 👉 nếu là manual target → tiến lại gần
+            if (hasManualTarget)
+            {
+                MoveToTarget();
+            }
+            else
+            {
+                // auto target thì bỏ luôn
+                currentTarget = null;
+                UpdatePlayerHighlight(null);
+            }
+
+            return;
+        }
+
+        // ✅ Trong tầm → mới được bắn
         combat.StartCooldown();
         StartAttack();
+    }
+
+    void MoveToTarget()
+    {
+        if (currentTarget == null) return;
+
+        Vector2 dir = (currentTarget.transform.position - transform.position).normalized;
+
+        dir = AvoidObstacle(dir);
+
+        rb.linearVelocity = dir * stats.moveSpeed;
+
+        FaceDirection(dir.x);
+    }
+
+    public static void ResetPlayerHighlight()
+    {
+        if (playerHighlightTarget != null)
+        {
+            BarManager.Instance.SetHPBarVisible(playerHighlightTarget, false);
+            playerHighlightTarget = null;
+        }
     }
 
     bool TryUseAISkill()

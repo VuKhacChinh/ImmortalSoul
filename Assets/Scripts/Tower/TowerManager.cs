@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 
 public class TowerManager : MonoBehaviour
 {
@@ -59,4 +60,16 @@ public class TowerManager : MonoBehaviour
             centerGate.SetActive(true);
         }
     }
+
+    public List<CreatureBrain> GetAllTowers()
+    {
+        return new List<CreatureBrain>
+        {
+            topTower,
+            bottomTower,
+            leftTower,
+            rightTower
+        };
+    }
+
 }

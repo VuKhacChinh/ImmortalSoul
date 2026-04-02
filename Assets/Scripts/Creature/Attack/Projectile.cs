@@ -111,18 +111,26 @@ public class Projectile : MonoBehaviour
     {
         if (useImpactPoint) return;
 
-        CreatureBrain target = col.attachedRigidbody?.GetComponent<CreatureBrain>();
+        CreatureBrain target = col.GetComponentInParent<CreatureBrain>();
 
         if (target == null) return;
         if (target == owner) return;
 
         target.TakeDamage(damage, owner);
 
-        GameObject fx = Instantiate(
+        // 👉 lấy điểm va chạm thật
+        Vector2 hitPoint = col.ClosestPoint(transform.position);
+
+        if (hitEffectPrefab != null)
+        {
+            GameObject fx = Instantiate(
                 hitEffectPrefab,
-                transform.position,
+                hitPoint,
                 Quaternion.identity
             );
+
+            Destroy(fx, 1.5f);
+        }
 
         Destroy(gameObject);
     }
