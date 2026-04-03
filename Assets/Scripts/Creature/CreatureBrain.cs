@@ -11,6 +11,15 @@ public class CreatureBrain : MonoBehaviour
     [Header("Identity")]
     public string creatureName = "Unknown";
 
+    [Header("Tower Guardian")]
+    public bool isTowerGuardian = false;
+
+    Vector2 guardCenter;
+    float guardRadius;
+
+    public float patrolRadius = 2f; // vòng nhỏ quanh trụ
+    public float leashRadius = 6f;  // giới hạn max
+
     [Header("Boss")]
     public bool isBoss = false;
     bool wasBoss = false;
@@ -20,6 +29,12 @@ public class CreatureBrain : MonoBehaviour
     [Header("Tower")]
     public bool isTower = false;
     public CreatureBrain bossPrefab;
+    CreatureBrain ownerTower;
+
+    [Header("Tower Guardians")]
+    public CreatureBrain guardianPrefab;
+    public int guardianCount = 3;
+    public float guardianSpawnRadius = 2f;
 
     [Header("Level")]
     public int level = 1;
@@ -170,6 +185,11 @@ public class CreatureBrain : MonoBehaviour
                 3f
             );
         }
+
+        if (isTower)
+        {
+            SpawnGuardians();
+        }
     }
 
     void Update()
@@ -222,6 +242,7 @@ public class CreatureBrain : MonoBehaviour
             if (hasManualTarget && (currentTarget == null || currentTarget.IsDead()))
             {
                 hasManualTarget = false;
+                UpdatePlayerHighlight(null);
             }
 
             // ===== INPUT LUÔN CHẠY =====
@@ -254,7 +275,15 @@ public class CreatureBrain : MonoBehaviour
                 }
                 else
                 {
-                    rb.linearVelocity = Vector2.zero;
+                    if (input.sqrMagnitude > 0.01f)
+                    {
+                        rb.linearVelocity = input * stats.moveSpeed;
+                        FaceDirection(input.x);
+                    }
+                    else
+                    {
+                        rb.linearVelocity = Vector2.zero;
+                    }
                 }
             }
             else
@@ -270,6 +299,10 @@ public class CreatureBrain : MonoBehaviour
             {
                 HandleTowerLogic();
             }
+            else if (isTowerGuardian)
+            {
+                HandleTowerGuardian();
+            }
             else
             {
                 HandleAI();
@@ -283,6 +316,135 @@ public class CreatureBrain : MonoBehaviour
         UpdateMPVisual();
         UpdateXPVisual();
 
+    }
+
+    public void InitGuardian(CreatureBrain tower)
+    {
+        ownerTower = tower;
+
+        guardCenter = tower.transform.position;
+        guardRadius = leashRadius;
+    }
+
+    void SpawnGuardians()
+    {
+        if (!isTower || guardianPrefab == null) return;
+
+        for (int i = 0; i < guardianCount; i++)
+        {
+            Vector2 offset = Random.insideUnitCircle * guardianSpawnRadius;
+
+            CreatureBrain g = Instantiate(
+                guardianPrefab,
+                transform.position + (Vector3)offset,
+                Quaternion.identity
+            );
+
+            g.isTowerGuardian = true;
+            g.isTower = false;
+
+            // 🔥 auto gắn owner
+            g.InitGuardian(this);
+        }
+    }
+
+    void HandleTowerGuardian()
+    {
+        if (ownerTower != null)
+        {
+            guardCenter = ownerTower.transform.position;
+        }
+
+        if (isAttacking)
+        {
+            rb.linearVelocity = Vector2.zero;
+            return;
+        }
+
+        // 🔒 Không cho đi quá xa
+        float distFromCenter = (transform.position - (Vector3)guardCenter).magnitude;
+
+        if (distFromCenter > guardRadius)
+        {
+            Vector2 backDir = (guardCenter - (Vector2)transform.position).normalized;
+            rb.linearVelocity = backDir * stats.moveSpeed;
+            FaceDirection(backDir.x);
+            return;
+        }
+
+        // 🎯 chỉ target PLAYER
+        if (scanTimer <= 0f)
+        {
+            scanTimer = SCAN_INTERVAL;
+            currentTarget = FindPlayerInRange(stats.visionRange);
+        }
+
+        if (currentTarget != null)
+        {
+            float dist = (currentTarget.transform.position - transform.position).sqrMagnitude;
+            float range = combat.AttackRange;
+
+            if (dist <= range * range)
+            {
+                FaceDirection(currentTarget.transform.position.x - transform.position.x);
+
+                if (!isAttacking && combat.CanAttack())
+                {
+                    rb.linearVelocity = Vector2.zero;
+                    combat.StartCooldown();
+                    StartAttack();
+                }
+
+                return;
+            }
+
+            // 🏃 đuổi nhưng vẫn bị leash
+            Vector2 dir = (currentTarget.transform.position - transform.position).normalized;
+            rb.linearVelocity = dir * stats.moveSpeed;
+            FaceDirection(dir.x);
+            return;
+        }
+
+        // 🔁 tuần quanh trụ
+        PatrolAroundTower();
+    }
+
+    CreatureBrain FindPlayerInRange(float range)
+    {
+        int hitCount = Physics2D.OverlapCircleNonAlloc(
+            transform.position,
+            range,
+            scanBuffer
+        );
+
+        for (int i = 0; i < hitCount; i++)
+        {
+            CreatureBrain other = scanBuffer[i].GetComponentInParent<CreatureBrain>();
+
+            if (other == null || other.IsDead() || other.isHidden)
+                continue;
+
+            if (other.isPlayerControlled)
+                return other;
+        }
+
+        return null;
+    }
+
+    void PatrolAroundTower()
+    {
+        stateTimer -= Time.deltaTime;
+
+        if (stateTimer <= 0f)
+        {
+            stateTimer = Random.Range(2f, 4f);
+
+            Vector2 randomCircle = Random.insideUnitCircle * patrolRadius;
+            wanderDirection = (guardCenter + randomCircle - (Vector2)transform.position).normalized;
+        }
+
+        rb.linearVelocity = wanderDirection * stats.moveSpeed;
+        FaceDirection(wanderDirection.x);
     }
 
     public void SetManualTarget(CreatureBrain target)
@@ -380,7 +542,7 @@ public class CreatureBrain : MonoBehaviour
     {
         if (!isPlayerControlled) return;
 
-        // ẩn bar target cũ
+        // clear target cũ nếu còn tồn tại
         if (playerHighlightTarget != null)
         {
             BarManager.Instance.SetHPBarVisible(playerHighlightTarget, false);
@@ -388,8 +550,7 @@ public class CreatureBrain : MonoBehaviour
 
         playerHighlightTarget = newTarget;
 
-        // hiện bar target mới
-        if (playerHighlightTarget != null)
+        if (playerHighlightTarget != null && !playerHighlightTarget.IsDead())
         {
             BarManager.Instance.SetHPBarVisible(playerHighlightTarget, true);
         }
@@ -758,10 +919,10 @@ public class CreatureBrain : MonoBehaviour
                 if (!other.isPlayerControlled)
                     continue;
             }
-            // CREATURE THƯỜNG → không đánh boss + tower
+
             else if (!isPlayerControlled)
             {
-                if (other.isBoss || other.isTower)
+                if (other.isBoss || other.isTower || other.isTowerGuardian)
                     continue;
             }
 
@@ -1297,6 +1458,11 @@ public class CreatureBrain : MonoBehaviour
 
     void OnDestroy()
     {
+        if (playerHighlightTarget == this)
+        {
+            playerHighlightTarget = null;
+        }
+
         if (BarManager.Instance != null)
             BarManager.Instance.RemoveHPBar(this);
     }
