@@ -1,0 +1,351 @@
+fileFormatVersion: 2
+guid: 5d13b9aed9445104a9fd989774459925
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 1468863161033559066
+    second: ice_phoenix_0
+  - first:
+      213: 3118174181165820427
+    second: ice_phoenix_1
+  - first:
+      213: 2439287005332840419
+    second: ice_phoenix_2
+  - first:
+      213: 2380631612714534761
+    second: ice_phoenix_3
+  - first:
+      213: 7566496650339082863
+    second: ice_phoenix_4
+  - first:
+      213: 5470993767365152735
+    second: ice_phoenix_5
+  - first:
+      213: 4929138902960908277
+    second: ice_phoenix_6
+  - first:
+      213: -48902109636056317
+    second: ice_phoenix_7
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: ice_phoenix_0
+      rect:
+        serializedVersion: 2
+        x: 25
+        y: 304
+        width: 186
+        height: 161
+      alignment: 9
+      pivot: {x: 0.5735277, y: 0.5320905}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a1c00193343726410800000000000000
+      internalID: 1468863161033559066
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ice_phoenix_1
+      rect:
+        serializedVersion: 2
+        x: 213
+        y: 305
+        width: 175
+        height: 110
+      alignment: 9
+      pivot: {x: 0.6024628, y: 0.734843}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b0aee20a5eaf54b20800000000000000
+      internalID: 3118174181165820427
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ice_phoenix_2
+      rect:
+        serializedVersion: 2
+        x: 390
+        y: 304
+        width: 170
+        height: 88
+      alignment: 9
+      pivot: {x: 0.5822359, y: 0.8729862}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3ef17128b961ad120800000000000000
+      internalID: 2439287005332840419
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ice_phoenix_3
+      rect:
+        serializedVersion: 2
+        x: 555
+        y: 307
+        width: 179
+        height: 80
+      alignment: 9
+      pivot: {x: 0.5679137, y: 0.8646973}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9674ae0b6d3b90120800000000000000
+      internalID: 2380631612714534761
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ice_phoenix_4
+      rect:
+        serializedVersion: 2
+        x: 13
+        y: 92
+        width: 178
+        height: 159
+      alignment: 9
+      pivot: {x: 0.61610216, y: 0.5535196}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f62e4ad4d98910960800000000000000
+      internalID: 7566496650339082863
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ice_phoenix_5
+      rect:
+        serializedVersion: 2
+        x: 201
+        y: 91
+        width: 180
+        height: 155
+      alignment: 9
+      pivot: {x: 0.6063702, y: 0.584312}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fdf0d2848dfdceb40800000000000000
+      internalID: 5470993767365152735
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ice_phoenix_6
+      rect:
+        serializedVersion: 2
+        x: 388
+        y: 91
+        width: 179
+        height: 151
+      alignment: 9
+      pivot: {x: 0.612058, y: 0.5905707}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5f72b8f67b1d76440800000000000000
+      internalID: 4929138902960908277
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ice_phoenix_7
+      rect:
+        serializedVersion: 2
+        x: 571
+        y: 92
+        width: 125
+        height: 149
+      alignment: 9
+      pivot: {x: 0.85740286, y: 0.61014354}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 30b20665ac3425ff0800000000000000
+      internalID: -48902109636056317
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 6941c79a63f689b40a9a7d404671aff2
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      ice_phoenix_0: 1468863161033559066
+      ice_phoenix_1: 3118174181165820427
+      ice_phoenix_2: 2439287005332840419
+      ice_phoenix_3: 2380631612714534761
+      ice_phoenix_4: 7566496650339082863
+      ice_phoenix_5: 5470993767365152735
+      ice_phoenix_6: 4929138902960908277
+      ice_phoenix_7: -48902109636056317
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

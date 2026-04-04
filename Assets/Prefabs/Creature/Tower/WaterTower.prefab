@@ -78,16 +78,14 @@ MonoBehaviour:
   isPlayerControlled: 0
   creatureName: Unknown
   isTowerGuardian: 0
-  patrolRadius: 2
   leashRadius: 6
   isBoss: 0
   defeatedSprite: {fileID: 0}
   isTower: 1
-  bossPrefab: {fileID: 6420337514911783703, guid: 802f11cde5f55f84b9d548cc246d623f, type: 3}
-  guardianPrefab: {fileID: 6420337514911783703, guid: 5100535a0ee6bbd438a50e5c3ec7bbf5, type: 3}
+  bossPrefab: {fileID: 6420337514911783703, guid: d65f64f72791e914bbb6dcc21a8a9cc0, type: 3}
+  guardianPrefab: {fileID: 6420337514911783703, guid: 0f4e5720cdf61564ba9b401be847cbf0, type: 3}
   guardianCount: 1
-  guardianSpawnRadius: 20
-  level: 30
+  level: 25
   currentXP: 0
   meatPrefab: {fileID: 0}
   dropCountMin: 0

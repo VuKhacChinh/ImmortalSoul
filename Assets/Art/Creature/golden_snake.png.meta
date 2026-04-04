@@ -1,0 +1,403 @@
+fileFormatVersion: 2
+guid: 79876058252e9d74d89a379b8781dba0
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 8132003967474701953
+    second: golden_snake_0
+  - first:
+      213: 2153176238697741379
+    second: golden_snake_1
+  - first:
+      213: 4617864496959958784
+    second: golden_snake_2
+  - first:
+      213: 7011273441530490928
+    second: golden_snake_3
+  - first:
+      213: 601325592126538939
+    second: golden_snake_4
+  - first:
+      213: -7213584893586806220
+    second: golden_snake_5
+  - first:
+      213: -8850241700601097826
+    second: golden_snake_6
+  - first:
+      213: 841501960053763659
+    second: golden_snake_7
+  - first:
+      213: 7975873766974998960
+    second: golden_snake_8
+  - first:
+      213: 2335117782504671838
+    second: golden_snake_9
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: golden_snake_0
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 317
+        width: 120
+        height: 128
+      alignment: 9
+      pivot: {x: 0.31005332, y: 0.45488787}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1869561f58eaad070800000000000000
+      internalID: 8132003967474701953
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: golden_snake_1
+      rect:
+        serializedVersion: 2
+        x: 183
+        y: 317
+        width: 124
+        height: 128
+      alignment: 9
+      pivot: {x: 0.30637679, y: 0.45963645}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 34cf36e816e91ed10800000000000000
+      internalID: 2153176238697741379
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: golden_snake_2
+      rect:
+        serializedVersion: 2
+        x: 309
+        y: 317
+        width: 124
+        height: 128
+      alignment: 9
+      pivot: {x: 0.31863156, y: 0.46675944}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 00faf222b43f51040800000000000000
+      internalID: 4617864496959958784
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: golden_snake_3
+      rect:
+        serializedVersion: 2
+        x: 435
+        y: 317
+        width: 135
+        height: 128
+      alignment: 9
+      pivot: {x: 0.2906372, y: 0.45488787}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0303e893c0c0d4160800000000000000
+      internalID: 7011273441530490928
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: golden_snake_4
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 317
+        width: 149
+        height: 128
+      alignment: 9
+      pivot: {x: 0.27563396, y: 0.45251346}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bb4cd09a076585800800000000000000
+      internalID: 601325592126538939
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: golden_snake_5
+      rect:
+        serializedVersion: 2
+        x: 63
+        y: 111
+        width: 120
+        height: 134
+      alignment: 9
+      pivot: {x: 0.37336904, y: 0.44783556}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 43a62ac22c234eb90800000000000000
+      internalID: -7213584893586806220
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: golden_snake_6
+      rect:
+        serializedVersion: 2
+        x: 189
+        y: 111
+        width: 122
+        height: 134
+      alignment: 9
+      pivot: {x: 0.38790044, y: 0.4569077}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e91925b5010ad2580800000000000000
+      internalID: -8850241700601097826
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: golden_snake_7
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 111
+        width: 125
+        height: 134
+      alignment: 9
+      pivot: {x: 0.3881599, y: 0.45463982}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b4eaccef29d9dab00800000000000000
+      internalID: 841501960053763659
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: golden_snake_8
+      rect:
+        serializedVersion: 2
+        x: 447
+        y: 111
+        width: 127
+        height: 134
+      alignment: 9
+      pivot: {x: 0.39470714, y: 0.45010352}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0b9c6eddeeeffae60800000000000000
+      internalID: 7975873766974998960
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: golden_snake_9
+      rect:
+        serializedVersion: 2
+        x: 571
+        y: 111
+        width: 148
+        height: 134
+      alignment: 9
+      pivot: {x: 0.43428865, y: 0.4455678}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e5a83ee4041086020800000000000000
+      internalID: 2335117782504671838
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 652b9bab65ca74b478aa3bfab5d1c383
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      golden_snake_0: 8132003967474701953
+      golden_snake_1: 2153176238697741379
+      golden_snake_2: 4617864496959958784
+      golden_snake_3: 7011273441530490928
+      golden_snake_4: 601325592126538939
+      golden_snake_5: -7213584893586806220
+      golden_snake_6: -8850241700601097826
+      golden_snake_7: 841501960053763659
+      golden_snake_8: 7975873766974998960
+      golden_snake_9: 2335117782504671838
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: ArcSlashAttack
   m_EditorClassIdentifier: Assembly-CSharp::ArcAttack
   vfxPrefab: {fileID: 5271271443054720984, guid: b818d87b9f5c34546aad45516784f6de, type: 3}
-  hitVFX: {fileID: 1107951463874692846, guid: d7583ade321382740af117d0bfb29f6f, type: 3}
+  hitVFX: {fileID: 5435998012328932994, guid: d8703a33a4eb0b84a875202fde23e8f7, type: 3}
   range: 4
   cooldown: 1
   arcAngle: 180

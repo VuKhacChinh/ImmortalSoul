@@ -707,13 +707,13 @@ MonoBehaviour:
     creaturePrefabs:
     - {fileID: 6420337514911783703, guid: 44e7e4aff2fb4e24196fdb035699290e, type: 3}
     - {fileID: 6420337514911783703, guid: 686ff11c5fc388c4c98cd5477873ae7e, type: 3}
-    - {fileID: 6420337514911783703, guid: e3c0607f3e2c55b4c93e0e9db117a760, type: 3}
+    - {fileID: 6420337514911783703, guid: 454cd284028bd7746bdb1c4024ca8d1b, type: 3}
   - outerRadius: 90
     spawnCount: 20
     creaturePrefabs:
     - {fileID: 6420337514911783703, guid: ec839a5db384f5b45bb9ecc4cf4ecd3a, type: 3}
     - {fileID: 6420337514911783703, guid: 454cd284028bd7746bdb1c4024ca8d1b, type: 3}
-    - {fileID: 6420337514911783703, guid: a128ea0466c0517448b49602e338ac61, type: 3}
+    - {fileID: 6420337514911783703, guid: e3c0607f3e2c55b4c93e0e9db117a760, type: 3}
   respawnCheckInterval: 5
   controlEffectPrefab: {fileID: 781663818581458018, guid: d1044e390b772b84ab162ed1c9a22438, type: 3}
   levelRange: 3
@@ -1080,55 +1080,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 318892471}
   m_CullTransparentMesh: 1
---- !u!1 &359175575
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 359175577}
-  - component: {fileID: 359175576}
-  m_Layer: 0
-  m_Name: PostProcessing
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
---- !u!114 &359175576
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 359175575}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 172515602e62fb746b5d573b38a5fe58, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.RenderPipelines.Core.Runtime::UnityEngine.Rendering.Volume
-  m_IsGlobal: 1
-  priority: 0
-  blendDistance: 0
-  weight: 1
-  sharedProfile: {fileID: 11400000, guid: a81175d319ebef64c846ee8bb37985b4, type: 2}
---- !u!4 &359175577
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 359175575}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &370981603
 GameObject:
   m_ObjectHideFlags: 0
@@ -3458,4 +3409,3 @@ SceneRoots:
   - {fileID: 52335926}
   - {fileID: 257279842}
   - {fileID: 188306301}
-  - {fileID: 359175577}

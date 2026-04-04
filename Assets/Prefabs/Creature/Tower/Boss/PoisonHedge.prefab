@@ -139,7 +139,7 @@ GameObject:
   - component: {fileID: 6420337514911783703}
   - component: {fileID: 9038398184391069704}
   m_Layer: 0
-  m_Name: FireSnake
+  m_Name: PoisonHedge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -211,18 +211,18 @@ MonoBehaviour:
   bossPrefab: {fileID: 0}
   guardianPrefab: {fileID: 0}
   guardianCount: 3
-  level: 30
+  level: 25
   currentXP: 0
   meatPrefab: {fileID: 7905947638849257074, guid: 2ddafcb310b0c914fabab82bc9164a0b, type: 3}
   dropCountMin: 1
   dropCountMax: 2
   stats:
-    maxHP: 1000
-    maxMP: 100
+    maxHP: 1500
+    maxMP: 120
     mpRegen: 5
-    attackDamage: 120
-    moveSpeed: 8
-    visionRange: 1500
+    attackDamage: 150
+    moveSpeed: 9
+    visionRange: 2000
   runtime:
     HP: 0
     MP: 0

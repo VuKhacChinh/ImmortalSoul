@@ -1,0 +1,429 @@
+fileFormatVersion: 2
+guid: 6e67ff4725a39ba4ea3d6c6bb60acda1
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 5125578889532792239
+    second: poison_hedge_0
+  - first:
+      213: -6941524646015722163
+    second: poison_hedge_1
+  - first:
+      213: 1231283698537856348
+    second: poison_hedge_2
+  - first:
+      213: -8303153282336127349
+    second: poison_hedge_3
+  - first:
+      213: 3904697099195120486
+    second: poison_hedge_4
+  - first:
+      213: -4748091799450252744
+    second: poison_hedge_5
+  - first:
+      213: -2652977444837563241
+    second: poison_hedge_6
+  - first:
+      213: 6570150923877530073
+    second: poison_hedge_7
+  - first:
+      213: -829358875969509118
+    second: poison_hedge_8
+  - first:
+      213: 5679583554633814570
+    second: poison_hedge_9
+  - first:
+      213: -1964309575646075021
+    second: poison_hedge_10
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: poison_hedge_0
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 291
+        width: 105
+        height: 86
+      alignment: 9
+      pivot: {x: 0.28002378, y: 0.37984803}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fadd7d2f7d6b12740800000000000000
+      internalID: 5125578889532792239
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: poison_hedge_1
+      rect:
+        serializedVersion: 2
+        x: 167
+        y: 291
+        width: 104
+        height: 89
+      alignment: 9
+      pivot: {x: 0.301287, y: 0.3736538}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d4d1d9abc10caaf90800000000000000
+      internalID: -6941524646015722163
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: poison_hedge_2
+      rect:
+        serializedVersion: 2
+        x: 276
+        y: 291
+        width: 104
+        height: 87
+      alignment: 9
+      pivot: {x: 0.29544243, y: 0.3707493}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c5df31d0006661110800000000000000
+      internalID: 1231283698537856348
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: poison_hedge_3
+      rect:
+        serializedVersion: 2
+        x: 386
+        y: 291
+        width: 104
+        height: 86
+      alignment: 9
+      pivot: {x: 0.2983648, y: 0.37631404}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b868cbae41645cc80800000000000000
+      internalID: -8303153282336127349
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: poison_hedge_4
+      rect:
+        serializedVersion: 2
+        x: 496
+        y: 291
+        width: 103
+        height: 86
+      alignment: 9
+      pivot: {x: 0.2993573, y: 0.3833817}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 66bf501e255403630800000000000000
+      internalID: 3904697099195120486
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: poison_hedge_5
+      rect:
+        serializedVersion: 2
+        x: 605
+        y: 291
+        width: 104
+        height: 87
+      alignment: 9
+      pivot: {x: 0.29544243, y: 0.3672559}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 83a82d43aa36b1eb0800000000000000
+      internalID: -4748091799450252744
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: poison_hedge_6
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 90
+        width: 106
+        height: 78
+      alignment: 9
+      pivot: {x: 0.29356766, y: 0.35193926}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 794655be11bbe2bd0800000000000000
+      internalID: -2652977444837563241
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: poison_hedge_7
+      rect:
+        serializedVersion: 2
+        x: 184
+        y: 90
+        width: 108
+        height: 80
+      alignment: 9
+      pivot: {x: 0.28894848, y: 0.34804305}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9d9bc62847ddd2b50800000000000000
+      internalID: 6570150923877530073
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: poison_hedge_8
+      rect:
+        serializedVersion: 2
+        x: 307
+        y: 90
+        width: 117
+        height: 97
+      alignment: 9
+      pivot: {x: 0.28440243, y: 0.29947922}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 20925861f768d74f0800000000000000
+      internalID: -829358875969509118
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: poison_hedge_9
+      rect:
+        serializedVersion: 2
+        x: 429
+        y: 90
+        width: 136
+        height: 132
+      alignment: 9
+      pivot: {x: 0.33910438, y: 0.21910962}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a225916b62fe1de40800000000000000
+      internalID: 5679583554633814570
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: poison_hedge_10
+      rect:
+        serializedVersion: 2
+        x: 574
+        y: 90
+        width: 121
+        height: 87
+      alignment: 9
+      pivot: {x: 0.26390138, y: 0.32533684}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 377a7ba29de5db4e0800000000000000
+      internalID: -1964309575646075021
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 3dd743a8defd77943a2983a7b1073db9
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      poison_hedge_0: 5125578889532792239
+      poison_hedge_1: -6941524646015722163
+      poison_hedge_10: -1964309575646075021
+      poison_hedge_2: 1231283698537856348
+      poison_hedge_3: -8303153282336127349
+      poison_hedge_4: 3904697099195120486
+      poison_hedge_5: -4748091799450252744
+      poison_hedge_6: -2652977444837563241
+      poison_hedge_7: 6570150923877530073
+      poison_hedge_8: -829358875969509118
+      poison_hedge_9: 5679583554633814570
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

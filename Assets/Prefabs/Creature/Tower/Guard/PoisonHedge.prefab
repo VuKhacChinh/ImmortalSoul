@@ -81,12 +81,12 @@ SpriteRenderer:
   m_SortingLayerID: -496768567
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 665313845716424348, guid: b89633cc8c2fed149aef41d823f892af, type: 3}
+  m_Sprite: {fileID: 5125578889532792239, guid: 6e67ff4725a39ba4ea3d6c6bb60acda1, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.37, y: 1.45}
+  m_Size: {x: 1.35, y: 1.08}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -102,7 +102,7 @@ Animator:
   m_GameObject: {fileID: 7250386410483983525}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: b7dbdd1fa0739ac4cbeba15880b34198, type: 2}
+  m_Controller: {fileID: 9100000, guid: 197515792cfe91946a5ca3e78204b4b2, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -139,7 +139,7 @@ GameObject:
   - component: {fileID: 6420337514911783703}
   - component: {fileID: 9038398184391069704}
   m_Layer: 0
-  m_Name: Mantis
+  m_Name: PoisonHedge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -155,7 +155,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 3, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2651602349576561444}
@@ -202,23 +202,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CreatureBrain
   isPlayerControlled: 0
-  creatureName: Unknown
+  creatureName: Fire Giant Snake
+  isTowerGuardian: 1
+  leashRadius: 20
   isBoss: 0
   defeatedSprite: {fileID: 0}
   isTower: 0
   bossPrefab: {fileID: 0}
-  level: 1
+  guardianPrefab: {fileID: 0}
+  guardianCount: 3
+  level: 20
   currentXP: 0
   meatPrefab: {fileID: 7905947638849257074, guid: 2ddafcb310b0c914fabab82bc9164a0b, type: 3}
   dropCountMin: 1
-  dropCountMax: 1
+  dropCountMax: 2
   stats:
-    maxHP: 100
-    maxMP: 50
+    maxHP: 800
+    maxMP: 150
     mpRegen: 5
-    attackDamage: 10
-    moveSpeed: 6
-    visionRange: 10
+    attackDamage: 70
+    moveSpeed: 5
+    visionRange: 1000
   runtime:
     HP: 0
     MP: 0
@@ -244,8 +248,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1eb2d258edf69ae44ae052577d872aee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CombatController
-  attack: {fileID: 11400000, guid: e7cec14fe38554a4c80cb9ac515f3ac6, type: 2}
-  creatureSkills: []
+  attack: {fileID: 11400000, guid: d6d62b354dca6424d9137d97ec664e82, type: 2}
+  creatureSkills:
+  - {fileID: 11400000, guid: 545d470ef546730439759a9ae1ec8c2f, type: 2}
 --- !u!1 &8486137727984323457
 GameObject:
   m_ObjectHideFlags: 0
@@ -312,7 +317,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -0.2, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -322,5 +327,5 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
+  m_Size: {x: 0.8, y: 0.6}
   m_EdgeRadius: 0

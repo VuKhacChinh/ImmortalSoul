@@ -1,37 +1,31 @@
 fileFormatVersion: 2
-guid: 68a19c2c30d0f0a4388ab751416622a6
+guid: 84c139a6f7e2bfc4598607c1cf646023
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 2027814255969482940
-    second: energy_barier_0
+      213: -1853730814916868023
+    second: ice_phoenix_king_0
   - first:
-      213: -2321056320946263659
-    second: energy_barier_1
+      213: -6666407985703341962
+    second: ice_phoenix_king_1
   - first:
-      213: 75339362186561735
-    second: energy_barier_2
+      213: -2784593266563637698
+    second: ice_phoenix_king_2
   - first:
-      213: -703888907628677259
-    second: energy_barier_3
+      213: -4079245596640984770
+    second: ice_phoenix_king_3
   - first:
-      213: 7563829208145298898
-    second: energy_barier_4
+      213: -2128213890707473353
+    second: ice_phoenix_king_4
   - first:
-      213: 8270607694587249267
-    second: energy_barier_5
+      213: 5370994122294506848
+    second: ice_phoenix_king_5
   - first:
-      213: -2279820121654144921
-    second: energy_barier_6
+      213: -9083995346006794690
+    second: ice_phoenix_king_6
   - first:
-      213: 2765019382866922959
-    second: energy_barier_7
-  - first:
-      213: 4795708363076693852
-    second: energy_barier_8
-  - first:
-      213: -4110322489137427931
-    second: energy_barier_9
+      213: -2486914850392975638
+    second: ice_phoenix_king_7
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -153,89 +147,177 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: energy_barier_0
+      name: ice_phoenix_king_0
       rect:
         serializedVersion: 2
-        x: 119
-        y: 1069
-        width: 611
-        height: 97
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 24
+        y: 301
+        width: 187
+        height: 163
+      alignment: 9
+      pivot: {x: 0.58126056, y: 0.5522064}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: cb8b88d625e342c10800000000000000
-      internalID: 2027814255969482940
+      spriteID: 9484fa335a93646e0800000000000000
+      internalID: -1853730814916868023
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: energy_barier_3
+      name: ice_phoenix_king_1
       rect:
         serializedVersion: 2
-        x: 119
-        y: 803
-        width: 608
-        height: 113
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 211
+        y: 300
+        width: 178
+        height: 118
+      alignment: 9
+      pivot: {x: 0.6161024, y: 0.7369504}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 577747394c84b36f0800000000000000
-      internalID: -703888907628677259
+      spriteID: 6703354d1492c73a0800000000000000
+      internalID: -6666407985703341962
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: energy_barier_4
+      name: ice_phoenix_king_2
       rect:
         serializedVersion: 2
-        x: 122
-        y: 554
-        width: 608
-        height: 87
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 389
+        y: 301
+        width: 169
+        height: 95
+      alignment: 9
+      pivot: {x: 0.5971087, y: 0.8199103}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 2d58935079e18f860800000000000000
-      internalID: 7563829208145298898
+      spriteID: e3e978e6d232b59d0800000000000000
+      internalID: -2784593266563637698
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: energy_barier_8
+      name: ice_phoenix_king_3
       rect:
         serializedVersion: 2
-        x: 121
-        y: 278
-        width: 607
-        height: 83
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+        x: 547
+        y: 304
+        width: 190
+        height: 88
+      alignment: 9
+      pivot: {x: 0.58317614, y: 0.83499664}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: c5f6e83f857cd8240800000000000000
-      internalID: 4795708363076693852
+      spriteID: e3143ac1ebb9367c0800000000000000
+      internalID: -4079245596640984770
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ice_phoenix_king_4
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 90
+        width: 180
+        height: 161
+      alignment: 9
+      pivot: {x: 0.6198773, y: 0.57739455}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 73c345efdb01772e0800000000000000
+      internalID: -2128213890707473353
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ice_phoenix_king_5
+      rect:
+        serializedVersion: 2
+        x: 199
+        y: 90
+        width: 180
+        height: 156
+      alignment: 9
+      pivot: {x: 0.62325424, y: 0.58961594}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 065331e82ba998a40800000000000000
+      internalID: 5370994122294506848
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ice_phoenix_king_6
+      rect:
+        serializedVersion: 2
+        x: 386
+        y: 90
+        width: 180
+        height: 153
+      alignment: 9
+      pivot: {x: 0.618189, y: 0.607264}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e3e96f3ac5a2fe180800000000000000
+      internalID: -9083995346006794690
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: ice_phoenix_king_7
+      rect:
+        serializedVersion: 2
+        x: 569
+        y: 90
+        width: 138
+        height: 152
+      alignment: 9
+      pivot: {x: 0.81712806, y: 0.60597026}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ae6deabae14bc7dd0800000000000000
+      internalID: -2486914850392975638
       vertices: []
       indices: 
       edges: []
@@ -244,7 +326,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 72e1d34c1a8dcc0418e573c031080c83
+    spriteID: 94a3579c6fceb6246bbd312a2ad49792
     internalID: 0
     vertices: []
     indices: 
@@ -254,16 +336,14 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      energy_barier_0: 2027814255969482940
-      energy_barier_1: -2321056320946263659
-      energy_barier_2: 75339362186561735
-      energy_barier_3: -703888907628677259
-      energy_barier_4: 7563829208145298898
-      energy_barier_5: 8270607694587249267
-      energy_barier_6: -2279820121654144921
-      energy_barier_7: 2765019382866922959
-      energy_barier_8: 4795708363076693852
-      energy_barier_9: -4110322489137427931
+      ice_phoenix_king_0: -1853730814916868023
+      ice_phoenix_king_1: -6666407985703341962
+      ice_phoenix_king_2: -2784593266563637698
+      ice_phoenix_king_3: -4079245596640984770
+      ice_phoenix_king_4: -2128213890707473353
+      ice_phoenix_king_5: 5370994122294506848
+      ice_phoenix_king_6: -9083995346006794690
+      ice_phoenix_king_7: -2486914850392975638
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
