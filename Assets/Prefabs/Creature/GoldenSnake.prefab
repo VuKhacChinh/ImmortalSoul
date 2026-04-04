@@ -81,7 +81,7 @@ SpriteRenderer:
   m_SortingLayerID: -496768567
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: -9044209456634400411, guid: 33857cbd0f32db64f950744a2cc0e01a, type: 3}
+  m_Sprite: {fileID: 8132003967474701953, guid: 79876058252e9d74d89a379b8781dba0, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 1
   m_FlipY: 0
@@ -102,7 +102,7 @@ Animator:
   m_GameObject: {fileID: 7250386410483983525}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 0571c49eb3288b846b66472038527195, type: 2}
+  m_Controller: {fileID: 9100000, guid: aa6f7fbfc74976240b9ca4324e2624b3, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -139,7 +139,7 @@ GameObject:
   - component: {fileID: 6420337514911783703}
   - component: {fileID: 9038398184391069704}
   m_Layer: 0
-  m_Name: FireSnake
+  m_Name: GoldenSnake
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -155,7 +155,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 1}
+  m_LocalScale: {x: 2, y: 2, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2651602349576561444}
@@ -202,27 +202,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CreatureBrain
   isPlayerControlled: 0
-  creatureName: Fire Giant Snake
+  creatureName: Unknown
   isTowerGuardian: 0
   leashRadius: 6
-  isBoss: 1
+  isBoss: 0
   defeatedSprite: {fileID: 0}
   isTower: 0
   bossPrefab: {fileID: 0}
   guardianPrefab: {fileID: 0}
   guardianCount: 3
-  level: 30
+  level: 1
   currentXP: 0
   meatPrefab: {fileID: 7905947638849257074, guid: 2ddafcb310b0c914fabab82bc9164a0b, type: 3}
   dropCountMin: 1
-  dropCountMax: 2
+  dropCountMax: 1
   stats:
-    maxHP: 1000
-    maxMP: 100
+    maxHP: 100
+    maxMP: 50
     mpRegen: 5
-    attackDamage: 120
-    moveSpeed: 8
-    visionRange: 1500
+    attackDamage: 10
+    moveSpeed: 6
+    visionRange: 10
   runtime:
     HP: 0
     MP: 0
@@ -248,9 +248,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1eb2d258edf69ae44ae052577d872aee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CombatController
-  attack: {fileID: 11400000, guid: d6d62b354dca6424d9137d97ec664e82, type: 2}
-  creatureSkills:
-  - {fileID: 11400000, guid: 545d470ef546730439759a9ae1ec8c2f, type: 2}
+  attack: {fileID: 11400000, guid: 97d68b66f27778b4e92f76cbc9b57d07, type: 2}
+  creatureSkills: []
 --- !u!1 &8486137727984323457
 GameObject:
   m_ObjectHideFlags: 0
