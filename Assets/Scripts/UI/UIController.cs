@@ -14,8 +14,12 @@ public class UIController : MonoBehaviour
     public TMP_Text soulText;
     public OutOfSoulPopup outOfSoulPopup;
 
+    [Header("Win Popup")]
+    public GameObject winPopupUI;
+
     private CreatureBrain player;
 
+    [Header("Skill buttons")]
     public Button[] skillButtons;
     CombatController combat;
 
@@ -43,6 +47,7 @@ public class UIController : MonoBehaviour
         }
 
         outOfSoulPopup.Hide();
+        winPopupUI.SetActive(false);
     }
 
     void Start()
@@ -124,7 +129,20 @@ public class UIController : MonoBehaviour
 
     public void OnRestart()
     {
+        Time.timeScale = 1f;
+        outOfSoulPopup.Hide();
+        winPopupUI.SetActive(false);
         GameManager.Instance.StartNewRun();
+    }
+
+    public void OnWin()
+    {
+        Debug.Log("YOU WIN!");
+
+        Time.timeScale = 0f;
+
+        if (winPopupUI != null)
+            winPopupUI.SetActive(true);
     }
     
 }

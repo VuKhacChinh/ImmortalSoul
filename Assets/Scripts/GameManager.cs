@@ -191,6 +191,8 @@ public class GameManager : MonoBehaviour
 
         creature.isPlayerControlled = false;
 
+        StartCoroutine(HideBarNextFrame(creature));
+
         // =========================================
         // LEVEL RANDOM
         // =========================================
@@ -216,6 +218,14 @@ public class GameManager : MonoBehaviour
         allCreatures.Add(creature);
         creatureZoneMap[creature] = zoneIndex;
         zoneCreatures[zoneIndex].Add(creature);
+    }
+
+    IEnumerator HideBarNextFrame(CreatureBrain c)
+    {
+        yield return null;
+
+        if (c != null)
+            BarManager.Instance.SetHPBarVisible(c, false);
     }
 
     Vector2 RandomPointInRing(float inner, float outer)

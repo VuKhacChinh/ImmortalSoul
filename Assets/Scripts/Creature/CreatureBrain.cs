@@ -138,7 +138,7 @@ public class CreatureBrain : MonoBehaviour
 
     public CreatureBrain CurrentTarget => currentTarget;
     public CombatController Combat => combat;
-    static CreatureBrain playerHighlightTarget;
+    public static CreatureBrain playerHighlightTarget;
 
     float knockbackTimer = 0f;
 
@@ -175,7 +175,16 @@ public class CreatureBrain : MonoBehaviour
     void Start()
     {
         BarManager.Instance.CreateBar(this);
-        BarManager.Instance.SetHPBarVisible(this, isPlayerControlled);
+
+        // luôn ẩn trước
+        BarManager.Instance.SetHPBarVisible(this, false);
+
+        // nếu là player thì bật lại
+        if (isPlayerControlled)
+        {
+            BarManager.Instance.SetHPBarVisible(this, true);
+        }
+
         ChangeToIdle();
 
         // ===== BOSS SPAWN DIALOG =====
@@ -388,16 +397,32 @@ public class CreatureBrain : MonoBehaviour
             isReturningToCenter = false;
         }
 
-        // ===== FORCE RETURN =====
+        CreatureBrain player = FindPlayerInRange(combat.AttackRange);
+
+        // ===== FORCE RETURN nhưng vẫn được attack =====
         if (isReturningToCenter)
         {
+            if (player != null)
+            {
+                currentTarget = player;
+
+                float dist = (player.transform.position - transform.position).sqrMagnitude;
+
+                if (dist <= combat.AttackRange * combat.AttackRange && combat.CanAttack())
+                {
+                    rb.linearVelocity = Vector2.zero;
+                    FaceDirection(player.transform.position.x - transform.position.x);
+                    combat.StartCooldown();
+                    StartAttack();
+                    return;
+                }
+            }
+
             Vector2 backDir = (guardCenter - (Vector2)transform.position).normalized;
             rb.linearVelocity = backDir * stats.moveSpeed;
             FaceDirection(backDir.x);
             return;
         }
-
-        CreatureBrain player = FindPlayerInRange(stats.visionRange);
 
         if (player != null)
         {
@@ -508,9 +533,28 @@ public class CreatureBrain : MonoBehaviour
 
     void HandleTowerLogic()
     {
-        rb.linearVelocity = Vector2.zero; // đứng im
+        rb.linearVelocity = Vector2.zero;
 
-        if (currentTarget == null || currentTarget.IsDead())
+        // 🔥 VALIDATE TARGET TRƯỚC
+        if (currentTarget != null)
+        {
+            if (currentTarget.IsDead() || currentTarget.isHidden)
+            {
+                currentTarget = null;
+            }
+            else
+            {
+                float dist = (currentTarget.transform.position - transform.position).sqrMagnitude;
+
+                if (dist > stats.visionRange * stats.visionRange)
+                {
+                    currentTarget = null;
+                }
+            }
+        }
+
+        // 🔥 LUÔN TÌM LẠI TARGET NẾU NULL
+        if (currentTarget == null)
         {
             currentTarget = FindBestTargetInRange(stats.visionRange);
         }
@@ -519,7 +563,6 @@ public class CreatureBrain : MonoBehaviour
 
         Vector2 toTarget = currentTarget.transform.position - transform.position;
         float sqrDist = toTarget.sqrMagnitude;
-
         float range = combat.AttackRange;
 
         if (sqrDist <= range * range)
@@ -1031,26 +1074,26 @@ public class CreatureBrain : MonoBehaviour
             return;
 
         // ===== LẦN ĐẦU =====
-        if (!hasPossessedBefore)
-        {
-            SpeechBubbleSystem.Instance.Say(
-                "I've escaped! Those bastards dared to destroy my demon lord's body! I will definitely get revenge!",
-                Emotion.Normal,
-                3f
-            );
-            return;
-        }
+        // if (!hasPossessedBefore)
+        // {
+        //     SpeechBubbleSystem.Instance.Say(
+        //         "I've escaped! Those bastards dared to destroy my demon lord's body! I will definitely get revenge!",
+        //         Emotion.Normal,
+        //         3f
+        //     );
+        //     return;
+        // }
 
         // ===== ƯU TIÊN BOSS (KỂ CẢ ĐÃ BỊ CHIẾM) =====
-        if (wasBoss)
-        {
-            SpeechBubbleSystem.Instance.Say(
-                $"Even {creatureName} would have to lose to me, haha.",
-                Emotion.Happy,
-                3f
-            );
-            return;
-        }
+        // if (wasBoss)
+        // {
+        //     SpeechBubbleSystem.Instance.Say(
+        //         $"Even {creatureName} would have to lose to me, haha.",
+        //         Emotion.Happy,
+        //         3f
+        //     );
+        //     return;
+        // }
 
         // ===== NHỮNG LẦN SAU =====
         string msg = $"Thanks to the soul stone, which caused my harm, my soul is now immortal, and this body is... {creatureName}";
