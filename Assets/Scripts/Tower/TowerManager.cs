@@ -10,9 +10,6 @@ public class TowerManager : MonoBehaviour
     public CreatureBrain leftTowerPrefab;
     public CreatureBrain rightTowerPrefab;
 
-    // cái này tạm vẫn giữ (cổng sau này)
-    public GameObject centerGatePrefab;
-
     CreatureBrain topTower;
     CreatureBrain bottomTower;
     CreatureBrain leftTower;
@@ -34,9 +31,6 @@ public class TowerManager : MonoBehaviour
         leftTower = Instantiate(leftTowerPrefab, center + new Vector2(-offset, 0), Quaternion.identity);
         rightTower = Instantiate(rightTowerPrefab, center + new Vector2(offset, 0), Quaternion.identity);
 
-        centerGate = Instantiate(centerGatePrefab, center, Quaternion.identity);
-        centerGate.SetActive(false);
-
         // 🔥 QUAN TRỌNG: gắn callback chết cho từng trụ
         BindTower(topTower);
         BindTower(bottomTower);
@@ -57,7 +51,7 @@ public class TowerManager : MonoBehaviour
 
         if (destroyedCount >= 4)
         {
-            centerGate.SetActive(true);
+            UIController.Instance.OnWin();
         }
     }
 

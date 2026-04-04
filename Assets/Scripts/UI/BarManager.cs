@@ -41,8 +41,6 @@ public class BarManager : MonoBehaviour
 
         Color c = LevelSystem.Instance.GetLevelColor(creature.level);
         bar.SetColor(c);
-
-        bar.gameObject.SetActive(creature.isPlayerControlled);
     }
 
     public Bar GetHPBar(CreatureBrain creature)
@@ -143,10 +141,16 @@ public class BarManager : MonoBehaviour
 
     public void SetHPBarVisible(CreatureBrain creature, bool visible)
     {
-        if (barMap.TryGetValue(creature, out Bar bar))
+        if (!barMap.TryGetValue(creature, out Bar bar))
+            return;
+
+        // 🔥 CHẶN: chỉ player hoặc target mới được show
+        if (!creature.isPlayerControlled && creature != CreatureBrain.playerHighlightTarget)
         {
-            bar.gameObject.SetActive(visible);
+            visible = false;
         }
+
+        bar.gameObject.SetActive(visible);
     }
 
     public void UpdateXP(CreatureBrain creature, float normalizedValue)
