@@ -17,7 +17,6 @@ public class CreatureBrain : MonoBehaviour
     Vector2 guardCenter;
     float guardRadius;
 
-    public float patrolRadius = 2f; // vòng nhỏ quanh trụ
     public float leashRadius = 6f;  // giới hạn max
 
     [Header("Boss")]
@@ -34,7 +33,8 @@ public class CreatureBrain : MonoBehaviour
     [Header("Tower Guardians")]
     public CreatureBrain guardianPrefab;
     public int guardianCount = 3;
-    public float guardianSpawnRadius = 2f;
+    float guardRadiusInner;
+    bool isReturningToCenter = false;
 
     [Header("Level")]
     public int level = 1;
@@ -145,6 +145,8 @@ public class CreatureBrain : MonoBehaviour
     public System.Action<CreatureBrain> OnDeathCallback;
 
     bool hasManualTarget = false;
+
+    const float FACE_THRESHOLD = 0.2f;
 
     void Awake()
     {
@@ -324,6 +326,8 @@ public class CreatureBrain : MonoBehaviour
 
         guardCenter = tower.transform.position;
         guardRadius = leashRadius;
+
+        guardRadiusInner = guardRadius * 0.5f; // buffer 80%
     }
 
     void SpawnGuardians()
@@ -332,7 +336,7 @@ public class CreatureBrain : MonoBehaviour
 
         for (int i = 0; i < guardianCount; i++)
         {
-            Vector2 offset = Random.insideUnitCircle * guardianSpawnRadius;
+            Vector2 offset = Random.insideUnitCircle * guardRadius;
 
             CreatureBrain g = Instantiate(
                 guardianPrefab,
@@ -361,10 +365,31 @@ public class CreatureBrain : MonoBehaviour
             return;
         }
 
-        // 🔒 Không cho đi quá xa
         float distFromCenter = (transform.position - (Vector3)guardCenter).magnitude;
 
-        if (distFromCenter > guardRadius)
+        // 🚫 quá gần trụ → đẩy ra ngoài
+        if (distFromCenter < guardRadius * 0.3f)
+        {
+            Vector2 pushOut = ((Vector2)transform.position - guardCenter).normalized;
+            rb.linearVelocity = pushOut * stats.moveSpeed;
+            FaceDirection(pushOut.x);
+            return;
+        }
+
+        // ===== ENTER RETURN MODE =====
+        if (!isReturningToCenter && distFromCenter > guardRadius)
+        {
+            isReturningToCenter = true;
+        }
+
+        // ===== EXIT RETURN MODE =====
+        if (isReturningToCenter && distFromCenter < guardRadiusInner)
+        {
+            isReturningToCenter = false;
+        }
+
+        // ===== FORCE RETURN =====
+        if (isReturningToCenter)
         {
             Vector2 backDir = (guardCenter - (Vector2)transform.position).normalized;
             rb.linearVelocity = backDir * stats.moveSpeed;
@@ -372,11 +397,20 @@ public class CreatureBrain : MonoBehaviour
             return;
         }
 
-        // 🎯 chỉ target PLAYER
-        if (scanTimer <= 0f)
+        CreatureBrain player = FindPlayerInRange(stats.visionRange);
+
+        if (player != null)
         {
-            scanTimer = SCAN_INTERVAL;
-            currentTarget = FindPlayerInRange(stats.visionRange);
+            currentTarget = player; // luôn cập nhật nếu thấy player
+        }
+        else if (currentTarget != null)
+        {
+            float dist = (currentTarget.transform.position - transform.position).sqrMagnitude;
+
+            if (dist > stats.visionRange * stats.visionRange)
+            {
+                currentTarget = null;
+            }
         }
 
         if (currentTarget != null)
@@ -439,12 +473,18 @@ public class CreatureBrain : MonoBehaviour
         {
             stateTimer = Random.Range(2f, 4f);
 
-            Vector2 randomCircle = Random.insideUnitCircle * patrolRadius;
-            wanderDirection = (guardCenter + randomCircle - (Vector2)transform.position).normalized;
+            float radius = Random.Range(guardRadiusInner, guardRadius);
+
+            Vector2 randomDir = Random.insideUnitCircle.normalized;
+            Vector2 targetPos = guardCenter + randomDir * radius;
+
+            wanderDirection = (targetPos - (Vector2)transform.position).normalized;
         }
 
-        rb.linearVelocity = wanderDirection * stats.moveSpeed;
-        FaceDirection(wanderDirection.x);
+        Vector2 dir = AvoidObstacle(wanderDirection);
+
+        rb.linearVelocity = dir * stats.moveSpeed;
+        FaceDirection(dir.x);
     }
 
     public void SetManualTarget(CreatureBrain target)
@@ -1422,7 +1462,7 @@ public class CreatureBrain : MonoBehaviour
 
     void FaceDirection(float xDir)
     {
-        if (Mathf.Abs(xDir) < 0.01f) return;
+        if (Mathf.Abs(xDir) < FACE_THRESHOLD) return;
 
         if (xDir > 0)
             spriteRenderer.flipX = initialFlipX;

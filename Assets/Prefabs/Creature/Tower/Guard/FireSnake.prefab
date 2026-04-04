@@ -204,12 +204,13 @@ MonoBehaviour:
   isPlayerControlled: 0
   creatureName: Fire Giant Snake
   isTowerGuardian: 1
-  patrolRadius: 2
-  leashRadius: 6
+  leashRadius: 20
   isBoss: 0
   defeatedSprite: {fileID: 0}
   isTower: 0
   bossPrefab: {fileID: 0}
+  guardianPrefab: {fileID: 0}
+  guardianCount: 3
   level: 30
   currentXP: 0
   meatPrefab: {fileID: 7905947638849257074, guid: 2ddafcb310b0c914fabab82bc9164a0b, type: 3}
