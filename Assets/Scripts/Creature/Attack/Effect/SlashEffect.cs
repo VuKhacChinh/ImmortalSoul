@@ -5,31 +5,29 @@ public class SlashEffect : VFXBase
     Material mat;
     SpriteRenderer[] renderers;
 
-    public float startScale = 0.8f;
-    public float endScale = 1.2f;
+    Material[] mats;
 
     protected override void Awake()
     {
         renderers = GetComponentsInChildren<SpriteRenderer>();
+        mats = new Material[renderers.Length];
 
-        foreach (var r in renderers)
+        for (int i = 0; i < renderers.Length; i++)
         {
-            r.material = new Material(r.material); // clone
-            mat = r.material;
+            mats[i] = new Material(renderers[i].material);
+            renderers[i].material = mats[i];
         }
     }
 
     protected override void Animate(float t)
     {
-        // reveal shader
-        if (mat != null)
-            mat.SetFloat("_Progress", t);
+        // ✅ apply cho TẤT CẢ material
+        foreach (var m in mats)
+        {
+            m.SetFloat("_Progress", t);
+        }
 
-        // scale
-        float scale = Mathf.Lerp(startScale, endScale, t);
-        transform.localScale = Vector3.one * scale;
-
-        // fade (chỉ fade cuối)
+        // fade
         float alpha = 1f;
         if (t > 0.7f)
             alpha = 1 - (t - 0.7f) / 0.3f;

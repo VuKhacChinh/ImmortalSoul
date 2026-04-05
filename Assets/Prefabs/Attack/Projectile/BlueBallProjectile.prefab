@@ -9689,7 +9689,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbc3491bf02409e43ba4420ad5ca9143, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Projectile
-  lifetime: 3
+  lifetime: 2
   hitEffectPrefab: {fileID: 1107951463874692846, guid: ec9c4f7fdd1d5ce48969d0a141b2cc33, type: 3}
 --- !u!58 &-8196404377285910217
 CircleCollider2D:
