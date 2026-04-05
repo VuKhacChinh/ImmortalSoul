@@ -1,37 +1,31 @@
 fileFormatVersion: 2
-guid: 33857cbd0f32db64f950744a2cc0e01a
+guid: 548020576baf2004388e090d47006663
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -9044209456634400411
-    second: fire_snake_0
+      213: 2425050893841363277
+    second: fire_phoenix_0
   - first:
-      213: -371342179482015143
-    second: fire_snake_1
+      213: -7076264883449506576
+    second: fire_phoenix_1
   - first:
-      213: 7771525869704647345
-    second: fire_snake_2
+      213: 9096414561930205868
+    second: fire_phoenix_2
   - first:
-      213: -5021131570488477349
-    second: fire_snake_3
+      213: -4336021168660237577
+    second: fire_phoenix_3
   - first:
-      213: 18366397537022909
-    second: fire_snake_4
+      213: -2216729206754726415
+    second: fire_phoenix_4
   - first:
-      213: -7034463497521647267
-    second: fire_snake_5
+      213: -9009754891914546034
+    second: fire_phoenix_5
   - first:
-      213: 4737249002694716574
-    second: fire_snake_6
+      213: 2982223266652747616
+    second: fire_phoenix_6
   - first:
-      213: 4674564042127608329
-    second: fire_snake_7
-  - first:
-      213: 5606824511360301703
-    second: fire_snake_8
-  - first:
-      213: 2268780421852033397
-    second: fire_snake_9
+      213: 6962648224184194651
+    second: fire_phoenix_7
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -153,221 +147,177 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: fire_snake_0
+      name: fire_phoenix_0
       rect:
         serializedVersion: 2
-        x: 58
-        y: 324
-        width: 119
-        height: 114
+        x: 22
+        y: 307
+        width: 186
+        height: 162
       alignment: 9
-      pivot: {x: 0.32378066, y: 0.502666}
+      pivot: {x: 0.5865993, y: 0.5544044}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 561f31fda638c7280800000000000000
-      internalID: -9044209456634400411
+      spriteID: d4178a180f287a120800000000000000
+      internalID: 2425050893841363277
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: fire_snake_1
+      name: fire_phoenix_1
       rect:
         serializedVersion: 2
-        x: 186
-        y: 323
-        width: 131
-        height: 112
-      alignment: 9
-      pivot: {x: 0.29120386, y: 0.5108542}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 95aead5514ab8daf0800000000000000
-      internalID: -371342179482015143
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: fire_snake_2
-      rect:
-        serializedVersion: 2
-        x: 322
-        y: 323
-        width: 126
-        height: 114
-      alignment: 9
-      pivot: {x: 0.3094509, y: 0.507998}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 1b2118a6a910adb60800000000000000
-      internalID: 7771525869704647345
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: fire_snake_3
-      rect:
-        serializedVersion: 2
-        x: 450
-        y: 324
-        width: 133
-        height: 113
-      alignment: 9
-      pivot: {x: 0.30348378, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: b59f882907b515ab0800000000000000
-      internalID: -5021131570488477349
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: fire_snake_4
-      rect:
-        serializedVersion: 2
-        x: 594
-        y: 323
-        width: 138
-        height: 114
-      alignment: 9
-      pivot: {x: 0.29298645, y: 0.49200252}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: db37ff82420414000800000000000000
-      internalID: 18366397537022909
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: fire_snake_5
-      rect:
-        serializedVersion: 2
-        x: 65
-        y: 118
-        width: 127
+        x: 209
+        y: 307
+        width: 178
         height: 116
       alignment: 9
-      pivot: {x: 0.33966702, y: 0.4842803}
+      pivot: {x: 0.6109801, y: 0.74365574}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d5135cc18b0906e90800000000000000
-      internalID: -7034463497521647267
+      spriteID: 0f4db65849e0ccd90800000000000000
+      internalID: -7076264883449506576
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: fire_snake_6
+      name: fire_phoenix_2
       rect:
         serializedVersion: 2
-        x: 200
-        y: 117
-        width: 125
-        height: 119
+        x: 387
+        y: 307
+        width: 160
+        height: 93
       alignment: 9
-      pivot: {x: 0.33467066, y: 0.48467645}
+      pivot: {x: 0.6557562, y: 0.81698644}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e9c21327ed61eb140800000000000000
-      internalID: 4737249002694716574
+      spriteID: caa5a8569d4fc3e70800000000000000
+      internalID: 9096414561930205868
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: fire_snake_7
+      name: fire_phoenix_3
       rect:
         serializedVersion: 2
-        x: 328
-        y: 118
-        width: 133
-        height: 119
+        x: 554
+        y: 306
+        width: 182
+        height: 90
       alignment: 9
-      pivot: {x: 0.38574633, y: 0.46935305}
+      pivot: {x: 0.5584452, y: 0.8140449}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 90a84daba336fd040800000000000000
-      internalID: 4674564042127608329
+      spriteID: 7f2be6768bb53d3c0800000000000000
+      internalID: -4336021168660237577
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: fire_snake_8
+      name: fire_phoenix_4
       rect:
         serializedVersion: 2
-        x: 458
-        y: 118
-        width: 131
-        height: 118
+        x: 10
+        y: 95
+        width: 179
+        height: 161
       alignment: 9
-      pivot: {x: 0.35152245, y: 0.47682008}
+      pivot: {x: 0.6273384, y: 0.59438336}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 78a7595df217fcd40800000000000000
-      internalID: 5606824511360301703
+      spriteID: 1fda62cf7889c31e0800000000000000
+      internalID: -2216729206754726415
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: fire_snake_9
+      name: fire_phoenix_5
       rect:
         serializedVersion: 2
-        x: 586
-        y: 118
-        width: 142
-        height: 119
+        x: 197
+        y: 95
+        width: 181
+        height: 158
       alignment: 9
-      pivot: {x: 0.40797016, y: 0.47701487}
+      pivot: {x: 0.615857, y: 0.6019459}
       border: {x: 0, y: 0, z: 0, w: 0}
       customData: 
       outline: []
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 571f9dde5c35c7f10800000000000000
-      internalID: 2268780421852033397
+      spriteID: e84781a59abe6f280800000000000000
+      internalID: -9009754891914546034
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fire_phoenix_6
+      rect:
+        serializedVersion: 2
+        x: 385
+        y: 95
+        width: 178
+        height: 157
+      alignment: 9
+      pivot: {x: 0.6161022, y: 0.6006596}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 067fdb1b24cf26920800000000000000
+      internalID: 2982223266652747616
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: fire_phoenix_7
+      rect:
+        serializedVersion: 2
+        x: 566
+        y: 95
+        width: 129
+        height: 156
+      alignment: 9
+      pivot: {x: 0.85810035, y: 0.6052013}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b56d0829bab40a060800000000000000
+      internalID: 6962648224184194651
       vertices: []
       indices: 
       edges: []
@@ -376,7 +326,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 9183280dd2f81024eacb1f552f2fa5cd
+    spriteID: 5d6173b4892a5114186f429cdbcbb826
     internalID: 0
     vertices: []
     indices: 
@@ -386,16 +336,14 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      fire_snake_0: -9044209456634400411
-      fire_snake_1: -371342179482015143
-      fire_snake_2: 7771525869704647345
-      fire_snake_3: -5021131570488477349
-      fire_snake_4: 18366397537022909
-      fire_snake_5: -7034463497521647267
-      fire_snake_6: 4737249002694716574
-      fire_snake_7: 4674564042127608329
-      fire_snake_8: 5606824511360301703
-      fire_snake_9: 2268780421852033397
+      fire_phoenix_0: 2425050893841363277
+      fire_phoenix_1: -7076264883449506576
+      fire_phoenix_2: 9096414561930205868
+      fire_phoenix_3: -4336021168660237577
+      fire_phoenix_4: -2216729206754726415
+      fire_phoenix_5: -9009754891914546034
+      fire_phoenix_6: 2982223266652747616
+      fire_phoenix_7: 6962648224184194651
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

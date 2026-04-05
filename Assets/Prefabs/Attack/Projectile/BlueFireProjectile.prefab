@@ -4852,7 +4852,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cbc3491bf02409e43ba4420ad5ca9143, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Projectile
-  lifetime: 3
+  lifetime: 2
   hitEffectPrefab: {fileID: 5162910912013668194, guid: 4d42c70dae132074d907677fe81576f5, type: 3}
 --- !u!61 &2186656847421521470
 BoxCollider2D:

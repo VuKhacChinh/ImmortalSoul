@@ -17,4 +17,4 @@ MonoBehaviour:
   range: 12
   cooldown: 1
   projectilePrefab: {fileID: 3632775770547235149, guid: b1f3f60d1f012674499322f8e41fc7c6, type: 3}
-  projectileSpeed: 12
+  projectileSpeed: 15
