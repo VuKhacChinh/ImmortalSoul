@@ -1096,13 +1096,13 @@ public class CreatureBrain : MonoBehaviour
         // }
 
         // ===== NHỮNG LẦN SAU =====
-        string msg = $"Thanks to the soul stone, which caused my harm, my soul is now immortal, and this body is... {creatureName}";
+        // string msg = $"Thanks to the soul stone, which caused my harm, my soul is now immortal, and this body is... {creatureName}";
 
-        SpeechBubbleSystem.Instance.Say(
-            msg,
-            Emotion.Happy,
-            2.5f
-        );
+        // SpeechBubbleSystem.Instance.Say(
+        //     msg,
+        //     Emotion.Happy,
+        //     2.5f
+        // );
     }
 
     float CalculateConfidence()
