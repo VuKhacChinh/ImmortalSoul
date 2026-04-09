@@ -82,6 +82,9 @@ public class CreatureBrain : MonoBehaviour
     public bool isHidden = false;
     int hideZoneLayer;
 
+    Vector2 moveTarget;
+    bool hasMoveTarget = false;
+
     Rigidbody2D rb;
     Animator animator;
     SpriteRenderer spriteRenderer;
@@ -265,7 +268,19 @@ public class CreatureBrain : MonoBehaviour
                 input = Vector2.ClampMagnitude(input, 1f);
             }
 
+            // 🔥 Nếu player di chuyển → hủy tất cả
+            if (input.sqrMagnitude > 0.01f)
+            {
+                if (hasManualTarget)
+                    ClearManualTarget();
+
+                if (hasMoveTarget)
+                    hasMoveTarget = false;
+            }
+
             // ===== LOGIC ƯU TIÊN =====
+
+            // 1. Target creature
             if (hasManualTarget && currentTarget != null && !isAttacking)
             {
                 float dist = (currentTarget.transform.position - transform.position).sqrMagnitude;
@@ -273,7 +288,6 @@ public class CreatureBrain : MonoBehaviour
 
                 if (dist > range * range)
                 {
-                    // 👉 chỉ auto move nếu player KHÔNG kéo joystick
                     if (input.sqrMagnitude < 0.01f)
                     {
                         MoveToTarget();
@@ -297,6 +311,22 @@ public class CreatureBrain : MonoBehaviour
                     }
                 }
             }
+
+            // 2. Move tới điểm
+            else if (hasMoveTarget && !isAttacking)
+            {
+                if (input.sqrMagnitude < 0.01f)
+                {
+                    MoveToPosition();
+                }
+                else
+                {
+                    rb.linearVelocity = input * stats.moveSpeed;
+                    FaceDirection(input.x);
+                }
+            }
+
+            // 3. Free move
             else
             {
                 rb.linearVelocity = input * stats.moveSpeed;
@@ -327,6 +357,37 @@ public class CreatureBrain : MonoBehaviour
         UpdateMPVisual();
         UpdateXPVisual();
 
+    }
+
+    public void SetMoveTarget(Vector2 pos)
+    {
+        if (!isPlayerControlled) return;
+
+        moveTarget = pos;
+        hasMoveTarget = true;
+
+        // ❗ hủy target khi click di chuyển
+        ClearManualTarget();
+    }
+
+    void MoveToPosition()
+    {
+        Vector2 dir = (moveTarget - (Vector2)transform.position);
+        float dist = dir.sqrMagnitude;
+
+        // tới nơi thì dừng
+        if (dist < 0.05f)
+        {
+            hasMoveTarget = false;
+            rb.linearVelocity = Vector2.zero;
+            return;
+        }
+
+        dir = dir.normalized;
+        dir = AvoidObstacle(dir);
+
+        rb.linearVelocity = dir * stats.moveSpeed;
+        FaceDirection(dir.x);
     }
 
     public void InitGuardian(CreatureBrain tower)

@@ -5,6 +5,8 @@ public class PlayerTargetingSystem : MonoBehaviour
 {
     Camera cam;
 
+    public GameObject moveClickEffect;
+
     void Awake()
     {
         cam = Camera.main;
@@ -42,6 +44,15 @@ public class PlayerTargetingSystem : MonoBehaviour
                 player.SetManualTarget(target);
                 return;
             }
+        }
+
+        // ===== TAP ĐẤT =====
+        player.SetMoveTarget(point);
+
+        // spawn hiệu ứng X
+        if (moveClickEffect != null)
+        {
+            Instantiate(moveClickEffect, point, Quaternion.identity);
         }
     }
 }
