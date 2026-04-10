@@ -1040,6 +1040,21 @@ public class CreatureBrain : MonoBehaviour
         FaceDirection(dir.x);
     }
 
+    public void ResetControlState()
+    {
+        hasMoveTarget = false;
+        hasManualTarget = false;
+        currentTarget = null;
+
+        rb.linearVelocity = Vector2.zero;
+
+        currentState = AIState.Idle;
+
+        fleeTimer = 0f;
+        revengeTimer = 0f;
+        knockbackTimer = 0f;
+    }
+
     public CreatureBrain FindBestTargetInRange(float range)
     {
         int hitCount = Physics2D.OverlapCircleNonAlloc(
