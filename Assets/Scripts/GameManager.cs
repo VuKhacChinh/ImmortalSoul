@@ -320,6 +320,7 @@ public class GameManager : MonoBehaviour
 
         playerCreature = creature;
         playerCreature.isPlayerControlled = true;
+        playerCreature.ResetControlState();
 
         CreatureBrain.ResetPlayerHighlight();
         playerCreature.ClearManualTarget();

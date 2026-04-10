@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.EventSystems;
 
 public class PlayerTargetingSystem : MonoBehaviour
 {
@@ -14,6 +15,21 @@ public class PlayerTargetingSystem : MonoBehaviour
 
     void Update()
     {
+        // ❗ CHẶN CLICK UI
+        if (EventSystem.current != null)
+        {
+            // PC (mouse)
+            if (Mouse.current != null && EventSystem.current.IsPointerOverGameObject())
+                return;
+
+            // Mobile (touch)
+            if (Touchscreen.current != null && Touchscreen.current.primaryTouch.press.isPressed)
+            {
+                if (EventSystem.current.IsPointerOverGameObject(Touchscreen.current.primaryTouch.touchId.ReadValue()))
+                    return;
+            }
+        }
+
         if (Mouse.current != null && Mouse.current.leftButton.wasPressedThisFrame)
         {
             HandleTap(Mouse.current.position.ReadValue());
