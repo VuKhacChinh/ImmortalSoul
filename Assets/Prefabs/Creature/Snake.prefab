@@ -203,10 +203,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::CreatureBrain
   isPlayerControlled: 0
   creatureName: Unknown
+  isTowerGuardian: 0
+  leashRadius: 6
   isBoss: 0
   defeatedSprite: {fileID: 0}
   isTower: 0
   bossPrefab: {fileID: 0}
+  guardianPrefab: {fileID: 0}
+  guardianCount: 3
   level: 1
   currentXP: 0
   meatPrefab: {fileID: 7905947638849257074, guid: 2ddafcb310b0c914fabab82bc9164a0b, type: 3}
@@ -244,7 +248,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1eb2d258edf69ae44ae052577d872aee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CombatController
-  attack: {fileID: 11400000, guid: 97d68b66f27778b4e92f76cbc9b57d07, type: 2}
+  attack: {fileID: 11400000, guid: 671fc0d4cdc0c27448ba05fb3a459ff4, type: 2}
   creatureSkills: []
 --- !u!1 &8486137727984323457
 GameObject:

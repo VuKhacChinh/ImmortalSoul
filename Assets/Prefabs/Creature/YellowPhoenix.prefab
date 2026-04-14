@@ -248,7 +248,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1eb2d258edf69ae44ae052577d872aee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CombatController
-  attack: {fileID: 11400000, guid: be45930d3da95f243b38021208b6066f, type: 2}
+  attack: {fileID: 11400000, guid: 620e84fa7a79e6943aee4119de6eb91c, type: 2}
   creatureSkills: []
 --- !u!1 &8486137727984323457
 GameObject:
