@@ -222,7 +222,7 @@ MonoBehaviour:
     mpRegen: 5
     attackDamage: 10
     moveSpeed: 6
-    visionRange: 10
+    visionRange: 15
   runtime:
     HP: 0
     MP: 0
@@ -248,7 +248,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1eb2d258edf69ae44ae052577d872aee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CombatController
-  attack: {fileID: 11400000, guid: cb4107bff92a6eb44be4b7b0df2ef41c, type: 2}
+  attack: {fileID: 11400000, guid: 804e2434122d9f04c818cd70717ab319, type: 2}
   creatureSkills: []
 --- !u!1 &8486137727984323457
 GameObject:

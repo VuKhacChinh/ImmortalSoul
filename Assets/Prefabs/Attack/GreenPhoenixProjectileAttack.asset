@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76100ca3725bcc24f958d248d7c37e3b, type: 3}
+  m_Name: GreenPhoenixProjectileAttack
+  m_EditorClassIdentifier: Assembly-CSharp::ProjectileAttack
+  vfxPrefab: {fileID: 0}
+  hitVFX: {fileID: 1107951463874692846, guid: d7583ade321382740af117d0bfb29f6f, type: 3}
+  range: 12
+  cooldown: 1
+  projectilePrefab: {fileID: 1234120734334243587, guid: 6bb23bf1ffef20542b26ba2c41f18314, type: 3}
+  projectileSpeed: 15

@@ -222,7 +222,7 @@ MonoBehaviour:
     mpRegen: 5
     attackDamage: 10
     moveSpeed: 6
-    visionRange: 20
+    visionRange: 15
   runtime:
     HP: 0
     MP: 0

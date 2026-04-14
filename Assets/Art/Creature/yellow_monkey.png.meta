@@ -1,0 +1,403 @@
+fileFormatVersion: 2
+guid: 3f85bc324537711408a4c484bed19c32
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 4121050375369592113
+    second: yellow_monkey_0
+  - first:
+      213: -8759154628105381257
+    second: yellow_monkey_1
+  - first:
+      213: -2943479523702794915
+    second: yellow_monkey_2
+  - first:
+      213: -8259019379849115442
+    second: yellow_monkey_3
+  - first:
+      213: -8245213079947784744
+    second: yellow_monkey_4
+  - first:
+      213: 7512667296426332814
+    second: yellow_monkey_5
+  - first:
+      213: 2357918811907519636
+    second: yellow_monkey_6
+  - first:
+      213: -1368384463443848494
+    second: yellow_monkey_7
+  - first:
+      213: 1534508254845685204
+    second: yellow_monkey_8
+  - first:
+      213: -2976194253946759486
+    second: yellow_monkey_9
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: yellow_monkey_0
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 149
+        width: 88
+        height: 156
+      alignment: 9
+      pivot: {x: 0.5877057, y: 0.57112}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 13d056d6b79e03930800000000000000
+      internalID: 4121050375369592113
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yellow_monkey_1
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 5
+        width: 120
+        height: 145
+      alignment: 9
+      pivot: {x: 0.709031, y: 0.50000006}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 77a5f03164b317680800000000000000
+      internalID: -8759154628105381257
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yellow_monkey_2
+      rect:
+        serializedVersion: 2
+        x: 182
+        y: 149
+        width: 69
+        height: 168
+      alignment: 9
+      pivot: {x: 0.6817662, y: 0.5445054}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d551f0ae7f8a627d0800000000000000
+      internalID: -2943479523702794915
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yellow_monkey_3
+      rect:
+        serializedVersion: 2
+        x: 220
+        y: 5
+        width: 187
+        height: 143
+      alignment: 9
+      pivot: {x: 0.50386935, y: 0.5084333}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ec8c607d1a1126d80800000000000000
+      internalID: -8259019379849115442
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yellow_monkey_4
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 148
+        width: 56
+        height: 169
+      alignment: 9
+      pivot: {x: 0.66366524, y: 0.5313975}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8ddce48836e139d80800000000000000
+      internalID: -8245213079947784744
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yellow_monkey_5
+      rect:
+        serializedVersion: 2
+        x: 424
+        y: 6
+        width: 216
+        height: 143
+      alignment: 9
+      pivot: {x: 0.46315172, y: 0.50337327}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e829f2f2a1b524860800000000000000
+      internalID: 7512667296426332814
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yellow_monkey_6
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 150
+        width: 88
+        height: 167
+      alignment: 9
+      pivot: {x: 0.5986689, y: 0.54477173}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 49475f8aaa209b020800000000000000
+      internalID: 2357918811907519636
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yellow_monkey_7
+      rect:
+        serializedVersion: 2
+        x: 598
+        y: 149
+        width: 56
+        height: 168
+      alignment: 9
+      pivot: {x: 0.73257667, y: 0.517228}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2d2144c9495820de0800000000000000
+      internalID: -1368384463443848494
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yellow_monkey_8
+      rect:
+        serializedVersion: 2
+        x: 643
+        y: 5
+        width: 132
+        height: 144
+      alignment: 9
+      pivot: {x: 0.69733775, y: 0.50334984}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4dd4bfaa02bab4510800000000000000
+      internalID: 1534508254845685204
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: yellow_monkey_9
+      rect:
+        serializedVersion: 2
+        x: 723
+        y: 148
+        width: 79
+        height: 169
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2c6d1f6381f62b6d0800000000000000
+      internalID: -2976194253946759486
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: c9b605898dd8f3d4091ec0992068f41b
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      yellow_monkey_0: 4121050375369592113
+      yellow_monkey_1: -8759154628105381257
+      yellow_monkey_2: -2943479523702794915
+      yellow_monkey_3: -8259019379849115442
+      yellow_monkey_4: -8245213079947784744
+      yellow_monkey_5: 7512667296426332814
+      yellow_monkey_6: 2357918811907519636
+      yellow_monkey_7: -1368384463443848494
+      yellow_monkey_8: 1534508254845685204
+      yellow_monkey_9: -2976194253946759486
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

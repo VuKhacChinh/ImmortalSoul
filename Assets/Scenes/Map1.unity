@@ -3400,6 +3400,8 @@ MonoBehaviour:
   - {fileID: 81252098595613775, guid: a380140ea01eb954e8ec13b292dff956, type: 3}
   - {fileID: 81252098595613775, guid: 62a895f6d906e6d4fbbcaae5b8a6e0db, type: 3}
   - {fileID: 81252098595613775, guid: a581f5eec0316cf4c9efb52df3cc8e35, type: 3}
+  - {fileID: 2975150624134649333, guid: 2390ee1d70dd75f48a2d7a5b7444671f, type: 3}
+  - {fileID: 1439907081205818319, guid: 2e383c6e32c747e488a2d79753945344, type: 3}
   hideZonePrefab: {fileID: 81252098595613775, guid: d840c3f78aae27940b12590725397d1b, type: 3}
   hideZoneCount: 10
   hideZoneSize: 4
