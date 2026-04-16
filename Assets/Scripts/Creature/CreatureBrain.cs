@@ -149,7 +149,7 @@ public class CreatureBrain : MonoBehaviour
 
     bool hasManualTarget = false;
 
-    const float FACE_THRESHOLD = 0.2f;
+    const float FACE_THRESHOLD = 0.4f;
 
     void Awake()
     {
@@ -191,14 +191,14 @@ public class CreatureBrain : MonoBehaviour
         ChangeToIdle();
 
         // ===== BOSS SPAWN DIALOG =====
-        if (isBoss && SpeechBubbleSystem.Instance != null)
-        {
-            SpeechBubbleSystem.Instance.Say(
-                "X",
-                Emotion.Angry,
-                3f
-            );
-        }
+        // if (isBoss && SpeechBubbleSystem.Instance != null)
+        // {
+        //     SpeechBubbleSystem.Instance.Say(
+        //         "X",
+        //         Emotion.Angry,
+        //         3f
+        //     );
+        // }
 
         if (isTower)
         {
@@ -520,8 +520,12 @@ public class CreatureBrain : MonoBehaviour
 
             // 🏃 đuổi nhưng vẫn bị leash
             Vector2 dir = (currentTarget.transform.position - transform.position).normalized;
+            dir = AvoidObstacle(dir);
+
             rb.linearVelocity = dir * stats.moveSpeed;
-            FaceDirection(dir.x);
+
+            if (Mathf.Abs(rb.linearVelocity.x) > 0.05f)
+                FaceDirection(rb.linearVelocity.x);
             return;
         }
 
@@ -1581,12 +1585,15 @@ public class CreatureBrain : MonoBehaviour
 
     void FaceDirection(float xDir)
     {
-        if (Mathf.Abs(xDir) < FACE_THRESHOLD) return;
-
-        if (xDir > 0)
+        // chỉ đổi hướng khi đủ ngang rõ ràng
+        if (xDir > FACE_THRESHOLD)
+        {
             spriteRenderer.flipX = initialFlipX;
-        else
+        }
+        else if (xDir < -FACE_THRESHOLD)
+        {
             spriteRenderer.flipX = !initialFlipX;
+        }
     }
 
     public Vector2 GetFacingDirection()
